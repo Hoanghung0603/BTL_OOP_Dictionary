@@ -1,0 +1,194 @@
+﻿.root {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+}
+
+.dictionary {
+    -fx-background-radius: 30;
+    -fx-background-color: rgba(0, 224, 199, 0.7);
+    -fx-background-border-color: #009394;
+    -fx-effect: innershadow(gaussian, #007f72, 15, 0, 0, 0);
+}
+
+.menu-pane {
+    -fx-background-color: #006270;
+    -fx-effect: dropshadow(gaussian, #002d36, 5, 0, 0, 0);
+    -fx-background-radius: 40;
+}
+
+.support-pane { /* efdbcb */
+    -fx-background-color: #006270;
+    -fx-background-radius: 40;
+}
+
+.view-pane {
+    -fx-background-color: #009394;
+    -fx-shape: "M 784 96
+               C 864 112 752 144 816 176
+               C 864 208 848 240 784 272
+               Q 752 288 800 304
+               Q 864 336 784 400
+               Q 768 416 800 432
+               C 850 464 832 496 784 512
+               L 30 512
+               Q 0 512 0 482
+               L 0 134
+               Q 0 96 30 96
+               Z";
+    -fx-effect: dropshadow(gaussian, #002d36, 10, 0, 0, 0);
+}
+
+.mpane1 {
+    -fx-background-color: #009394;
+    -fx-shape: "M 784 96
+                   C 864 112 752 144 816 176
+                   C 864 208 848 240 784 272
+                   Q 752 288 800 304
+                   Q 864 336 784 400
+                   Q 768 416 800 432
+                   C 850 464 832 496 784 512
+                   L 30 512
+                   Q 0 512 0 482
+                   L 0 134
+                   Q 0 96 30 96
+                   Z";
+   /* -fx-background-radius: 30; */
+}
+
+.searchW-pane {
+    -fx-background-color: #009394;
+    -fx-shape: "M 784 96
+                C 864 112 752 144 816 176
+                C 864 208 848 240 784 272
+                Q 752 288 800 304
+                Q 864 336 784 400
+                Q 768 416 800 432
+                C 850 464 832 496 784 512
+                L 30 512
+                Q 0 512 0 482
+                L 0 134
+                Q 0 96 30 96
+                Z";
+    -fx-effect: dropshadow(gaussian, #002d36, 10, 0, 0, 0);
+}
+
+.addWpane {
+    -fx-background-color: #009394;
+    -fx-shape: "M 784 96
+                C 864 112 752 144 816 176
+                C 864 208 848 240 784 272
+                Q 752 288 800 304
+                Q 864 336 784 400
+                Q 768 416 800 432
+                C 850 464 832 496 784 512
+                L 30 512
+                Q 0 512 0 482
+                L 0 134
+                Q 0 96 30 96
+                Z";
+}
+
+.view-addWpane {
+    -fx-background-color: #f8ECEC;
+    -fx-background-radius: 25;
+}
+
+.menu-item {
+    -fx-background-color: TRANSPARENT;
+}
+
+.menu-item: pressed,
+.menu-item: focused {
+    -fx-background-color: #009394;
+    -fx-effect: dropshadow(gaussian, #394867, 10, 0, 0, 0);
+}
+
+.searchW-bar {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, #00505080, 20, 0.5, 5, 5);
+}
+.searchW-textin {
+    -fx-background-color: TRANSPARENT;
+}
+
+.suggestW-box {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(gaussian, #00505080, 20, 0.5, 5, 5);
+}
+
+.explain-box {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 0 0 20 20;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(gaussian, #00505080, 20, 0.5, 5, 5);
+}
+
+.suggestW-list {
+    -fx-background-color: #ffffff;
+    -fx-font-size: 16px;
+}
+
+.suggestW-box .scroll-bar:vertical {
+    -fx-background-color: #00e0c7;
+}
+
+.showWsearch {
+    -fx-control-inner-background: TRANSPARENT;
+    -fx-border-radius: 50;
+    -fx-border-width: 0;
+    -fx-text-fill: #282424;
+}
+
+.showWsearch .content {
+    -fx-background-color: #ffffff;
+}
+
+.alert {
+    -fx-background-radius: 30;
+    -fx-background-color: rgba(0, 224, 199, 0.7);
+}
+
+.keyWbox {
+    -fx-background-color: TRANSPARENT;
+    -fx-background-radius: 20;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 10px;
+    -fx-border-radius: 20 20 0 0;
+    -fx-effect: dropshadow(gaussian, #00505080, 20, 0.5, 5, 5);
+}
+
+.keyWbox-Btn {
+    -fx-background-color: #009394;
+    -fx-background-radius: 20;
+}
+
+.test {
+    -fx-background-color: #006270;
+
+    -fx-shape: "M 784 96
+                Q 864 144 784 176
+                C 720 208 848 224 848 272
+                C 848 320 720 304 816 368
+                C 864 400 816 432 784 448
+                C 752 464 864 480 784 512
+                L 30 512
+                Q 0 512 0 482
+                L 0 134
+                Q 0 96 30 96
+                Z";
+
+     -fx-effect: dropshadow(gaussian, #002d36, 5, 0, 0, 0);
+}
+
+.test2 {
+    -fx-background-color: TRANSPARENT;
+    -fx-background-radius: 30;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 20px;
+    -fx-border-radius: 30;
+}
+
+
