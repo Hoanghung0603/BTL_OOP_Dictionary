@@ -9,6 +9,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import models.Dictionary;
+import models.DictionaryCommandline;
+import models.DictionaryManagement;
 
 import java.io.IOException;
 
@@ -18,11 +21,17 @@ public class Start extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        Dictionary dictionary = new Dictionary();
+        DictionaryCommandline dictionaryCommandline = new DictionaryCommandline();
+        DictionaryManagement dictionaryManagement = new DictionaryManagement();
+        DictionaryManagement.insertFromFile();
+
         Parent root = FXMLLoader.load(getClass().getResource("/frontend/Menu-view.fxml"));
         root.setStyle("-fx-background-color: TRANSPARENT");
 
         stage.setTitle("Dictionary Application");
         stage.initStyle(StageStyle.TRANSPARENT);
+
 
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override

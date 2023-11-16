@@ -7,11 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import models.Dictionary;
+import models.DictionaryManagement;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddWController implements Initializable {
+
     @FXML
     AnchorPane addWpane, addWsugg;
 
@@ -20,7 +23,6 @@ public class AddWController implements Initializable {
 
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1.0), addWpane);
         TranslateTransition tranTransition = new TranslateTransition(Duration.seconds(0.75), addWsugg);
-
 
         tranTransition.setByX(26);
         fadeTransition.setFromValue(0);

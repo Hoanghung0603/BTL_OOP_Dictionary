@@ -11,11 +11,22 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import models.Dictionary;
+import models.DictionaryCommandline;
+import models.DictionaryManagement;
+import models.Word;
+import java.util.ArrayList;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
+
+
+    //public Dictionary dictionary = new Dictionary();
+   // public DictionaryManagement dictionaryManagement = new DictionaryManagement();
+
+
     ObservableList<String> suggList = FXCollections.observableArrayList();
 
     @FXML
@@ -35,7 +46,14 @@ public class SearchController implements Initializable {
 
     @FXML
     public void suggInputWord() {
+        suggList.clear();
         String word = inputWord.getText().trim();
+        ArrayList<Word> list = new ArrayList<>();
+        list = DictionaryCommandline.dictionarySearcher(word);
+        for(Word x : list) {
+            suggList.add(x.getWordTarget());
+        }
+
         //xu li suggList (suggList thay doi the nao dua vao word)
         if (suggList.isEmpty()) {
             FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
@@ -54,6 +72,9 @@ public class SearchController implements Initializable {
         if (word == null) return;
         wordTarget.setText(word);
         //defTextArea.setText();  // settext dinh nghia cua tu can tra
+        Word tmp = DictionaryCommandline.dictionaryLookup(word);
+        String text = tmp.getWordSpelling() + "\n" + tmp.getWordExplain();
+        defTextArea.setText(text);
         defTextArea.setVisible(true);
         defTextArea.setEditable(false);
         saveBtn.setVisible(false);
@@ -80,6 +101,7 @@ public class SearchController implements Initializable {
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+      //  dictionaryManagement.insertFromFile();
         FadeTransition fadeTrans = new FadeTransition(Duration.seconds(1.0), searchPane);
         fadeTrans.setFromValue(0);
         fadeTrans.setToValue(1);
