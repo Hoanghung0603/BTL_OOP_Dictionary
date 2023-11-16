@@ -101,10 +101,10 @@ public class MenuController implements Initializable{
 
                     Node node = null;
                     try {
-                        AnchorPane temp = FXMLLoader.load(getClass().getResource("AddWsugg-view.fxml"));
+                        AnchorPane temp = FXMLLoader.load(getClass().getResource("/frontend/AddWsugg-view.fxml"));
                         node = temp;
                     } catch (IOException e) {
-                        throw new RuntimeException(e);
+                        e.printStackTrace();
                     }
                     supportPane.getChildren().add(node);
 

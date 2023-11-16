@@ -30,23 +30,7 @@ public class DictionaryCommandline extends DictionaryManagement {
         }
     }
 
-    public static Word dictionaryLookup(String s) {
-        Word w1 = new Word();
-        w1.setWordTarget(s);
-        Word w2 = new Word();
-        w2.setWordTarget(s+"a");
-        //tao day con tu s den s+"a" bang subset
-        TreeSet<Word> chat = (TreeSet<Word>) listWord.subSet(w1,w2);
-        //Tìm kiếm bằng cách chặt các dãy con
-        Iterator<Word> i = chat.iterator();
-        if (i.hasNext())
-        {
-            Word findout = i.next();
-            if(findout.getWordTarget().equals(s)) return findout;
-        }
-        Word notExist = new Word(s, "","This word is not already existed");
-        return notExist;
-    }
+
     public static boolean dictionaryDelete(String s) {
         Word w1 = new Word();
         w1.setWordTarget(s);
