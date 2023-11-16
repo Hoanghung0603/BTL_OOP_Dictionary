@@ -55,6 +55,8 @@ public class SearchController implements Initializable {
         }
 
         //xu li suggList (suggList thay doi the nao dua vao word)
+
+
         if (suggList.isEmpty()) {
             FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
             fadeAlert.setFromValue(1.0);
@@ -75,6 +77,7 @@ public class SearchController implements Initializable {
         Word tmp = DictionaryCommandline.dictionaryLookup(word);
         String text = tmp.getWordSpelling() + "\n" + tmp.getWordExplain();
         defTextArea.setText(text);
+
         defTextArea.setVisible(true);
         defTextArea.setEditable(false);
         saveBtn.setVisible(false);
@@ -97,11 +100,11 @@ public class SearchController implements Initializable {
 
     }
 
-
-
-
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
       //  dictionaryManagement.insertFromFile();
+=======
+
         FadeTransition fadeTrans = new FadeTransition(Duration.seconds(1.0), searchPane);
         fadeTrans.setFromValue(0);
         fadeTrans.setToValue(1);

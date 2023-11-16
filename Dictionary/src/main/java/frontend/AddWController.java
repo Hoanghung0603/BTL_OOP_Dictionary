@@ -5,6 +5,7 @@ import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import models.Dictionary;
@@ -17,6 +18,8 @@ public class AddWController implements Initializable {
 
     @FXML
     AnchorPane addWpane, addWsugg;
+    @FXML
+    TextField textField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -30,5 +33,8 @@ public class AddWController implements Initializable {
 
         fadeTransition.play();
         tranTransition.play();
+
+
+
     }
 }

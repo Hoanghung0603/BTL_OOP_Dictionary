@@ -26,7 +26,7 @@
       </TextField>
       <Pane layoutX="34.0" layoutY="190.0" prefHeight="322.0" prefWidth="365.0" styleClass="suggestW-box" stylesheets="@../Utils/Style.css">
          <children>
-            <TextArea layoutX="14.0" layoutY="12.0" prefHeight="298.0" prefWidth="338.0" text="meaning&#10;abcd&#10;defg&#10;">
+            <TextArea layoutX="14.0" layoutY="12.0" prefHeight="298.0" prefWidth="338.0">
                <font>
                   <Font size="18.0" />
                </font>

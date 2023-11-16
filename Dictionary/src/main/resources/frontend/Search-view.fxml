@@ -26,7 +26,7 @@
                   <Image url="@../Utils/icons/findwtemp.png" />
                </image>
             </ImageView>
-            <TextField fx:id="inputWord" layoutX="40.0" layoutY="4.0" prefHeight="38.0" prefWidth="225.0" styleClass="searchW-textin" stylesheets="@../Utils/Style.css" text="Type your word">
+            <TextField fx:id="inputWord" layoutX="40.0" layoutY="4.0" prefHeight="38.0" prefWidth="225.0" styleClass="searchW-textin" stylesheets="@../Utils/Style.css">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -47,7 +47,7 @@
             </TextArea>
             <ButtonBar buttonMinWidth="40.0" layoutX="228.0" layoutY="337.0" prefHeight="62.0" prefWidth="168.0" styleClass="alert" stylesheets="@../Utils/Style.css">
               <buttons>
-                  <Button fx:id="saveBtn" onAction="#clickSaveBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="Save">
+                  <Button fx:id="saveBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#clickSaveBtn" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="Save">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -56,7 +56,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                <Button fx:id="editBtn" onAction="#clickEditBtn" mnemonicParsing="false" styleClass="menu-item" stylesheets="@../Utils/Style.css">
+                <Button fx:id="editBtn" mnemonicParsing="false" onAction="#clickEditBtn" styleClass="menu-item" stylesheets="@../Utils/Style.css">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -65,7 +65,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="deleteBtn" onAction="#clickDeleteBtn" mnemonicParsing="false" styleClass="menu-item" stylesheets="@../Utils/Style.css">
+                  <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#clickDeleteBtn" styleClass="menu-item" stylesheets="@../Utils/Style.css">
                      <graphic>
                         <ImageView fitHeight="41.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -85,7 +85,7 @@
       </Label>
       <Pane layoutX="24.0" layoutY="157.0" prefHeight="382.0" prefWidth="267.0" styleClass="suggestW-box" stylesheets="@../Utils/Style.css">
          <children>
-            <ListView fx:id="suggResults" onMouseClicked="#handleMouseClickSuggWord" layoutX="9.0" layoutY="15.0" prefHeight="353.0" prefWidth="250.0" styleClass="suggestW-list" stylesheets="@../Utils/Style.css" />
+            <ListView fx:id="suggResults" layoutX="9.0" layoutY="15.0" onMouseClicked="#handleMouseClickSuggWord" prefHeight="353.0" prefWidth="250.0" styleClass="suggestW-list" stylesheets="@../Utils/Style.css" />
          </children>
       </Pane>
       <Label fx:id="alert" layoutX="24.0" layoutY="137.0" prefHeight="38.0" prefWidth="267.0" styleClass="alert" stylesheets="@../Utils/Style.css" text="     Invalid word">
