@@ -1,0 +1,23 @@
+people	con người
+dog	con chó
+cat	con mèo
+hello	xin chào
+stupid	ngu ngốc
+smart	thông minh
+beautiful	xinh đẹp
+ugly	xấu xí
+good	tốt
+bad	xấu
+happy	vui
+sad	buồn
+hungry	đói
+thirsty	khát
+tired	mệt
+sleepy	buồn ngủ
+hot	nóng
+cold	lạnh
+rainy	mưa
+sunny	nắng
+windy	gió
+cloudy	đầy mây
+snowy	tuyết
