@@ -1,4 +1,4 @@
-package Controller;
+package frontend;
 
 import javafx.animation.*;
 import javafx.event.ActionEvent;
@@ -15,10 +15,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
-public class HelloController implements Initializable{
+public class MenuController implements Initializable{
 
     @FXML
     private AnchorPane mainPain, supportPane;

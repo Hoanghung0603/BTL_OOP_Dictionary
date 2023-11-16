@@ -8,6 +8,6 @@ module testing.testlinhtinh {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
 
-    opens Controller to javafx.fxml;
-    exports Controller;
+    opens frontend to javafx.fxml;
+    exports frontend;
 }

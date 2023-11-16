@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="addWsugg" prefHeight="563.0" prefWidth="366.0" style="-fx-background-color: #edac6c;" styleClass="support-pane" stylesheets="@../../Utils/Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddWController">
+<AnchorPane fx:id="addWsugg" prefHeight="563.0" prefWidth="366.0" style="-fx-background-color: #edac6c;" styleClass="support-pane" stylesheets="@../Utils/Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.AddWController">
    <children>
       <ImageView fitHeight="325.0" fitWidth="307.0" layoutX="30.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Utils/icons/catwalk.gif" />
+            <Image url="@../Utils/icons/catwalk.gif" />
          </image>
       </ImageView>
       <Pane layoutX="29.0" layoutY="60.0" prefHeight="278.0" prefWidth="307.0">
@@ -30,7 +30,7 @@
             </Label>
          </children>
       </Pane>
-      <Label layoutX="32.0" layoutY="29.0" prefHeight="43.0" prefWidth="319.0" text="The word you want to add will show up here ">
+      <Label layoutX="32.0" layoutY="31.0" prefHeight="43.0" prefWidth="319.0" text="The word you want to add will show up here ">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
