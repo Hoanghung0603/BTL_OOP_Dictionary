@@ -37,8 +37,6 @@ public class SearchController implements Initializable {
     public void suggInputWord() {
         String word = inputWord.getText().trim();
         //xu li suggList (suggList thay doi the nao dua vao word)
-
-
         if (suggList.isEmpty()) {
             FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
             fadeAlert.setFromValue(1.0);
@@ -55,9 +53,7 @@ public class SearchController implements Initializable {
         String word = suggResults.getSelectionModel().getSelectedItem();
         if (word == null) return;
         wordTarget.setText(word);
-
-        
-
+        //defTextArea.setText();  // settext dinh nghia cua tu can tra
         defTextArea.setVisible(true);
         defTextArea.setEditable(false);
         saveBtn.setVisible(false);
@@ -80,8 +76,10 @@ public class SearchController implements Initializable {
 
     }
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         FadeTransition fadeTrans = new FadeTransition(Duration.seconds(1.0), searchPane);
         fadeTrans.setFromValue(0);
         fadeTrans.setToValue(1);

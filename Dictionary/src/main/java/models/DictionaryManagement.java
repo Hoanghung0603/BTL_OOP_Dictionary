@@ -1,5 +1,6 @@
 package models;
 
+import java.nio.charset.Charset;
 import java.util.Scanner;
 import java.io.*;
 import java.nio.*;
@@ -132,6 +133,66 @@ public class DictionaryManagement extends Dictionary {
                 "\n [6] Search \n [7] Game \n [8] Import from file \n [9] Export to file \n Your action: ";
         System.out.println(x);
     }
+    public static void insertFromFile1() {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/main/resources/data/data.txt"))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] parts = line.split("\t");
+                if (parts.length >= 2) {
+                    Word tmp = new Word(parts[0], parts[1].trim());
+                    listWord.add(tmp);
+                } else {
+                    System.out.println("ignoring line: " + line);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static String readFile(String path, Charset encoding) throws IOException {
+        StringBuilder content = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(new FileReader(path, encoding))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                content.append(line).append("\n");
+            }
+        }
+        return content.toString();
+    }
+
+
+    public static void insertFromFile() {
+        try {
+            String content = readFile("src\\main\\resources\\data\\datadic.txt", Charset.defaultCharset());
+            String[] words = content.split("@");
+            for (String word : words) {
+                String[] result = word.split("\r?\n", 2);
+                if (result.length > 1) {
+                    String wordExplain = result[1];
+                    String wordTarget = "";
+                    String wordSpelling = "";
+                    if (result[0].contains("/")) {
+                        wordTarget = result[0].substring(0, result[0].indexOf("/"));
+                        //Cắt từ đầu đến kí tự /
+                        wordSpelling = result[0].substring(result[0].indexOf("/"));
+                        //Từ kí tự / đến cuối
+                    } else {
+                        wordTarget = result[0];
+                        wordSpelling = "";
+                    }
+
+                    listWord.add(new Word(wordTarget.trim(), wordSpelling.trim(), wordExplain.trim()));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public static void main (String[] args) throws IOException {
         printDictionarySearcher();
     }
