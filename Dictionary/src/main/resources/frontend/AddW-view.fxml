@@ -19,14 +19,14 @@
             <Image url="@../Utils/icons/coralcrop.png" />
          </image>
       </ImageView>
-      <TextField layoutX="48.0" layoutY="72.0" prefHeight="51.0" prefWidth="338.0" styleClass="searchW-bar" stylesheets="@../Utils/Style.css" text="abcdef">
+      <TextField fx:id="inputText" layoutX="48.0" layoutY="72.0" prefHeight="51.0" prefWidth="338.0" styleClass="searchW-bar" stylesheets="@../Utils/Style.css" text="abcdef">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </TextField>
       <Pane layoutX="34.0" layoutY="190.0" prefHeight="322.0" prefWidth="365.0" styleClass="suggestW-box" stylesheets="@../Utils/Style.css">
          <children>
-            <TextArea layoutX="14.0" layoutY="12.0" prefHeight="298.0" prefWidth="338.0" text="meaning&#10;abcd&#10;defg&#10;">
+            <TextArea fx:id="inputDefText" editable="false" layoutX="14.0" layoutY="12.0" prefHeight="298.0" prefWidth="338.0" text="meaning&#10;abcd&#10;defg&#10;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -38,7 +38,7 @@
             <Image url="@../Utils/icons/coral.png" />
          </image>
       </ImageView>
-      <Button layoutX="335.0" layoutY="151.0" mnemonicParsing="false" styleClass="alert" stylesheets="@../Utils/Style.css" text="Add">
+      <Button fx:id="add" onMouseClicked="#handleMouseClickAdd" layoutX="335.0" layoutY="151.0" mnemonicParsing="false" styleClass="alert" stylesheets="@../Utils/Style.css" text="Add" visible="false">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

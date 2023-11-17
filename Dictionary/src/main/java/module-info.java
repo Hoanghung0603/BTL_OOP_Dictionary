@@ -1,4 +1,4 @@
-module testing.testlinhtinh {
+module frontend {
     requires javafx.controls;
     requires javafx.fxml;
 
