@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import models.DictionaryManagement;
 import models.Word;
+import models.Dictionary;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,13 +26,11 @@ public class AddWsuggController implements Initializable, Listener {
             //shareInfoaddword.getnewWord
             //Nghĩa là chỗ này sẽ là chỗ của cái từ mới?
             // Tuwf m
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
             Word word = DictionaryManagement.dictionaryLookup(ShareInfoAddWord.getNewWord());
             String lookup = word.toString2();
+            for(Word x : Dictionary.listAdd) {
+                lookup = lookup + "\n" + "- " + x.getWordExplain();
+            }
             defTextArea.setText(lookup);
         }
     }

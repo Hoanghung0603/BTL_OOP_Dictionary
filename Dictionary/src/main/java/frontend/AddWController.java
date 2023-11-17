@@ -16,6 +16,7 @@ import models.Dictionary;
 import models.DictionaryManagement;
 import models.Word;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -37,14 +38,9 @@ public class AddWController implements Initializable {
     String newWord, newExplain;
     boolean isInDictionary = false;
     @FXML
-    private void handleMouseClickAdd() {
-        Word word = DictionaryManagement.dictionaryLookup(newWord);
-        if (isInDictionary) {
-            String lookup = word.toString() + "\n" + newExplain;
-        } else {
-            //thêm newWord vào từ điển với newExplain
-        }
-       // DictionaryManagement.dictionaryExportToFile();
+    private void handleMouseClickAdd() throws IOException {
+        DictionaryManagement.addWord(newWord, newExplain);
+        DictionaryManagement.dictionaryExportToFile();
         inputText.setText("");
         inputDefText.setText("");
         add.setVisible(false);
