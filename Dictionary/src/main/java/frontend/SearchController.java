@@ -21,12 +21,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
-
-
     //public Dictionary dictionary = new Dictionary();
    // public DictionaryManagement dictionaryManagement = new DictionaryManagement();
-
-
     ObservableList<String> suggList = FXCollections.observableArrayList();
 
     @FXML
@@ -45,7 +41,7 @@ public class SearchController implements Initializable {
     TextField inputWord;
 
     @FXML
-    public void suggInputWord() {
+    private void suggInputWord() {
         suggList.clear();
         String word = inputWord.getText().trim();
         ArrayList<Word> list = new ArrayList<>();
@@ -53,9 +49,6 @@ public class SearchController implements Initializable {
         for(Word x : list) {
             suggList.add(x.getWordTarget());
         }
-
-        //xu li suggList (suggList thay doi the nao dua vao word)
-
 
         if (suggList.isEmpty()) {
             FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
@@ -69,7 +62,7 @@ public class SearchController implements Initializable {
 
     //khi click vao mot tu trong suggResults
     @FXML
-    public void handleMouseClickSuggWord(MouseEvent event) {
+    private void handleMouseClickSuggWord(MouseEvent event) {
         String word = suggResults.getSelectionModel().getSelectedItem();
         if (word == null) return;
         wordTarget.setText(word);
@@ -103,17 +96,12 @@ public class SearchController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
       //  dictionaryManagement.insertFromFile();
-=======
 
         FadeTransition fadeTrans = new FadeTransition(Duration.seconds(1.0), searchPane);
         fadeTrans.setFromValue(0);
         fadeTrans.setToValue(1);
         fadeTrans.play();
         alert.setVisible(false);
-
-        ObservableList<String> items = FXCollections.observableArrayList("text1", "text2", "text3", "text4", "text5", "text6",
-                "text7", "text 8", "text9" , "text10", "text11", "text12", "text13", "text14", "text15", "text16", "text17");
-        suggResults.setItems(items);
 
         inputWord.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override

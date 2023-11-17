@@ -1,4 +1,4 @@
-module frontend {
+module Module {
     requires javafx.controls;
     requires javafx.fxml;
 
