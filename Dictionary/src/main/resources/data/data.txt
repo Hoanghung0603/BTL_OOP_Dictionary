@@ -1,8 +1,6 @@
 people	con người
 hello	xin chào
-
 hello	đần độn
-
 hello	meaning
 
 

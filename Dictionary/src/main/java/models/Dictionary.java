@@ -6,7 +6,7 @@ import java.util.TreeSet;
 public class Dictionary {
     public static TreeSet<Word> listWord = new TreeSet<Word>();
     public static LinkedList<String> favoriteWord = new LinkedList<String>();
-    public static LinkedList<Word> listAdd = new LinkedList<>();
+    public static TreeSet<Word> listAdd = new TreeSet<>();
 
     //public static LinkedList<String> recentWord =new LinkedList<String>();
     //public static LinkedList<String> removedWord = new LinkedList<String>();

@@ -28,9 +28,7 @@ public class AddWsuggController implements Initializable, Listener {
             // Tuwf m
             Word word = DictionaryManagement.dictionaryLookup(ShareInfoAddWord.getNewWord());
             String lookup = word.toString2();
-            for(Word x : Dictionary.listAdd) {
-                lookup = lookup + "\n" + "- " + x.getWordExplain();
-            }
+            lookup = lookup + "\n" + DictionaryManagement.addLookup(ShareInfoAddWord.getNewWord()).getWordExplain();
             defTextArea.setText(lookup);
         }
     }

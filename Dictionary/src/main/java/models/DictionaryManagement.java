@@ -117,6 +117,24 @@ public class DictionaryManagement extends Dictionary {
         return notExist;
     }
 
+    public static Word addLookup(String s) {
+        Word w1 = new Word();
+        w1.setWordTarget(s);
+        Word w2 = new Word();
+        w2.setWordTarget(s+"a");
+        //tao day con tu s den s+"a" bang subset
+        TreeSet<Word> chat = (TreeSet<Word>) listAdd.subSet(w1,w2);
+        //Tìm kiếm bằng cách chặt các dãy con
+        Iterator<Word> i = chat.iterator();
+        if (i.hasNext())
+        {
+            Word findout = i.next();
+            if(findout.getWordTarget().equals(s)) return findout;
+        }
+        Word notExist = new Word(s, "","This word is not already existed");
+        return notExist;
+    }
+
     public static boolean TFlookup(String s) {
         Word notExist = new Word(s, "","This word is not already existed");
         if(dictionaryLookup(s) != notExist) return true;

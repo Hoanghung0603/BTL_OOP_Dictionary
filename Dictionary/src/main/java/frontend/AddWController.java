@@ -70,7 +70,8 @@ public class AddWController implements Initializable {
                         ShareInfoAddWord.setNewWord(newWord);
                     }
                 }
-                else{
+                else
+                {
                     add.setVisible(false);
                     inputDefText.setEditable(false);
                 }
