@@ -56,7 +56,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                <Button fx:id="editBtn" mnemonicParsing="false" onAction="#clickEditBtn" styleClass="menu-item" stylesheets="@../Utils/Style.css">
+                <Button fx:id="soundBtn" mnemonicParsing="false" onAction="#clickSoundBtn" styleClass="menu-item" stylesheets="@../Utils/Style.css">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>

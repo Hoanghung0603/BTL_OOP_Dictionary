@@ -15,7 +15,16 @@ import models.Dictionary;
 import models.DictionaryCommandline;
 import models.DictionaryManagement;
 import models.Word;
+
+import java.net.URI;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+
+import javafx.application.Application;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +38,7 @@ public class SearchController implements Initializable {
     @FXML
     Label alert, wordTarget;  //wordtarget la label hien tu tieng anh dang search
     @FXML
-    Button saveBtn, editBtn, deleteBtn;
+    Button saveBtn, soundBtn, deleteBtn;
 
     @FXML
     ListView<String> suggResults;
@@ -81,10 +90,25 @@ public class SearchController implements Initializable {
     }
 
     @FXML
-    private void clickEditBtn() {
-        defTextArea.setEditable(true);
-        saveBtn.setVisible(true);
-        //alert?
+    private void clickSoundBtn() {
+        URI uri = Paths.get("src/main/resources/data/output.mp3").toUri();
+
+        // Tạo một đối tượng Media từ tệp âm thanh
+        Media media = new Media(uri.toString());
+
+        // Tạo một đối tượng MediaPlayer từ đối tượng Media
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+        // Bắt đầu phát âm thanh
+        mediaPlayer.play();
+
+        // Đợi cho đến khi phát xong
+        mediaPlayer.setOnEndOfMedia(() -> {
+            mediaPlayer.stop();
+        });
+        System.out.println("Phát âm thanh");
+
+
     }
 
     @FXML

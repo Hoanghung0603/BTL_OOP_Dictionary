@@ -73,7 +73,7 @@ public class API {
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 InputStream is = connection.getInputStream();
-                Path outputPath = Paths.get("D:\\UET Subject\\OOP\\App\\out\\output.mp3");
+                Path outputPath = Paths.get("src\\main\\resources\\data\\output.mp3");
                 Files.copy(is, outputPath, StandardCopyOption.REPLACE_EXISTING);
                 is.close();
                 connection.disconnect();
@@ -86,6 +86,8 @@ public class API {
         }
         return null;
     }
+
+
 
     private static void setConnectionProperties(HttpURLConnection connection) {
         try {
