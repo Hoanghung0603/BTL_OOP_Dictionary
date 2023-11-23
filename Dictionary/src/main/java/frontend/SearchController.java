@@ -43,6 +43,8 @@ public class SearchController implements Initializable {
     private void suggInputWord() {
         suggList.clear();
         String word = inputWord.getText().trim();
+        word = word.toLowerCase();
+        System.out.println(word);
         ArrayList<Word> list = new ArrayList<>();
         list = DictionaryCommandline.dictionarySearcher(word);
         for(Word x : list) {
@@ -69,7 +71,10 @@ public class SearchController implements Initializable {
         Word tmp = DictionaryCommandline.dictionaryLookup(word);
         String text = tmp.getWordSpelling() + "\n" + tmp.getWordExplain();
         defTextArea.setText(text);
-        recentSearch.add(word);
+        if(!Dictionary.recentWord.contains(word)) {
+            Dictionary.recentWord.add(word);
+            recentSearch.setAll(Dictionary.recentWord);
+        }
 
         defTextArea.setVisible(true);
         saveBtn.setVisible(false);
@@ -100,8 +105,7 @@ public class SearchController implements Initializable {
         fadeTrans.setToValue(1);
         fadeTrans.play();
         alert.setVisible(false);
-
-        recentSearch.setAll("Text1", "Text2", "Text3", "Text4", "Text5", "Text6", "Text7");
+        recentSearch.setAll(Dictionary.recentWord);
         suggResults.setItems(recentSearch);
 
         inputWord.setOnKeyTyped(new EventHandler<KeyEvent>() {
