@@ -2,7 +2,9 @@ package frontend;
 
 
 import javafx.animation.FadeTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,40 +12,40 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
-import models.Dictionary;
 import models.DictionaryManagement;
 import models.Word;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 public class AddWController implements Initializable {
-
-
     @FXML
     AnchorPane addWpane;
-
-
     @FXML
     TextArea inputDefText;
     @FXML
     TextField inputText;
     @FXML
-    Button add;
+    Button addConfirmBtn;
 
     String newWord, newExplain;
     boolean isInDictionary = false;
     @FXML
-    private void handleMouseClickAdd() throws IOException {
-        DictionaryManagement.addWord(newWord, newExplain);
-        DictionaryManagement.dictionaryExportToFile();
+    private void handleMouseClickAdd() {
+        Word word = DictionaryManagement.dictionaryLookup(newWord);
+        if (isInDictionary) {
+            String lookup = word.toString() + "\n" + newExplain;
+        } else {
+            //thêm newWord vào từ điển với newExplain
+        }
+        // DictionaryManagement.dictionaryExportToFile();
         inputText.setText("");
         inputDefText.setText("");
-        add.setVisible(false);
+        addConfirmBtn.setVisible(false);
         inputDefText.setEditable(false);
         ShareInfoAddWord.setNewWord("");
     }
@@ -55,25 +57,39 @@ public class AddWController implements Initializable {
         fadeTransition.setToValue(1);
         fadeTransition.play();
 
-        inputText.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                newWord = inputText.getText().trim();
-                if(!newWord.equals("")) {
-                    add.setVisible(true);
-                    inputDefText.setEditable(true);
-
-                    // nếu newword trong từ điển thì isInDictionary = true;
-                    isInDictionary = DictionaryManagement.TFlookup(newWord);
-
-                    if(isInDictionary) {
-                        ShareInfoAddWord.setNewWord(newWord);
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(1000),
+                new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        // Xử lý sự kiện sau khi đã chờ đợi 1 giây
+                        newWord = inputText.getText().trim();
+                        if (!newWord.equals("")) {
+                            System.out.println("New Word: " + newWord);
+                            inputDefText.setEditable(true);
+                            addConfirmBtn.setVisible(true);
+                            isInDictionary = DictionaryManagement.TFlookup(newWord);
+                            if (isInDictionary) {
+                                ShareInfoAddWord.setNewWord(newWord);
+                            }
+                        } else {
+                            ShareInfoAddWord.setNewWord("");
+                            addConfirmBtn.setVisible(false);
+                            inputDefText.setEditable(false);
+                        }
                     }
-                }
-                else
-                {
-                    add.setVisible(false);
-                    inputDefText.setEditable(false);
+                }));
+
+        inputText.setOnKeyTyped(event -> {
+            timeline.stop();
+            timeline.playFromStart();
+        });
+
+        inputText.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(inputText.getText().equals("Type your word")) {
+                    inputText.setText("");
                 }
             }
         });
