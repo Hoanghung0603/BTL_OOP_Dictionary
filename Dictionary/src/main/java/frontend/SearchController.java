@@ -21,9 +21,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
-    //public Dictionary dictionary = new Dictionary();
-   // public DictionaryManagement dictionaryManagement = new DictionaryManagement();
     ObservableList<String> suggList = FXCollections.observableArrayList();
+    ObservableList<String> recentSearch = FXCollections.observableArrayList();
 
     @FXML
     AnchorPane searchPane;
@@ -49,15 +48,15 @@ public class SearchController implements Initializable {
         for(Word x : list) {
             suggList.add(x.getWordTarget());
         }
-
-        if (suggList.isEmpty()) {
-            FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
-            fadeAlert.setFromValue(1.0);
-            fadeAlert.setToValue(0.0);
-            fadeAlert.play();
-        } else {
+        if (!suggList.isEmpty()) {
             suggResults.setItems(suggList);
         }
+//        else {
+//            FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
+//            fadeAlert.setFromValue(1.0);
+//            fadeAlert.setToValue(0.0);
+//            fadeAlert.play();
+//        }
     }
 
     //khi click vao mot tu trong suggResults
@@ -70,9 +69,9 @@ public class SearchController implements Initializable {
         Word tmp = DictionaryCommandline.dictionaryLookup(word);
         String text = tmp.getWordSpelling() + "\n" + tmp.getWordExplain();
         defTextArea.setText(text);
+        recentSearch.add(word);
 
         defTextArea.setVisible(true);
-        defTextArea.setEditable(false);
         saveBtn.setVisible(false);
     }
 
@@ -96,20 +95,29 @@ public class SearchController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
       //  dictionaryManagement.insertFromFile();
-
         FadeTransition fadeTrans = new FadeTransition(Duration.seconds(1.0), searchPane);
         fadeTrans.setFromValue(0);
         fadeTrans.setToValue(1);
         fadeTrans.play();
         alert.setVisible(false);
 
+        recentSearch.setAll("Text1", "Text2", "Text3", "Text4", "Text5", "Text6", "Text7");
+        suggResults.setItems(recentSearch);
+
         inputWord.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                if (!inputWord.getText().isEmpty()) {
+                defTextArea.setText("");
+                wordTarget.setText("Definition");
+                String word = inputWord.getText().trim();
+                if (!inputWord.getText().isEmpty() && DictionaryManagement.TFlookup(word)) {
                     suggInputWord();
                 } else {
-
+                    suggResults.setItems(recentSearch);
+                    FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
+                    fadeAlert.setFromValue(1.0);
+                    fadeAlert.setToValue(0.0);
+                    fadeAlert.play();
                 }
             }
         });

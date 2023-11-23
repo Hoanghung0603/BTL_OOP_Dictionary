@@ -26,7 +26,7 @@
                   <Image url="@../Utils/icons/findwtemp.png" />
                </image>
             </ImageView>
-            <TextField fx:id="inputWord" layoutX="40.0" layoutY="4.0" prefHeight="38.0" prefWidth="225.0" styleClass="searchW-textin" stylesheets="@../Utils/Style.css">
+            <TextField fx:id="inputWord" layoutX="40.0" layoutY="4.0" prefHeight="38.0" prefWidth="225.0" styleClass="searchW-textin" stylesheets="@../Utils/Style.css" text="Type your word">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -40,7 +40,7 @@
       </Label>
       <Pane layoutX="315.0" layoutY="157.0" prefHeight="382.0" prefWidth="390.0" styleClass="explain-box" stylesheets="@../Utils/Style.css">
          <children>
-            <TextArea fx:id="defTextArea" layoutX="8.0" layoutY="10.0" prefHeight="362.0" prefWidth="374.0" styleClass="showWsearch" stylesheets="@../Utils/Style.css" text="Explain&#10;">
+            <TextArea fx:id="defTextArea" editable="false" layoutX="8.0" layoutY="10.0" prefHeight="362.0" prefWidth="374.0" styleClass="showWsearch" stylesheets="@../Utils/Style.css" text="&#10;">
                <font>
                   <Font size="18.0" />
                </font>
@@ -90,7 +90,7 @@
       </Pane>
       <Label fx:id="alert" layoutX="24.0" layoutY="137.0" prefHeight="38.0" prefWidth="267.0" styleClass="alert" stylesheets="@../Utils/Style.css" text="     Invalid word">
          <graphic>
-            <ImageView fitHeight="34.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="34.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" translateX="10.0">
                <image>
                   <Image url="@../Utils/icons/notice.png" />
                </image>

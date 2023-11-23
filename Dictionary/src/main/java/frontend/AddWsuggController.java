@@ -21,18 +21,14 @@ public class AddWsuggController implements Initializable, Listener {
     @Override
     public void onNewWordChange() {
         if(!ShareInfoAddWord.getNewWord().equals("")) {
-            //rewrite this
-            //shareInfoaddword.getnewWord
             //Nghĩa là chỗ này sẽ là chỗ của cái từ mới?
-            // Tuwf m
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+
             Word word = DictionaryManagement.dictionaryLookup(ShareInfoAddWord.getNewWord());
             String lookup = word.toString2();
             defTextArea.setText(lookup);
+        }
+        else {
+            defTextArea.setText("");
         }
     }
 

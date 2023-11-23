@@ -6,8 +6,9 @@
 
 <AnchorPane prefHeight="584.0" prefWidth="798.0" styleClass="view-pane" stylesheets="@../Utils/Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.TranslateController">
    <children>
-      <TextArea layoutX="73.0" layoutY="67.0" prefHeight="200.0" prefWidth="584.0" />
-      <TextArea layoutX="73.0" layoutY="292.0" prefHeight="200.0" prefWidth="584.0" />
-      <Button layoutX="339.0" layoutY="267.0" mnemonicParsing="false" text="Button" />
+      <TextArea fx:id="VietTextArea" layoutX="73.0" layoutY="40.0" prefHeight="200.0" prefWidth="584.0" />
+      <TextArea fx:id="EngTextArea" layoutX="73.0" layoutY="316.0" prefHeight="200.0" prefWidth="584.0" />
+      <Button fx:id="change" layoutX="339.0" layoutY="267.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="translateBtn" layoutX="428.0" layoutY="267.0" mnemonicParsing="false" text="Translate" />
    </children>
 </AnchorPane>
