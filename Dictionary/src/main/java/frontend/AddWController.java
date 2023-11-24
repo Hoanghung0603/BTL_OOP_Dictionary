@@ -69,6 +69,10 @@ public class AddWController implements Initializable {
                             inputDefText.setEditable(true);
                             addConfirmBtn.setVisible(true);
                             isInDictionary = DictionaryManagement.TFlookup(newWord);
+
+                            System.out.println(newWord);
+                            System.out.println(isInDictionary + " is");
+
                             if (isInDictionary) {
                                 ShareInfoAddWord.setNewWord(newWord);
                             }

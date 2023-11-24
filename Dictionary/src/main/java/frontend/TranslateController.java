@@ -5,8 +5,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.effect.BlurType;
 import javafx.scene.input.KeyEvent;
 import models.API;
 
@@ -16,9 +16,11 @@ import java.util.ResourceBundle;
 
 public class TranslateController implements Initializable {
     @FXML
-    TextArea VietTextArea, EngTextArea;
+    TextArea toBeTranslatedText, translateText;
     @FXML
     Button change, translateBtn;
+    @FXML
+    Label labelTextIn, labelTranslate;
 
     String inputString, translateString;
     boolean vietToEng = true;
@@ -28,20 +30,23 @@ public class TranslateController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 //...
                 vietToEng = !vietToEng;
+                labelTextIn.setText(vietToEng ? "Việt" : "Anh");
+                labelTranslate.setText(vietToEng ? "Anh" : "Việt");
+
             }
         });
-        VietTextArea.setOnKeyTyped(new EventHandler<KeyEvent>() {
+        toBeTranslatedText.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                inputString = VietTextArea.getText();
-
+                inputString = toBeTranslatedText.getText();
+                if (inputString.isEmpty()) translateBtn.setDisable(true);
+                else translateBtn.setDisable(false);
             }
         });
 
         translateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
                     if(vietToEng) {
                         try {
                             translateString = API.VtranslatetoE(inputString);
@@ -57,8 +62,7 @@ public class TranslateController implements Initializable {
                         }
                     }
                     System.out.println(translateString);
-                    EngTextArea.setText(translateString);
-
+                    translateText.setText(translateString);
             }
         });
     }

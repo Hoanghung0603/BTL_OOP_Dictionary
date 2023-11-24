@@ -51,12 +51,6 @@ public class SearchController implements Initializable {
         if (!suggList.isEmpty()) {
             suggResults.setItems(suggList);
         }
-//        else {
-//            FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
-//            fadeAlert.setFromValue(1.0);
-//            fadeAlert.setToValue(0.0);
-//            fadeAlert.play();
-//        }
     }
 
     //khi click vao mot tu trong suggResults
@@ -73,23 +67,6 @@ public class SearchController implements Initializable {
 
         defTextArea.setVisible(true);
         saveBtn.setVisible(false);
-    }
-
-    @FXML
-    private void clickEditBtn() {
-        defTextArea.setEditable(true);
-        saveBtn.setVisible(true);
-        //alert?
-    }
-
-    @FXML
-    private void clickSaveBtn() {
-
-    }
-
-    @FXML
-    private void clickDeleteBtn() {
-
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -122,6 +99,11 @@ public class SearchController implements Initializable {
             }
         });
 
-
+        inputWord.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(inputWord.getText().trim().equals("Type your word")) inputWord.setText("");
+            }
+        });
     }
 }
