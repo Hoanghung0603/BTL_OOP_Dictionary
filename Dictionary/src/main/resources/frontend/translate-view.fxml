@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="584.0" prefWidth="798.0" styleClass="view-pane" stylesheets="@../Utils/Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.TranslateController">
    <children>
-      <Pane layoutX="63.0" layoutY="55.0" prefHeight="222.0" prefWidth="616.0" styleClass="suggestW-box" stylesheets="@../Utils/Style.css">
+      <Pane layoutX="63.0" layoutY="43.0" prefHeight="222.0" prefWidth="616.0" styleClass="suggestW-box" stylesheets="@../Utils/Style.css">
          <children>
             <TextArea fx:id="toBeTranslatedText" layoutX="16.0" layoutY="11.0" prefHeight="200.0" prefWidth="584.0">
                <font>
@@ -18,25 +18,25 @@
             </TextArea>
             <Button fx:id="change" layoutX="447.0" layoutY="187.0" mnemonicParsing="false" text="change" />
             <Button fx:id="translateBtn" layoutX="515.0" layoutY="187.0" mnemonicParsing="false" text="Translate" />
+            <Label fx:id="labelTextIn" alignment="CENTER" layoutX="273.0" layoutY="205.0" prefHeight="35.0" prefWidth="71.0" styleClass="translate-stateLabel" stylesheets="@../Utils/Style.css" text="Việt">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Pane layoutX="63.0" layoutY="325.0" prefHeight="222.0" prefWidth="616.0" styleClass="suggestW-box" stylesheets="@../Utils/Style.css">
+      <Pane layoutX="63.0" layoutY="299.0" prefHeight="222.0" prefWidth="616.0" styleClass="suggestW-box" stylesheets="@../Utils/Style.css">
          <children>
             <TextArea fx:id="translateText" editable="false" layoutX="16.0" layoutY="11.0" prefHeight="200.0" prefWidth="584.0">
                <font>
                   <Font size="17.0" />
                </font></TextArea>
+            <Label fx:id="labelTranslate" alignment="CENTER" layoutX="273.0" layoutY="205.0" prefHeight="35.0" prefWidth="71.0" styleClass="translate-stateLabel" stylesheets="@../Utils/Style.css" text="Anh">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Label fx:id="labelTextIn" alignment="CENTER" layoutX="335.0" layoutY="19.0" prefHeight="35.0" prefWidth="71.0" styleClass="translate-stateLabel" stylesheets="@../Utils/Style.css" text="Việt">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelTranslate" alignment="CENTER" layoutX="335.0" layoutY="289.0" prefHeight="35.0" prefWidth="71.0" styleClass="translate-stateLabel" stylesheets="@../Utils/Style.css" text="Anh">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

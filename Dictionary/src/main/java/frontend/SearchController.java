@@ -80,10 +80,10 @@ public class SearchController implements Initializable {
         Word tmp = DictionaryCommandline.dictionaryLookup(word);
         String text = tmp.getWordSpelling() + "\n" + tmp.getWordExplain();
         defTextArea.setText(text);
-        if(!Dictionary.recentWord.contains(word)) {
-            Dictionary.recentWord.add(word);
-            recentSearch.setAll(Dictionary.recentWord);
-        }
+        if(Dictionary.recentWord.size() == 10) Dictionary.recentWord.remove(0);
+        if(Dictionary.recentWord.contains(word)) Dictionary.recentWord.remove(word);
+        Dictionary.recentWord.add(word);
+        recentSearch.setAll(Dictionary.recentWord.reversed());
 
         defTextArea.setVisible(true);
         saveBtn.setVisible(false);
