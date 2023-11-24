@@ -133,7 +133,7 @@ public class DictionaryManagement extends Dictionary {
             Word findout = i.next();
             if(findout.getWordTarget().equals(s)) return findout;
         }
-        Word notExist = new Word(s, "","This word is not already existed");
+        Word notExist = new Word(s, "","");
         return notExist;
     }
 
@@ -151,14 +151,19 @@ public class DictionaryManagement extends Dictionary {
             Word findout = i.next();
             if(findout.getWordTarget().equals(s)) return findout;
         }
-        Word notExist = new Word(s, "","This word is not already existed");
+        Word notExist = new Word(s, "","");
         return notExist;
     }
 
     public static boolean TFlookup(String s) {
-        Word notExist = new Word(s, "","This word is not already existed");
-        if(dictionaryLookup(s) != notExist) return true;
-        return false;
+        Word notExist = new Word(s, "","");
+        if(dictionaryLookup(s).equals(notExist) && addLookup(s).equals(notExist)) return false;
+        return true;
+    }
+    public static boolean TFlistAdd(String s) {
+        Word notExist = new Word(s, "","");
+        if(addLookup(s).equals(notExist)) return false;
+        return true;
     }
 
     public static void lookupWordFromCommand() {
@@ -298,6 +303,10 @@ public class DictionaryManagement extends Dictionary {
             System.out.println("Đã xảy ra lỗi khi xóa dữ liệu: " + e.getMessage());
         }
     }
+    public static void reset() throws IOException {
+        clear("data");
+        clear("recentword");
+    }
     public static void export() throws IOException {
         clear("data");
         clear("recentword");
@@ -305,13 +314,8 @@ public class DictionaryManagement extends Dictionary {
         dictionaryExportToFile();
     }
     public static void main (String[] args) throws IOException {
-        insertFromFileRecentWord();
-        for (String w : recentWord) {
-            System.out.println(w);
-        }
-        clear("recentword");
-        recentWord.add("hello2");
-        dictionaryExportToFileRecentWord();
+        insertFromFile();
+        System.out.println(TFlookup("hello"));
     }
 
 

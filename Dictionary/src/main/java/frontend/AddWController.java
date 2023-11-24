@@ -15,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import models.Dictionary;
 import models.DictionaryManagement;
 import models.Word;
 
@@ -37,10 +38,16 @@ public class AddWController implements Initializable {
     @FXML
     private void handleMouseClickAdd() {
         Word word = DictionaryManagement.dictionaryLookup(newWord);
-        if (isInDictionary) {
-            String lookup = word.toString() + "\n" + newExplain;
-        } else {
-            //thêm newWord vào từ điển với newExplain
+        Word word2 = DictionaryManagement.addLookup(newWord);
+        if(DictionaryManagement.TFlookup(newWord) == true) {
+            String explain = word2.getWordExplain() + '\n' + "- " + newExplain;
+            Word newWord2 = new Word(newWord, explain);
+            Dictionary.listAdd.remove(word2);
+            Dictionary.listAdd.add(newWord2);
+        }
+        else {
+            Word newaddWord = new Word(newWord, "- " + newExplain);
+            Dictionary.listAdd.add(newaddWord);
         }
         // DictionaryManagement.dictionaryExportToFile();
         inputText.setText("");
@@ -68,13 +75,16 @@ public class AddWController implements Initializable {
                             System.out.println("New Word: " + newWord);
                             inputDefText.setEditable(true);
                             addConfirmBtn.setVisible(true);
-                            isInDictionary = DictionaryManagement.TFlookup(newWord);
+                            isInDictionary = (boolean) DictionaryManagement.TFlookup(newWord);
 
                             System.out.println(newWord);
                             System.out.println(isInDictionary + " is");
 
                             if (isInDictionary) {
                                 ShareInfoAddWord.setNewWord(newWord);
+                            }
+                            else {
+                                ShareInfoAddWord.setNewWord("");
                             }
                         } else {
                             ShareInfoAddWord.setNewWord("");
