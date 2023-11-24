@@ -18,6 +18,7 @@ import javafx.util.Duration;
 import models.DictionaryManagement;
 import models.Word;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,11 +36,15 @@ public class AddWController implements Initializable {
     String newWord, newExplain;
     boolean isInDictionary = false;
     @FXML
-    private void handleMouseClickAdd() {
+    private void handleMouseClickAdd() throws IOException {
         Word word = DictionaryManagement.dictionaryLookup(newWord);
         if (isInDictionary) {
             String lookup = word.toString() + "\n" + newExplain;
+          //  System.out.println("Them1");
         } else {
+            DictionaryManagement.addWord(newWord, newExplain);
+         //   System.out.println("Them");
+            //  DictionaryManagement.dictionaryExportToFile();
             //thêm newWord vào từ điển với newExplain
         }
         // DictionaryManagement.dictionaryExportToFile();
@@ -69,6 +74,7 @@ public class AddWController implements Initializable {
                             inputDefText.setEditable(true);
                             addConfirmBtn.setVisible(true);
                             isInDictionary = DictionaryManagement.TFlookup(newWord);
+                           System.out.println("isInDictionary: " + isInDictionary);
                             if (isInDictionary) {
                                 ShareInfoAddWord.setNewWord(newWord);
                             }

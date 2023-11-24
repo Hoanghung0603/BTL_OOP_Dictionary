@@ -10,14 +10,19 @@ import java.util.Objects;
 
 public class API {
 
-    public static void main(String[] args) {
-        String textToSpeech = "hello";
+    public static void main(String[] args) throws IOException {
+        /*String textToSpeech = "hello";
         String audioFilePath = generateTextToSpeech(textToSpeech, "English");
         if (audioFilePath != null) {
             System.out.println("Đường dẫn tệp âm thanh: " + audioFilePath);
         } else {
             System.out.println("Không thể tạo tệp âm thanh.");
-        }
+        }*/
+        System.out.println(VtranslatetoE("- Điều phối phòng chờ: + Nhận số lượng bàn phỏng vấn trống từ 3 điều phối viên của các phòng.\n" +
+                "+ Điều phối phòng chờ gọi các ứng viên lấy đơn điền tay đi ra hành lang và đưa thông tin số phòng phỏng vấn\n" +
+                "- Điều phối hành lang:\n" +
+                "+ Chỉ dẫn các em đến phòng phỏng vấn tương ứng\n" +
+                "\n"));
     }
     
     public static String EtranslatetoV(String text) throws IOException {
@@ -33,7 +38,7 @@ public class API {
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
+            response.append(inputLine + "\n");
         }
         in.close();
         return response.toString();
@@ -52,7 +57,7 @@ public class API {
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
+            response.append(inputLine + "\n");
         }
         in.close();
         return response.toString();
