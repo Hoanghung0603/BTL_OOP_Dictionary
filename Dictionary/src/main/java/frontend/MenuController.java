@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import models.DictionaryManagement;
 
 public class MenuController implements Initializable{
 
@@ -180,6 +181,13 @@ public class MenuController implements Initializable{
         QuitBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                //Tạo một cái là muốn lưu lại hay không
+                // Có thì export ra file
+                /*try {
+                    DictionaryManagement.export();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }*/
                 System.exit(0);
             }
         });

@@ -112,7 +112,7 @@ public class DictionaryCommandline extends DictionaryManagement {
                     break;
                 case 8 :
                     //insertFromFile();
-                    insertFromFile1();
+                    insertFromFileAdded();
                     break;
                 case 9 :
                     dictionaryExportToFile();
@@ -125,16 +125,7 @@ public class DictionaryCommandline extends DictionaryManagement {
     }
 
 
-    public static void main (String[] args) throws IOException {
-    Scanner scanner = new Scanner(System.in);
-    String s = scanner.nextLine();
-    System.out.println(s);
-    insertFromFile();
-    insertFromFile1();
-    printList(dictionarySearcher(s));
 
-
-}
 
 }
 

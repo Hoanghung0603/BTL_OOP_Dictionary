@@ -25,6 +25,9 @@ public class Start extends Application {
         DictionaryCommandline dictionaryCommandline = new DictionaryCommandline();
         DictionaryManagement dictionaryManagement = new DictionaryManagement();
         DictionaryManagement.insertFromFile();
+        DictionaryManagement.insertFromFileAdded();
+        DictionaryManagement.insertFromFileRecentWord();
+
 
         Parent root = FXMLLoader.load(getClass().getResource("/frontend/Menu-view.fxml"));
         root.setStyle("-fx-background-color: TRANSPARENT");

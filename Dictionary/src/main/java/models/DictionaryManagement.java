@@ -45,9 +45,30 @@ public class DictionaryManagement extends Dictionary {
     public static void dictionaryExportToFile() throws IOException {
         BufferedWriter writer = null;
         try {
-            writer = new BufferedWriter(new FileWriter("data.txt"));
-            for (Word word : listWord) {
-                writer.write(word.toString());
+            writer = new BufferedWriter(new FileWriter("src\\main\\resources\\data\\data.txt", true));
+            for (Word word : listAdd) {
+                writer.write(word.toString3());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error exporting dictionary to file: " + e.getMessage());
+        } finally {
+            if (writer != null) {
+                try {
+                    writer.close();
+                } catch (IOException e) {
+                    System.out.println("Error closing file: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+    public static void dictionaryExportToFileRecentWord() throws IOException {
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter("src\\main\\resources\\data\\recentword.txt", true));
+            for (String word : recentWord) {
+                writer.write(word);
                 writer.newLine();
             }
         } catch (IOException e) {
@@ -84,14 +105,18 @@ public class DictionaryManagement extends Dictionary {
         System.out.print("Enter the word: ");
         String wordTarget = scanner.nextLine();
 
-
         System.out.print("Enter the word's definition: ");
         String wordExplain = scanner.nextLine();
 
         Word newWord = new Word(wordTarget, wordExplain);
-        listWord.add(newWord);
+        listAdd.add(newWord);
 
         System.out.println("Word added successfully.");
+    }
+
+    public static void addWord(String wordTarget, String wordExplain) {
+        Word newWord = new Word(wordTarget, wordExplain);
+        listAdd.add(newWord);
     }
 
     public static Word dictionaryLookup(String s) {
@@ -101,6 +126,24 @@ public class DictionaryManagement extends Dictionary {
         w2.setWordTarget(s+"a");
         //tao day con tu s den s+"a" bang subset
         TreeSet<Word> chat = (TreeSet<Word>) listWord.subSet(w1,w2);
+        //Tìm kiếm bằng cách chặt các dãy con
+        Iterator<Word> i = chat.iterator();
+        if (i.hasNext())
+        {
+            Word findout = i.next();
+            if(findout.getWordTarget().equals(s)) return findout;
+        }
+        Word notExist = new Word(s, "","This word is not already existed");
+        return notExist;
+    }
+
+    public static Word addLookup(String s) {
+        Word w1 = new Word();
+        w1.setWordTarget(s);
+        Word w2 = new Word();
+        w2.setWordTarget(s+"a");
+        //tao day con tu s den s+"a" bang subset
+        TreeSet<Word> chat = (TreeSet<Word>) listAdd.subSet(w1,w2);
         //Tìm kiếm bằng cách chặt các dãy con
         Iterator<Word> i = chat.iterator();
         if (i.hasNext())
@@ -158,14 +201,24 @@ public class DictionaryManagement extends Dictionary {
                 "\n [6] Search \n [7] Game \n [8] Import from file \n [9] Export to file \n Your action: ";
         System.out.println(x);
     }
-    public static void insertFromFile1() {
+
+
+    public static void insertFromFileAdded() {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/main/resources/data/data.txt"))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\t");
                 if (parts.length >= 2) {
                     Word tmp = new Word(parts[0], parts[1].trim());
-                    listWord.add(tmp);
+                    if(!listWord.contains(tmp)) {
+                        listWord.add(tmp);
+                    }
+                    else {
+                        Word tmp2 = DictionaryManagement.dictionaryLookup(parts[0]);
+                        tmp2.setWordExplain(tmp2.getWordExplain() + "\n" + "- " + parts[1].trim());
+                        listWord.remove(tmp);
+                        listWord.add(tmp2);
+                    }
                 } else {
                     System.out.println("ignoring line: " + line);
                 }
@@ -187,7 +240,6 @@ public class DictionaryManagement extends Dictionary {
         }
         return content.toString();
     }
-
 
     public static void insertFromFile() {
         try {
@@ -217,9 +269,49 @@ public class DictionaryManagement extends Dictionary {
         }
     }
 
-
+    public static void insertFromFileRecentWord() {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/main/resources/data/recentword.txt"))) {
+            String line;
+            int i = 0;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] parts = line.split("\t");
+               if(i <= 10) {
+                   i++;
+                   recentWord.add(parts[0]);
+               }
+               else System.out.println("ignoring line: " + line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void clear(String file) {
+        String filePath = "src/main/resources/data/" + file + ".txt";
+        try {
+            FileWriter writer = new FileWriter(filePath);
+            writer.write(""); // Ghi một chuỗi rỗng để xóa dữ liệu
+            writer.close();
+            System.out.println("Dữ liệu đã được xóa khỏi tệp tin.");
+        } catch (IOException e) {
+            System.out.println("Đã xảy ra lỗi khi xóa dữ liệu: " + e.getMessage());
+        }
+    }
+    public static void export() throws IOException {
+        clear("data");
+        clear("recentword");
+        dictionaryExportToFileRecentWord();
+        dictionaryExportToFile();
+    }
     public static void main (String[] args) throws IOException {
-        printDictionarySearcher();
+        insertFromFileRecentWord();
+        for (String w : recentWord) {
+            System.out.println(w);
+        }
+        clear("recentword");
+        recentWord.add("hello2");
+        dictionaryExportToFileRecentWord();
     }
 
 

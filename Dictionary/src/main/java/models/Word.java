@@ -62,6 +62,11 @@ public class Word implements Comparable<Word> {
         return wordSpelling + "\n" + wordExplain;
     }
 
+    public String toString3() {
+        return wordTarget + "\t" + wordExplain + "\n";
+    }
+
+
 
     @Override
     public int compareTo(Word other) {
