@@ -15,16 +15,7 @@ import models.Dictionary;
 import models.DictionaryCommandline;
 import models.DictionaryManagement;
 import models.Word;
-
-import java.net.URI;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-
-import javafx.application.Application;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.stage.Stage;
-
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,7 +29,7 @@ public class SearchController implements Initializable {
     @FXML
     Label alert, wordTarget;  //wordtarget la label hien tu tieng anh dang search
     @FXML
-    Button saveBtn, soundBtn, deleteBtn;
+    Button saveBtn, editBtn, deleteBtn;
 
     @FXML
     ListView<String> suggResults;
@@ -52,8 +43,6 @@ public class SearchController implements Initializable {
     private void suggInputWord() {
         suggList.clear();
         String word = inputWord.getText().trim();
-        word = word.toLowerCase();
-        System.out.println(word);
         ArrayList<Word> list = new ArrayList<>();
         list = DictionaryCommandline.dictionarySearcher(word);
         for(Word x : list) {
@@ -62,12 +51,6 @@ public class SearchController implements Initializable {
         if (!suggList.isEmpty()) {
             suggResults.setItems(suggList);
         }
-//        else {
-//            FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
-//            fadeAlert.setFromValue(1.0);
-//            fadeAlert.setToValue(0.0);
-//            fadeAlert.play();
-//        }
     }
 
     //khi click vao mot tu trong suggResults
@@ -80,45 +63,10 @@ public class SearchController implements Initializable {
         Word tmp = DictionaryCommandline.dictionaryLookup(word);
         String text = tmp.getWordSpelling() + "\n" + tmp.getWordExplain();
         defTextArea.setText(text);
-        if(!Dictionary.recentWord.contains(word)) {
-            Dictionary.recentWord.add(word);
-            recentSearch.setAll(Dictionary.recentWord);
-        }
+        recentSearch.add(word);
 
         defTextArea.setVisible(true);
         saveBtn.setVisible(false);
-    }
-
-    @FXML
-    private void clickSoundBtn() {
-        URI uri = Paths.get("src/main/resources/data/output.mp3").toUri();
-
-        // Tạo một đối tượng Media từ tệp âm thanh
-        Media media = new Media(uri.toString());
-
-        // Tạo một đối tượng MediaPlayer từ đối tượng Media
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-
-        // Bắt đầu phát âm thanh
-        mediaPlayer.play();
-
-        // Đợi cho đến khi phát xong
-        mediaPlayer.setOnEndOfMedia(() -> {
-            mediaPlayer.stop();
-        });
-        System.out.println("Phát âm thanh");
-
-
-    }
-
-    @FXML
-    private void clickSaveBtn() {
-
-    }
-
-    @FXML
-    private void clickDeleteBtn() {
-
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -129,7 +77,8 @@ public class SearchController implements Initializable {
         fadeTrans.setToValue(1);
         fadeTrans.play();
         alert.setVisible(false);
-        recentSearch.setAll(Dictionary.recentWord);
+
+        recentSearch.setAll("Text1", "Text2", "Text3", "Text4", "Text5", "Text6", "Text7");
         suggResults.setItems(recentSearch);
 
         inputWord.setOnKeyTyped(new EventHandler<KeyEvent>() {
@@ -150,6 +99,11 @@ public class SearchController implements Initializable {
             }
         });
 
-
+        inputWord.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(inputWord.getText().trim().equals("Type your word")) inputWord.setText("");
+            }
+        });
     }
 }

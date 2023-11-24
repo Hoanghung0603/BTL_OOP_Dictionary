@@ -54,6 +54,7 @@ public class MenuController implements Initializable{
     }
 
     private boolean changeWidth = false;
+    private boolean isInSearchFunction = true;
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -66,10 +67,12 @@ public class MenuController implements Initializable{
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (!changeWidth) {
+                if (!isInSearchFunction) {
                     showView("Search-view.fxml");
+                    isInSearchFunction = true;
                 }
-                else if (changeWidth) {
+                if (changeWidth) {
+                    isInSearchFunction = true;
                     showView("Search-view.fxml");
                     AddBtn.setDisable(true);
                     TranslateBtn.setDisable(true);
@@ -98,6 +101,7 @@ public class MenuController implements Initializable{
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(!changeWidth) {
+                    isInSearchFunction = false;
                     showView("AddW-view.fxml");
 
                     Node node = null;
@@ -134,10 +138,12 @@ public class MenuController implements Initializable{
         TranslateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (!changeWidth) {
+                if (isInSearchFunction) {
+                    isInSearchFunction = false;
                     showView("translate-view.fxml");
                 }
-                else if (changeWidth) {
+                if (changeWidth) {
+                    isInSearchFunction = false;
                     AddBtn.setDisable(true);
                     searchBtn.setDisable(true);
                     GameBtn.setDisable(true);
