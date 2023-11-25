@@ -78,8 +78,10 @@ public class SearchController implements Initializable {
         wordTarget.setText(word);
         //defTextArea.setText();  // settext dinh nghia cua tu can tra
         Word tmp = DictionaryCommandline.dictionaryLookup(word);
-        String text = tmp.getWordSpelling() + "\n" + tmp.getWordExplain();
+        Word tmp2 = DictionaryManagement.addLookup(word);
+        String text = tmp.getWordSpelling() + "\n" + tmp.getWordExplain() + tmp2.getWordExplain();
         defTextArea.setText(text);
+
         if(Dictionary.recentWord.size() == 10) Dictionary.recentWord.remove(0);
         if(Dictionary.recentWord.contains(word)) Dictionary.recentWord.remove(word);
         Dictionary.recentWord.add(word);
@@ -131,14 +133,14 @@ public class SearchController implements Initializable {
         alert.setVisible(false);
         recentSearch.setAll(Dictionary.recentWord);
         suggResults.setItems(recentSearch);
-
+        defTextArea.setWrapText(true);
         inputWord.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
                 defTextArea.setText("");
                 wordTarget.setText("Definition");
                 String word = inputWord.getText().trim();
-                if (!inputWord.getText().isEmpty() && DictionaryManagement.TFlookup(word)) {
+                if (!inputWord.getText().isEmpty()) {
                     suggInputWord();
                 } else {
                     suggResults.setItems(recentSearch);

@@ -39,7 +39,7 @@ public class AddWController implements Initializable {
     private void handleMouseClickAdd() {
         Word word = DictionaryManagement.dictionaryLookup(newWord);
         Word word2 = DictionaryManagement.addLookup(newWord);
-        if(DictionaryManagement.TFlookup(newWord) == true) {
+        if(DictionaryManagement.isInDictionary(newWord) == true) {
             String explain = word2.getWordExplain() + '\n' + "- " + newExplain;
             Word newWord2 = new Word(newWord, explain);
             Dictionary.listAdd.remove(word2);
@@ -75,7 +75,7 @@ public class AddWController implements Initializable {
                             System.out.println("New Word: " + newWord);
                             inputDefText.setEditable(true);
                             addConfirmBtn.setVisible(true);
-                            isInDictionary = (boolean) DictionaryManagement.TFlookup(newWord);
+                            isInDictionary = (boolean) DictionaryManagement.isInDictionary(newWord);
 
                             System.out.println(newWord);
                             System.out.println(isInDictionary + " is");

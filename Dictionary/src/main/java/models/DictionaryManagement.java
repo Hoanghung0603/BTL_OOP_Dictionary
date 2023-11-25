@@ -155,12 +155,12 @@ public class DictionaryManagement extends Dictionary {
         return notExist;
     }
 
-    public static boolean TFlookup(String s) {
+    public static boolean isInDictionary(String s) {
         Word notExist = new Word(s, "","");
         if(dictionaryLookup(s).equals(notExist) && addLookup(s).equals(notExist)) return false;
         return true;
     }
-    public static boolean TFlistAdd(String s) {
+    public static boolean isInListAdd(String s) {
         Word notExist = new Word(s, "","");
         if(addLookup(s).equals(notExist)) return false;
         return true;
@@ -307,7 +307,7 @@ public class DictionaryManagement extends Dictionary {
         clear("data");
         clear("recentword");
     }
-    public static void export() throws IOException {
+    public static void exportToFile() throws IOException {
         clear("data");
         clear("recentword");
         dictionaryExportToFileRecentWord();
@@ -315,7 +315,7 @@ public class DictionaryManagement extends Dictionary {
     }
     public static void main (String[] args) throws IOException {
         insertFromFile();
-        System.out.println(TFlookup("hello"));
+        System.out.println(isInDictionary("hello"));
     }
 
 

@@ -7,17 +7,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class API {
 
-    public static void main(String[] args) {
-        String textToSpeech = "hello";
-        String audioFilePath = generateTextToSpeech(textToSpeech, "English");
-        if (audioFilePath != null) {
-            System.out.println("Đường dẫn tệp âm thanh: " + audioFilePath);
-        } else {
-            System.out.println("Không thể tạo tệp âm thanh.");
-        }
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+       System.out.print(VtranslatetoE(s));
+
     }
     
     public static String EtranslatetoV(String text) throws IOException {
@@ -52,7 +50,7 @@ public class API {
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
+            response.append(inputLine + '\n');
         }
         in.close();
         return response.toString();

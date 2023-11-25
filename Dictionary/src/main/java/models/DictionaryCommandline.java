@@ -49,7 +49,6 @@ public class DictionaryCommandline extends DictionaryManagement {
         return false;
     }
 
-
     public static ArrayList<Word> dictionarySearcher(String prefix) {
         Word w1 = new Word();
         w1.setWordTarget(prefix);
@@ -65,8 +64,7 @@ public class DictionaryCommandline extends DictionaryManagement {
         }
         return list;
     }
-    public static void printList(ArrayList<Word> list)
-    {
+    public static void printList(ArrayList<Word> list) {
         for (Word w : list)
         {
             System.out.println(w.getWordTarget());

@@ -25,6 +25,7 @@ public class TranslateController implements Initializable {
     String inputString, translateString;
     boolean vietToEng = true;
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        translateText.setWrapText(true);
         change.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
