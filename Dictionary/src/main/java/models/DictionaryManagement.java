@@ -204,10 +204,7 @@ public class DictionaryManagement extends Dictionary {
         }
     }
     public static String formatWordinDic(Word word) {
-        String wordTarget = word.getWordTarget();
-        String wordSpelling = word.getWordSpelling();
-        String wordExplain = word.getWordExplain();
-        String wordEntry = "@" + wordTarget + " " + wordSpelling + "\n" + wordExplain + '\n';
+        String wordEntry = "@" + word.getWordTarget() + "\t" + word.getWordSpelling() + "\n" + word.getWordExplain() + "\n";
         return wordEntry;
     }
     public static void exportToFile() {
