@@ -15,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import models.Dictionary;
 import models.DictionaryManagement;
 import models.Word;
 
@@ -37,11 +38,8 @@ public class AddWController implements Initializable {
     @FXML
     private void handleMouseClickAdd() {
         Word word = DictionaryManagement.dictionaryLookup(newWord);
-        if (isInDictionary) {
-            String lookup = word.toString() + "\n" + newExplain;
-        } else {
-            //thêm newWord vào từ điển với newExplain
-        }
+
+
         // DictionaryManagement.dictionaryExportToFile();
         deleteBtn.setVisible(false);
         inputText.setText("");
@@ -81,13 +79,16 @@ public class AddWController implements Initializable {
                             deleteBtn.setVisible(true);
                             inputDefText.setEditable(true);
                             addConfirmBtn.setVisible(true);
-                            isInDictionary = DictionaryManagement.TFlookup(newWord);
+                            isInDictionary = (boolean) DictionaryManagement.isInDictionary(newWord);
 
                             System.out.println(newWord);
                             System.out.println(isInDictionary + " is");
 
                             if (isInDictionary) {
                                 ShareInfoAddWord.setNewWord(newWord);
+                            }
+                            else {
+                                ShareInfoAddWord.setNewWord("");
                             }
                         } else {
                             ShareInfoAddWord.setNewWord("");

@@ -96,7 +96,7 @@ public class SearchController implements Initializable {
         Voice voice = VoiceManager.getInstance().getVoice("kevin16");
         if (voice != null) {
             voice.allocate();
-            voice.speak("Hello world, i can speak english");
+            voice.speak(inputWord.getText());
         } else throw new IllegalStateException("Cannot find voice: kevin16");
     }
 
@@ -124,6 +124,7 @@ public class SearchController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
       //  dictionaryManagement.insertFromFile();
         FadeTransition fadeTrans = new FadeTransition(Duration.seconds(1.0), searchPane);
         fadeTrans.setFromValue(0);
@@ -140,7 +141,7 @@ public class SearchController implements Initializable {
                 wordTarget.setText("Definition");
                 String word = inputWord.getText().trim();
                 deleteBtn.setVisible(true);
-                if (!inputWord.getText().isEmpty() && DictionaryManagement.TFlookup(word)) {
+                if (!inputWord.getText().isEmpty() && DictionaryManagement.isInDictionary(word)) {
                     suggInputWord();
                     buttonBar.setVisible(true);
                 } else {
@@ -166,4 +167,5 @@ public class SearchController implements Initializable {
             }
         });
     }
+
 }

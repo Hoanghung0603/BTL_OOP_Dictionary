@@ -73,5 +73,15 @@ public class Word implements Comparable<Word> {
         return this.wordTarget.compareToIgnoreCase(other.wordTarget);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Word)) {
+            return false;
+        }
+        Word word = (Word) o;
+        return Objects.equals(wordTarget, word.wordTarget) && Objects.equals(wordExplain, word.wordExplain);
+    }
 
 }
