@@ -113,6 +113,7 @@ public class SearchController implements Initializable {
         deleteBtn.setVisible(false);
     }
 
+    //them
     @FXML
     private void handleClickDeleteBtn() {
         defTextArea.setText("");
