@@ -1,6 +1,5 @@
 package frontend;
 
-import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +14,7 @@ import models.DictionaryManagement;
 
 import java.io.IOException;
 
-public class Start extends Application {
+public class Application extends javafx.application.Application {
     private double xOffset;
     private double yOffset;
 

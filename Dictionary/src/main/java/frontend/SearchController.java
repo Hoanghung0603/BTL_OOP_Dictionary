@@ -15,15 +15,15 @@ import models.Dictionary;
 import models.DictionaryCommandline;
 import models.DictionaryManagement;
 import models.Word;
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
 
 import java.net.URI;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-import javafx.application.Application;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.stage.Stage;
 
 
 import java.net.URL;
@@ -38,8 +38,9 @@ public class SearchController implements Initializable {
     @FXML
     Label alert, wordTarget;  //wordtarget la label hien tu tieng anh dang search
     @FXML
-    Button saveBtn, soundBtn, deleteBtn;
-
+    Button saveBtn, soundBtn, deleteBtn, showFavorWords, deleteFavWord;
+    @FXML
+    ButtonBar buttonBar;
     @FXML
     ListView<String> suggResults;
     @FXML
@@ -84,45 +85,44 @@ public class SearchController implements Initializable {
         if(Dictionary.recentWord.contains(word)) Dictionary.recentWord.remove(word);
         Dictionary.recentWord.add(word);
         recentSearch.setAll(Dictionary.recentWord.reversed());
+        suggResults.getSelectionModel().selectFirst();
 
         defTextArea.setVisible(true);
-        saveBtn.setVisible(false);
     }
 
     @FXML
     private void clickSoundBtn() {
-        URI uri = Paths.get("src/main/resources/data/output.mp3").toUri();
-
-        // Tạo một đối tượng Media từ tệp âm thanh
-        Media media = new Media(uri.toString());
-
-        // Tạo một đối tượng MediaPlayer từ đối tượng Media
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-
-        // Bắt đầu phát âm thanh
-        mediaPlayer.play();
-
-        // Đợi cho đến khi phát xong
-        mediaPlayer.setOnEndOfMedia(() -> {
-            mediaPlayer.stop();
-        });
-        System.out.println("Phát âm thanh");
-
-
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        if (voice != null) {
+            voice.allocate();
+            voice.speak("Hello world, i can speak english");
+        } else throw new IllegalStateException("Cannot find voice: kevin16");
     }
 
     @FXML
-    private void clickSaveBtn() {
-
+    private void handleClickSaveBtn() {
+        //thêm từ vừa tra vào danh sách từ đã lưu
     }
 
     @FXML
-    private void clickDeleteBtn() {
+    private void handleClickShowFavorWords() {
+        // set suggList thành danh sách các từ đã lưu
+//        suggList.set();
+//        suggResults.setItems(suggList);
+        deleteBtn.setVisible(false);
+    }
 
+    @FXML
+    private void handleClickDeleteBtn() {
+        defTextArea.setText("");
+        inputWord.setText("");
+        suggResults.setItems(recentSearch);
+        deleteBtn.setVisible(false);
+        buttonBar.setVisible(false);
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
       //  dictionaryManagement.insertFromFile();
         FadeTransition fadeTrans = new FadeTransition(Duration.seconds(1.0), searchPane);
         fadeTrans.setFromValue(0);
@@ -138,18 +138,31 @@ public class SearchController implements Initializable {
                 defTextArea.setText("");
                 wordTarget.setText("Definition");
                 String word = inputWord.getText().trim();
+                deleteBtn.setVisible(true);
                 if (!inputWord.getText().isEmpty() && DictionaryManagement.TFlookup(word)) {
                     suggInputWord();
+                    buttonBar.setVisible(true);
                 } else {
-                    suggResults.setItems(recentSearch);
-                    FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
-                    fadeAlert.setFromValue(1.0);
-                    fadeAlert.setToValue(0.0);
-                    fadeAlert.play();
+                    buttonBar.setVisible(false);
+                    if (inputWord.getText().isEmpty()) deleteBtn.setVisible(false);
+                    else {
+                        suggResults.setItems(recentSearch);
+                        alert.setVisible(true);
+                        FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
+                        fadeAlert.setFromValue(1.0);
+                        fadeAlert.setToValue(0.0);
+                        fadeAlert.play();
+                    }
                 }
             }
         });
-
-
+        inputWord.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(inputWord.getText().trim().equals("Type your word")) {
+                    inputWord.setText("");
+                }
+            }
+        });
     }
 }
