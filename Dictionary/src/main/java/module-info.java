@@ -3,6 +3,7 @@ module Module {
     requires javafx.fxml;
     requires javafx.media;
 
+    requires freetts;
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires net.synedra.validatorfx;

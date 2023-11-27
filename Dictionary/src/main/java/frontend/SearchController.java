@@ -16,6 +16,9 @@ import models.DictionaryCommandline;
 import models.DictionaryManagement;
 import models.Word;
 
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
+
 import java.net.URI;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -93,24 +96,12 @@ public class SearchController implements Initializable {
 
     @FXML
     private void clickSoundBtn() {
-        URI uri = Paths.get("src/main/resources/data/output.mp3").toUri();
-
-        // Tạo một đối tượng Media từ tệp âm thanh
-        Media media = new Media(uri.toString());
-
-        // Tạo một đối tượng MediaPlayer từ đối tượng Media
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-
-        // Bắt đầu phát âm thanh
-        mediaPlayer.play();
-
-        // Đợi cho đến khi phát xong
-        mediaPlayer.setOnEndOfMedia(() -> {
-            mediaPlayer.stop();
-        });
-        System.out.println("Phát âm thanh");
-
-
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        if (voice != null) {
+            voice.allocate();
+            voice.speak(inputWord.getText());
+        } else throw new IllegalStateException("Cannot find voice: kevin16");
     }
 
     @FXML
@@ -154,4 +145,5 @@ public class SearchController implements Initializable {
 
 
     }
+
 }

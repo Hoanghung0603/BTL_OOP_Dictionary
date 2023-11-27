@@ -109,8 +109,7 @@ public class DictionaryCommandline extends DictionaryManagement {
                     exit = true;
                     break;
                 case 8 :
-                    //insertFromFile();
-                    insertFromFileAdded();
+                    insertFromFile();
                     break;
                 case 9 :
                     dictionaryExportToFile();
