@@ -31,7 +31,7 @@ public class AddWController implements Initializable {
     @FXML
     TextField inputText;
     @FXML
-    Button addConfirmBtn;
+    Button addConfirmBtn, deleteBtn;
 
     String newWord, newExplain;
     boolean isInDictionary = false;
@@ -50,6 +50,17 @@ public class AddWController implements Initializable {
             Dictionary.listAdd.add(newaddWord);
         }
         // DictionaryManagement.dictionaryExportToFile();
+        deleteBtn.setVisible(false);
+        inputText.setText("");
+        inputDefText.setText("");
+        addConfirmBtn.setVisible(false);
+        inputDefText.setEditable(false);
+        ShareInfoAddWord.setNewWord("");
+    }
+
+    @FXML
+    private void handleMouseClickDelete() {
+        deleteBtn.setVisible(false);
         inputText.setText("");
         inputDefText.setText("");
         addConfirmBtn.setVisible(false);
@@ -63,6 +74,8 @@ public class AddWController implements Initializable {
         fadeTransition.setFromValue(0);
         fadeTransition.setToValue(1);
         fadeTransition.play();
+        deleteBtn.setVisible(false);
+        addConfirmBtn.setVisible(false);
 
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(1000),
@@ -72,7 +85,7 @@ public class AddWController implements Initializable {
                         // Xử lý sự kiện sau khi đã chờ đợi 1 giây
                         newWord = inputText.getText().trim();
                         if (!newWord.equals("")) {
-                            System.out.println("New Word: " + newWord);
+                            deleteBtn.setVisible(true);
                             inputDefText.setEditable(true);
                             addConfirmBtn.setVisible(true);
                             isInDictionary = (boolean) DictionaryManagement.isInDictionary(newWord);

@@ -59,17 +59,22 @@
             </VBox>
          </children>
       </AnchorPane>
-      <StackPane layoutX="454.0" layoutY="26.0" prefHeight="563.0" prefWidth="394.0" styleClass="support-pane" stylesheets="@../Utils/Style.css">
+      <StackPane layoutX="390.0" layoutY="26.0" prefHeight="563.0" prefWidth="460.0" styleClass="support-pane" stylesheets="@../Utils/Style.css">
          <children>
-            <AnchorPane fx:id="supportPane" prefHeight="563.0" prefWidth="366.0" />
-            <Pane fx:id="efPanefather" prefHeight="563.0" prefWidth="366.0" stylesheets="@../Utils/Style.css">
+            <AnchorPane prefHeight="563.0" prefWidth="460.0">
+               <children>
+                  <AnchorPane fx:id="supportPane" prefHeight="563.0" prefWidth="460.0" style="-fx-background-color: TRANSPARENT;" />
+               </children>
+            </AnchorPane>
+            <Pane fx:id="efPanefather" maxWidth="296.0" prefHeight="563.0" prefWidth="296.0" stylesheets="@../Utils/Style.css">
                <effect>
                   <Blend />
                </effect>
                <children>
-                  <Pane fx:id="efPane" layoutX="-369.0" prefHeight="584.0" prefWidth="775.0" styleClass="view-pane" stylesheets="@../Utils/Style.css" />
-               </children></Pane>
+                  <Pane fx:id="efPane" layoutX="-369.0" prefHeight="584.0" prefWidth="775.0" styleClass="view-pane" stylesheets="@../Utils/Style.css" translateX="-10.0" />
+               </children>
+            </Pane>
          </children></StackPane>
-      <AnchorPane fx:id="mainPain" layoutX="76.0" layoutY="26.0" prefHeight="584.0" prefWidth="424.0" styleClass="mpane1" stylesheets="@../Utils/Style.css" />
+      <AnchorPane fx:id="mainPain" layoutX="76.0" layoutY="26.0" prefHeight="584.0" prefWidth="355.0" styleClass="mpane1" stylesheets="@../Utils/Style.css" />
    </children>
 </AnchorPane>

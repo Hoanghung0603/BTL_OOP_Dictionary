@@ -58,10 +58,8 @@ public class MenuController implements Initializable{
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         ScaleTransition scaleTrans= new ScaleTransition(Duration.seconds(1.0), efPane);
         TranslateTransition tranTrans = new TranslateTransition(Duration.seconds(1.0), efPanefather);
-
         ParallelTransition parallelT1 = new ParallelTransition(scaleTrans, tranTrans);
 
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -78,8 +76,8 @@ public class MenuController implements Initializable{
                     TranslateBtn.setDisable(true);
                     GameBtn.setDisable(true);
 
-                    scaleTrans.setToX(1);
-                    tranTrans.setByX(1.0 * efPane.getPrefWidth() * 0.25);
+                    scaleTrans.setToX(1);   //efPane
+                    tranTrans.setByX(1.0 * efPane.getPrefWidth() * 0.4);  //efFatherPane
                     parallelT1.play();
 
                     changeWidth = false;
@@ -103,7 +101,6 @@ public class MenuController implements Initializable{
                 if(!changeWidth) {
                     isInSearchFunction = false;
                     showView("AddW-view.fxml");
-
                     Node node = null;
                     try {
                         AnchorPane temp = FXMLLoader.load(getClass().getResource("/frontend/AddWsugg-view.fxml"));
@@ -117,8 +114,8 @@ public class MenuController implements Initializable{
                     TranslateBtn.setDisable(true);
                     GameBtn.setDisable(true);
 
-                    scaleTrans.setToX(0.5);
-                    tranTrans.setByX(-1.0 * efPane.getPrefWidth() * 0.25);
+                    scaleTrans.setToX(0.0);
+                    tranTrans.setByX(-1.0 * efPane.getPrefWidth() * 0.4);
                     parallelT1.play();
 
                     changeWidth = true;
@@ -149,7 +146,7 @@ public class MenuController implements Initializable{
                     GameBtn.setDisable(true);
 
                     scaleTrans.setToX(1);
-                    tranTrans.setByX(1.0 * efPane.getPrefWidth() * 0.25);
+                    tranTrans.setByX(1.0 * efPane.getPrefWidth() * 0.4);
 
                     parallelT1.play();
                     changeWidth = false;
@@ -160,11 +157,9 @@ public class MenuController implements Initializable{
                             AddBtn.setDisable(false);
                             searchBtn.setDisable(false);
                             GameBtn.setDisable(false);
-                            setAllNodevisible(mainPain, true);
                         }
                     });
                     showView("translate-view.fxml");
-                    setAllNodevisible(mainPain, false);
                 }
             }
         });

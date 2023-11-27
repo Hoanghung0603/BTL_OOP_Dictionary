@@ -21,16 +21,25 @@
       </ImageView>
       <Pane layoutX="24.0" layoutY="97.0" prefHeight="47.0" prefWidth="267.0" styleClass="searchW-bar" stylesheets="@../Utils/Style.css">
          <children>
-            <ImageView fitHeight="38.0" fitWidth="33.0" layoutX="7.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="38.0" fitWidth="29.0" layoutX="7.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Utils/icons/findwtemp.png" />
                </image>
             </ImageView>
             <TextField fx:id="inputWord" layoutX="40.0" layoutY="4.0" prefHeight="38.0" prefWidth="225.0" styleClass="searchW-textin" stylesheets="@../Utils/Style.css" text="Type your word">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="17.0" />
                </font>
             </TextField>
+            <Button fx:id="deleteBtn" contentDisplay="GRAPHIC_ONLY" layoutX="219.0" layoutY="4.0" mnemonicParsing="false" onMouseClicked="#handleClickDeleteBtn" prefHeight="40.0" prefWidth="43.0" style="-fx-background-color: TRANSPARENT;" text="delete" visible="false">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Utils/icons/Xicon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
       <Label fx:id="wordTarget" alignment="CENTER" layoutX="315.0" layoutY="96.0" prefHeight="66.0" prefWidth="390.0" styleClass="keyWbox" stylesheets="@../Utils/Style.css" text="Definition" textFill="WHITE">
@@ -45,9 +54,9 @@
                   <Font size="18.0" />
                </font>
             </TextArea>
-            <ButtonBar buttonMinWidth="40.0" layoutX="228.0" layoutY="337.0" prefHeight="62.0" prefWidth="168.0" styleClass="alert" stylesheets="@../Utils/Style.css">
+            <ButtonBar fx:id="buttonBar" buttonMinWidth="40.0" layoutX="188.0" layoutY="337.0" prefHeight="62.0" prefWidth="208.0" styleClass="alert" stylesheets="@../Utils/Style.css">
               <buttons>
-                  <Button fx:id="saveBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#clickSaveBtn" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="Save">
+                  <Button fx:id="saveBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#handleClickSaveBtn" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="Save">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -56,18 +65,10 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                <Button fx:id="soundBtn" mnemonicParsing="false" onAction="#clickSoundBtn" styleClass="menu-item" stylesheets="@../Utils/Style.css">
+                <Button fx:id="soundBtn" mnemonicParsing="false" onAction="#clickSoundBtn" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="sound" />
+                  <Button fx:id="deleteFavWord" mnemonicParsing="false" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="deleteSave" visible="false">
                      <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Utils/icons/pen.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#clickDeleteBtn" styleClass="menu-item" stylesheets="@../Utils/Style.css">
-                     <graphic>
-                        <ImageView fitHeight="41.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="41.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@../Utils/icons/trashbin.png" />
                            </image>
@@ -76,6 +77,11 @@
                   </Button>
               </buttons>
             </ButtonBar>
+            <Button fx:id="showFavorWords" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#handleClickShowFavorWords" prefHeight="29.0" prefWidth="71.0" styleClass="search-Btn" stylesheets="@../Utils/Style.css" text="Showfav">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="227.0" layoutY="14.0" prefHeight="50.0" prefWidth="311.0" styleClass="dictionary" stylesheets="@../Utils/Style.css" text="Dictionary">
@@ -88,7 +94,10 @@
             <ListView fx:id="suggResults" layoutX="9.0" layoutY="15.0" onMouseClicked="#handleMouseClickSuggWord" prefHeight="353.0" prefWidth="250.0" styleClass="suggestW-list" stylesheets="@../Utils/Style.css" />
          </children>
       </Pane>
-      <Label fx:id="alert" layoutX="24.0" layoutY="137.0" prefHeight="38.0" prefWidth="267.0" styleClass="alert" stylesheets="@../Utils/Style.css" text="     Invalid word">
+      <Label fx:id="alert" layoutX="64.0" layoutY="138.0" prefHeight="38.0" prefWidth="187.0" styleClass="alert" stylesheets="@../Utils/Style.css" text="   Invalid word">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
          <graphic>
             <ImageView fitHeight="34.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" translateX="10.0">
                <image>
@@ -96,9 +105,6 @@
                </image>
             </ImageView>
          </graphic>
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
       </Label>
    </children>
 </AnchorPane>
