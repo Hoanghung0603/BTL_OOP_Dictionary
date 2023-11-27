@@ -38,17 +38,8 @@ public class AddWController implements Initializable {
     @FXML
     private void handleMouseClickAdd() {
         Word word = DictionaryManagement.dictionaryLookup(newWord);
-        Word word2 = DictionaryManagement.addLookup(newWord);
-        if(DictionaryManagement.isInDictionary(newWord) == true) {
-            String explain = word2.getWordExplain() + '\n' + "- " + newExplain;
-            Word newWord2 = new Word(newWord, explain);
-            Dictionary.listAdd.remove(word2);
-            Dictionary.listAdd.add(newWord2);
-        }
-        else {
-            Word newaddWord = new Word(newWord, "- " + newExplain);
-            Dictionary.listAdd.add(newaddWord);
-        }
+
+
         // DictionaryManagement.dictionaryExportToFile();
         deleteBtn.setVisible(false);
         inputText.setText("");

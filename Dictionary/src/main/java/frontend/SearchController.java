@@ -140,7 +140,7 @@ public class SearchController implements Initializable {
                 wordTarget.setText("Definition");
                 String word = inputWord.getText().trim();
                 deleteBtn.setVisible(true);
-                if (!inputWord.getText().isEmpty() && DictionaryManagement.TFlookup(word)) {
+                if (!inputWord.getText().isEmpty() && DictionaryManagement.isInDictionary(word)) {
                     suggInputWord();
                     buttonBar.setVisible(true);
                 } else {
