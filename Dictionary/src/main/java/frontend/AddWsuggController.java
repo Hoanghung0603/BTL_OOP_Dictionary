@@ -1,6 +1,5 @@
 package frontend;
 
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 import models.Dictionary;
 import models.DictionaryCommandline;
 import models.DictionaryManagement;
@@ -26,17 +24,6 @@ public class AddWsuggController implements Initializable, Listener {
     TextArea defTextArea;
 
     String prevDef = "";
-//    @FXML
-//    private void handleMouseClickAdd() {
-//        Word word = DictionaryManagement.dictionaryLookup(newWord);
-//        // DictionaryManagement.dictionaryExportToFile();
-//        deleteBtn.setVisible(false);
-//        inputText.setText("");
-//        inputDefText.setText("");
-//        inputDefText.setEditable(false);
-//        ShareInfoAddWord.setNewWord("");
-//    }
-
     @Override
     public void onNewWordChange() {
         if(!ShareInfoAddWord.getNewWord().equals("")) {   //thay điều kiện if này bằng nếu newword có trong từ điển
@@ -54,19 +41,20 @@ public class AddWsuggController implements Initializable, Listener {
         //thêm điều kiện nếu newword rỗng
     }
 
+    private void setDefaultGUI(Boolean bool) {
+        resetBtn.setVisible(bool);
+        confEditBtn.setVisible(bool);
+        defTextArea.setEditable(bool);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        TranslateTransition tranTransition = new TranslateTransition(Duration.seconds(0.75), addWsuggPane);
-//        tranTransition.setByX(26);
-//        tranTransition.play();
         ShareInfoAddWord.setListener(this);
 
         editBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                resetBtn.setVisible(true);
-                confEditBtn.setVisible(true);
-                defTextArea.setEditable(true);
+                setDefaultGUI(true);
                 prevDef = defTextArea.getText();
             }
         });
@@ -74,9 +62,7 @@ public class AddWsuggController implements Initializable, Listener {
         confEditBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                resetBtn.setVisible(false);
-                defTextArea.setEditable(false);
-                confEditBtn.setVisible(false);
+                setDefaultGUI(false);
                 //nếu từ có trong từ điển -> sửa nghĩa
                 //nếu không -> thêm vào từ điển FORMAT LẠI CÁI NÀY -> WORD VÀ ADD VÀO LISTWORD
                 //lấy định nghĩa vừa sửa:     defTextArea.getText() FORMAT LẠI CÁI NÀY -> WORD VÀ REPLACE VÀO LISTWORD
@@ -88,7 +74,6 @@ public class AddWsuggController implements Initializable, Listener {
                     Dictionary.listWord.remove(oldWord);
                 }
                 Dictionary.listWord.add(word);
-
 
                 //sửa lại nghĩa của từ
             }

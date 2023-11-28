@@ -28,7 +28,6 @@ import java.util.ResourceBundle;
 public class SearchController implements Initializable {
     ObservableList<String> suggList = FXCollections.observableArrayList();
     ObservableList<String> recentSearch = FXCollections.observableArrayList();
-    LinkedHashSet<String> favWords = new LinkedHashSet<>();
 
     @FXML
     AnchorPane searchPane;
@@ -59,6 +58,7 @@ public class SearchController implements Initializable {
         }
         if (suggList.isEmpty()) {
             suggList.add("");
+
             alert.setVisible(true);
             FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
             fadeAlert.setFromValue(1.0);
@@ -85,7 +85,6 @@ public class SearchController implements Initializable {
         String word = suggResults.getSelectionModel().getSelectedItem();
         if (word == null) return;
         wordTarget.setText(word);
-        //defTextArea.setText();  // settext dinh nghia cua tu can tra
         Word tmp = DictionaryCommandline.dictionaryLookup(word);
         String text = tmp.getWordSpelling() + "\n" + tmp.getWordExplain();
         defTextArea.setText(text);
@@ -127,12 +126,12 @@ public class SearchController implements Initializable {
     private void handleClickShowFavorWords() {
         yellowStar.setVisible(false);
         suggList.setAll(Dictionary.favoriteWord.reversed());
+
         suggResults.setItems(suggList);
-        wordTarget.setText("Definition");
-        saveBtn.setDisable(true);
-        soundBtn.setDisable(true);
-        defTextArea.setText("");
         inputWord.setText("");
+
+        setDefaultSearchGUI();
+
         deleteBtn.setVisible(false);
     }
 
@@ -140,19 +139,26 @@ public class SearchController implements Initializable {
     @FXML
     private void handleClickDeleteBtn() {
         yellowStar.setVisible(false);
-        wordTarget.setText("Definition");
         sourceWord = "";
-        soundBtn.setDisable(true);
-        saveBtn.setDisable(true);
-        defTextArea.setText("");
+
+        setDefaultSearchGUI();
+
         inputWord.setText("");
+
         suggList.clear();
         suggList.add("");
         suggResults.setItems(recentSearch);
+
         deleteBtn.setVisible(false);
 
     }
 
+    private void setDefaultSearchGUI() {
+        wordTarget.setText("Definition");
+        soundBtn.setDisable(true);
+        saveBtn.setDisable(true);
+        defTextArea.setText("");
+    }
     public void initialize(URL url, ResourceBundle resourceBundle) {
       //  dictionaryManagement.insertFromFile();
         FadeTransition fadeTrans = new FadeTransition(Duration.seconds(1.0), searchPane);
@@ -163,15 +169,12 @@ public class SearchController implements Initializable {
         suggList.add("");
         recentSearch.setAll(Dictionary.recentWord);
         suggResults.setItems(recentSearch);
-        favWords.addAll(Arrays.asList("chicken", "dog", "cat", "stupid", "rat", "snake"));
 
         inputWord.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                saveBtn.setDisable(true);
-                soundBtn.setDisable(true);
-                defTextArea.setText("");
-                wordTarget.setText("Definition");
+                setDefaultSearchGUI();
+
                 sourceWord = inputWord.getText().trim();
                 deleteBtn.setVisible(true);
                 if (!sourceWord.equals("")) {
@@ -180,6 +183,7 @@ public class SearchController implements Initializable {
                     suggList.clear();
                     suggList.add("");
                     suggResults.setItems(recentSearch);
+
                     if (sourceWord.equals("")) deleteBtn.setVisible(false);
                 }
             }
