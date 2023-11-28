@@ -63,9 +63,6 @@ public class AddWController implements Initializable {
                             deleteBtn.setVisible(true);
                             inputDefText.setEditable(true);
                             isInDictionary = (boolean) DictionaryManagement.isInDictionary(newWord);
-
-                            System.out.println(newWord);
-                            System.out.println(isInDictionary + " is");
                             //xem xet bỏ điều kiện if else này, thay bằng shareInfoaddword.setnewword(newword);
                             if (isInDictionary) {
                                 ShareInfoAddWord.setNewWord(newWord);
