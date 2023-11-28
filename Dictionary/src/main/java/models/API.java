@@ -12,8 +12,8 @@ import java.util.Scanner;
 public class API {
 
     public static void main(String[] args) throws IOException {
-    System.out.println(translate("hello", "vi", "en"));
-
+    System.out.println(translate("hello" + '\n' + "hi", "vi", "en"));
+    generateTextToSpeech("hello", "en");
     }
     
     public static String translate(String text, String target, String source) throws IOException {
