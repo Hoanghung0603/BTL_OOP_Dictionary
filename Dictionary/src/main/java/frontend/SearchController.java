@@ -71,8 +71,12 @@ public class SearchController implements Initializable {
     //khi click vao mot tu trong suggResults
     @FXML
     private void handleMouseClickSuggWord(MouseEvent event) {
-        sourceWord = inputWord.getText().trim();
-
+        sourceWord = suggResults.getSelectionModel().getSelectedItem().trim();
+        if(Dictionary.favoriteWord.contains(sourceWord))  {
+            yellowStar.setVisible(true);
+            System.out.println("true");
+        }
+        else yellowStar.setVisible(false);
         if (!wordTarget.equals("") && !wordTarget.equals("Definition")) {
             soundBtn.setDisable(false);
             saveBtn.setDisable(false);
@@ -94,7 +98,7 @@ public class SearchController implements Initializable {
         defTextArea.setVisible(true);
     }
 
-    @FXML
+    @FXML //DONE
     private void clickSoundBtn() {
         System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
         Voice voice = VoiceManager.getInstance().getVoice("kevin16");
@@ -107,14 +111,22 @@ public class SearchController implements Initializable {
     @FXML
     private void handleClickSaveBtn() {
         //thêm từ vừa tra vào danh sách từ đã lưu
-        //nếu đã ở trong danh sách đã lưu thì thưc hiện xóa
-        yellowStar.setVisible((!yellowStar.isVisible()));
-        favWords.add(sourceWord);
+        if(!Dictionary.favoriteWord.contains(sourceWord)) {
+            Dictionary.favoriteWord.add(sourceWord);
+            yellowStar.setVisible((true));
+        }
+        else {
+            //Neu da co thi xoa
+            Dictionary.favoriteWord.remove(sourceWord);
+            yellowStar.setVisible((false));
+        }
+
     }
 
     @FXML
     private void handleClickShowFavorWords() {
-        suggList.setAll(favWords);
+        yellowStar.setVisible(false);
+        suggList.setAll(Dictionary.favoriteWord.reversed());
         suggResults.setItems(suggList);
         wordTarget.setText("Definition");
         saveBtn.setDisable(true);
@@ -127,6 +139,8 @@ public class SearchController implements Initializable {
     //them
     @FXML
     private void handleClickDeleteBtn() {
+        yellowStar.setVisible(false);
+        wordTarget.setText("Definition");
         sourceWord = "";
         soundBtn.setDisable(true);
         saveBtn.setDisable(true);
