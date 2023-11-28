@@ -60,9 +60,10 @@ public class SearchController implements Initializable {
         for(Word x : list) {
             suggList.add(x.getWordTarget());
         }
-        if (!suggList.isEmpty()) {
+        if (suggList.isEmpty()) {
             suggResults.setItems(suggList);
         }
+
 //        else {
 //            FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
 //            fadeAlert.setFromValue(1.0);
@@ -86,8 +87,8 @@ public class SearchController implements Initializable {
         Dictionary.recentWord.add(word);
         recentSearch.setAll(Dictionary.recentWord.reversed());
         suggResults.getSelectionModel().selectFirst();
-
         defTextArea.setVisible(true);
+
     }
 
     @FXML
@@ -141,7 +142,7 @@ public class SearchController implements Initializable {
                 wordTarget.setText("Definition");
                 String word = inputWord.getText().trim();
                 deleteBtn.setVisible(true);
-                if (!inputWord.getText().isEmpty() && DictionaryManagement.isInDictionary(word)) {
+                if (!inputWord.getText().isEmpty()) {
                     suggInputWord();
                     buttonBar.setVisible(true);
                 } else {
