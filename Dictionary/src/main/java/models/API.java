@@ -12,18 +12,17 @@ import java.util.Scanner;
 public class API {
 
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
-        String s = sc.nextLine();
-       System.out.print(VtranslatetoE(s));
+    System.out.println(translate("hello", "vi", "en"));
 
     }
     
-    public static String EtranslatetoV(String text) throws IOException {
+    public static String translate(String text, String target, String source) throws IOException {
 
         String urlStr = "https://script.google.com/macros/s/AKfycbzeEquVJh3w7YYFhULGN7oyKgRWFFh7I1CSxX8m52HeZlX7EigOXVE1KB3K2O30PliE9Q/exec" +
                 "?q=" + URLEncoder.encode(text, "UTF-8") +
-                "&target=" + "vi" +
-                "&source=" + "en";
+                "&target=" + target +
+                "&source=" + source;
+
         URL url = new URL(urlStr);
         StringBuilder response = new StringBuilder();
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -36,26 +35,6 @@ public class API {
         in.close();
         return response.toString();
     }
-
-    public static String VtranslatetoE(String text) throws IOException {
-
-        String urlStr = "https://script.google.com/macros/s/AKfycbzeEquVJh3w7YYFhULGN7oyKgRWFFh7I1CSxX8m52HeZlX7EigOXVE1KB3K2O30PliE9Q/exec" +
-                "?q=" + URLEncoder.encode(text, "UTF-8") +
-                "&target=" + "en" +
-                "&source=" + "vi";
-        URL url = new URL(urlStr);
-        StringBuilder response = new StringBuilder();
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestProperty("User-Agent", "Mozilla/5.0");
-        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine + '\n');
-        }
-        in.close();
-        return response.toString();
-    }
-
 
     public static String generateTextToSpeech(String text, String language) {
         try {
@@ -84,8 +63,6 @@ public class API {
         }
         return null;
     }
-
-
 
     private static void setConnectionProperties(HttpURLConnection connection) {
         try {

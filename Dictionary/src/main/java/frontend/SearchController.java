@@ -61,9 +61,10 @@ public class SearchController implements Initializable {
             suggList.add(x.getWordTarget());
         }
         if (suggList.isEmpty()) {
-            suggResults.setItems(suggList);
+            suggList.add("");
+            suggList.add("");
         }
-
+        suggResults.setItems(suggList);
 //        else {
 //            FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
 //            fadeAlert.setFromValue(1.0);
@@ -87,8 +88,8 @@ public class SearchController implements Initializable {
         Dictionary.recentWord.add(word);
         recentSearch.setAll(Dictionary.recentWord.reversed());
         suggResults.getSelectionModel().selectFirst();
-        defTextArea.setVisible(true);
 
+        defTextArea.setVisible(true);
     }
 
     @FXML
@@ -147,14 +148,16 @@ public class SearchController implements Initializable {
                     buttonBar.setVisible(true);
                 } else {
                     buttonBar.setVisible(false);
+                    suggResults.setItems(recentSearch);
                     if (inputWord.getText().isEmpty()) deleteBtn.setVisible(false);
                     else {
-                        suggResults.setItems(recentSearch);
-                        alert.setVisible(true);
-                        FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
-                        fadeAlert.setFromValue(1.0);
-                        fadeAlert.setToValue(0.0);
-                        fadeAlert.play();
+                        //chuwa suwar
+
+//                        alert.setVisible(true);
+//                        FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
+//                        fadeAlert.setFromValue(1.0);
+//                        fadeAlert.setToValue(0.0);
+//                        fadeAlert.play();
                     }
                 }
             }

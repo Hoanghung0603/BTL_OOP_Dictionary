@@ -20,20 +20,48 @@ public class TranslateController implements Initializable {
     @FXML
     Button change, translateBtn;
     @FXML
+    Button soundTarget, soundSource;
+    @FXML
     Label labelTextIn, labelTranslate;
+
+    @FXML
+    private void handleMouseClickSoundSource() {
+        // văn bản vào:    inputString
+        // phát âm thanh từ nhập vào
+        System.out.println("Phát âm thanh source");
+    }
+
+    @FXML
+    private void handleMouseClickSoundTarget() {
+        // phát âm thanh văn bản đã dịch
+        // translateString
+
+        System.out.println("phát âm thanh target");
+    }
 
     String inputString, translateString;
     boolean vietToEng = true;
+    String target;
+    String source;
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        translateText.setWrapText(true);
         change.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 //...
                 vietToEng = !vietToEng;
-                labelTextIn.setText(vietToEng ? "Việt" : "Anh");
-                labelTranslate.setText(vietToEng ? "Anh" : "Việt");
+                if(vietToEng) {
+                    labelTextIn.setText("Việt");
+                    labelTranslate.setText("Anh");
+                    target = "en";
+                    source = "vi";
+                }
 
+                else {
+                    labelTextIn.setText("Anh");
+                    labelTranslate.setText("Việt");
+                    target = "vi";
+                    source = "en";
+                }
             }
         });
         toBeTranslatedText.setOnKeyTyped(new EventHandler<KeyEvent>() {
@@ -48,21 +76,12 @@ public class TranslateController implements Initializable {
         translateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                    if(vietToEng) {
-                        try {
-                            translateString = API.VtranslatetoE(inputString);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                    else {
-                        try {
-                            translateString = API.EtranslatetoV(inputString);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                    System.out.println(translateString);
+                try {
+                    translateString = API.translate(inputString, target, source);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.println(translateString);
                     translateText.setText(translateString);
             }
         });

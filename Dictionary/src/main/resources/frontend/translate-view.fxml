@@ -28,7 +28,7 @@
                   </TextArea>
                   <ButtonBar layoutX="117.0" layoutY="423.0" prefHeight="40.0" prefWidth="178.0">
                     <buttons>
-                      <Button mnemonicParsing="false" text="Sound" />
+                      <Button fx:id="soundSource" mnemonicParsing="false" onMouseClicked="#handleMouseClickSoundSource" text="Sound" />
                         <Button fx:id="translateBtn" mnemonicParsing="false" text="Translate" />
                     </buttons>
                   </ButtonBar>
@@ -52,7 +52,7 @@
                   </TextArea>
                   <ButtonBar layoutX="97.0" layoutY="406.0" prefHeight="40.0" prefWidth="200.0">
                     <buttons>
-                      <Button mnemonicParsing="false" text="Sound" />
+                      <Button fx:id="soundTarget" mnemonicParsing="false" onMouseClicked="#handleMouseClickSoundTarget" text="Sound" />
                         <Button mnemonicParsing="false" text="Copy" />
                     </buttons>
                   </ButtonBar>
