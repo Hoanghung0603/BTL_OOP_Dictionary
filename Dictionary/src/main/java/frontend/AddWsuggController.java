@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import models.Dictionary;
+import models.DictionaryCommandline;
 import models.DictionaryManagement;
 import models.Word;
 
@@ -78,6 +80,15 @@ public class AddWsuggController implements Initializable, Listener {
                 //nếu từ có trong từ điển -> sửa nghĩa
                 //nếu không -> thêm vào từ điển FORMAT LẠI CÁI NÀY -> WORD VÀ ADD VÀO LISTWORD
                 //lấy định nghĩa vừa sửa:     defTextArea.getText() FORMAT LẠI CÁI NÀY -> WORD VÀ REPLACE VÀO LISTWORD
+                System.out.print("ADD");
+                Word word = DictionaryManagement.formatStringtoWord(ShareInfoAddWord.getNewWord() + "\t" + defTextArea.getText());
+                System.out.print(DictionaryManagement.formatStringtoWord(ShareInfoAddWord.getNewWord() + "\t" + defTextArea.getText()).toString());
+                if(DictionaryManagement.isInDictionary(ShareInfoAddWord.getNewWord())) {
+                    Word oldWord = DictionaryManagement.dictionaryLookup(ShareInfoAddWord.getNewWord());
+                    Dictionary.listWord.remove(oldWord);
+                }
+                Dictionary.listWord.add(word);
+
 
                 //sửa lại nghĩa của từ
             }
