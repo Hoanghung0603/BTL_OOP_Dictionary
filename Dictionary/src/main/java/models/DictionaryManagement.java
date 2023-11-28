@@ -8,9 +8,14 @@ import java.io.*;
 import java.nio.*;
 import java.util.*;
 
+
+
 public class DictionaryManagement extends Dictionary {
 
     public DictionaryManagement() {}
+
+    public FavouriteWord fav = new FavouriteWord();
+    public RecentWord rc = new RecentWord();
 
     public void insertFromCommandline() {
         Scanner scanner = new Scanner(System.in);
@@ -226,6 +231,20 @@ public class DictionaryManagement extends Dictionary {
         dictionaryExportToFileRecentWord();
         dictionaryExportToFile();
     }*/
+    public static void insertData() {
+        insertFromFile();
+        RecentWord recent = new RecentWord();
+        recent.insertFromFile();
+        FavouriteWord fav = new FavouriteWord();
+        fav.insertFromFile();
+    }
+    public static void exportDataToFile() {
+        exportToFile();
+        RecentWord recent = new RecentWord();
+        recent.exportToFile();
+        FavouriteWord fav = new FavouriteWord();
+        fav.exportToFile();
+    }
     public static void main (String[] args) throws IOException {
 
     }
