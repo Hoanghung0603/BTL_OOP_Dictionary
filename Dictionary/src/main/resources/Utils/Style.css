@@ -73,6 +73,10 @@
     /* -fx-background-radius: 30; */
 }
 
+.functionalBtn {
+    -fx-background-color: TRANSPARENT;
+}
+
 .search-Btn {
     -fx-background-radius: 10;
     -fx-background-color: #00939480;
@@ -90,7 +94,7 @@
 .menu-item: pressed,
 .menu-item: focused {
     -fx-background-color: #009394;
-    -fx-effect: dropshadow(gaussian, #394867, 10, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, #00939470, 10, 0, 0, 0);
 }
 
 .searchW-bar {

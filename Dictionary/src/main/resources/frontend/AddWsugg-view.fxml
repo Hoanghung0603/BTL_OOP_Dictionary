@@ -13,7 +13,7 @@
 
 <AnchorPane fx:id="addWsuggPane" prefHeight="563.0" prefWidth="460.0" style="-fx-background-color: #edac6c;" styleClass="support-pane" stylesheets="@../Utils/Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.AddWsuggController">
    <children>
-      <ImageView fitHeight="123.0" fitWidth="152.0" layoutX="149.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="123.0" fitWidth="152.0" layoutX="173.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Utils/icons/catwalk.gif" />
          </image>
@@ -23,27 +23,27 @@
       </ImageView>
       <Pane layoutX="45.0" layoutY="77.0" prefHeight="339.0" prefWidth="382.0" styleClass="suggestW-box" stylesheets="@../Utils/Style.css">
          <children>
-            <TextArea fx:id="defTextArea" layoutX="12.0" layoutY="9.0" prefHeight="322.0" prefWidth="359.0" wrapText="true" />
+            <TextArea fx:id="defTextArea" editable="false" layoutX="12.0" layoutY="9.0" prefHeight="322.0" prefWidth="359.0" wrapText="true" />
          </children>
       </Pane>
-      <Label layoutX="93.0" layoutY="14.0" prefHeight="43.0" prefWidth="286.0" text="The word you want to add will show up here ">
+      <Label layoutX="76.0" layoutY="25.0" prefHeight="43.0" prefWidth="342.0" text="The word you want to edit will show up here! ">
          <font>
-            <Font name="System Bold Italic" size="13.0" />
+            <Font name="System Bold Italic" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="134.0" layoutY="46.0" prefHeight="19.0" prefWidth="204.0" text="if it's already in the dictionary">
-         <font>
-            <Font name="System Bold Italic" size="13.0" />
-         </font>
-      </Label>
-      <ButtonBar layoutX="264.0" layoutY="416.0" prefHeight="40.0" prefWidth="164.0">
+      <ButtonBar layoutX="102.0" layoutY="416.0" prefHeight="40.0" prefWidth="75.0">
          <buttons>
-            <Button fx:id="confEditBtn" mnemonicParsing="false" styleClass="addWsugg-Btn" stylesheets="@../Utils/Style.css" text="Confirm">
+            <Button fx:id="editBtn" mnemonicParsing="false" styleClass="addWsugg-Btn" stylesheets="@../Utils/Style.css" text="Edit">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="editBtn" mnemonicParsing="false" styleClass="addWsugg-Btn" stylesheets="@../Utils/Style.css" text="Edit">
+            <Button fx:id="resetBtn" layoutX="102.0" layoutY="15.0" mnemonicParsing="false" styleClass="addWsugg-Btn" stylesheets="@../Utils/Style.css" text="Reset">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="confEditBtn" mnemonicParsing="false" styleClass="addWsugg-Btn" stylesheets="@../Utils/Style.css" text="Add">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

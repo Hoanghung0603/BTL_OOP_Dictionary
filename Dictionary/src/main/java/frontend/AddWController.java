@@ -1,6 +1,5 @@
 package frontend;
 
-
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -31,30 +30,16 @@ public class AddWController implements Initializable {
     @FXML
     TextField inputText;
     @FXML
-    Button addConfirmBtn, deleteBtn;
+    Button deleteBtn;
 
     String newWord, newExplain;
     boolean isInDictionary = false;
-    @FXML
-    private void handleMouseClickAdd() {
-        Word word = DictionaryManagement.dictionaryLookup(newWord);
-
-
-        // DictionaryManagement.dictionaryExportToFile();
-        deleteBtn.setVisible(false);
-        inputText.setText("");
-        inputDefText.setText("");
-        addConfirmBtn.setVisible(false);
-        inputDefText.setEditable(false);
-        ShareInfoAddWord.setNewWord("");
-    }
 
     @FXML
     private void handleMouseClickDelete() {
         deleteBtn.setVisible(false);
         inputText.setText("");
         inputDefText.setText("");
-        addConfirmBtn.setVisible(false);
         inputDefText.setEditable(false);
         ShareInfoAddWord.setNewWord("");
     }
@@ -66,7 +51,6 @@ public class AddWController implements Initializable {
         fadeTransition.setToValue(1);
         fadeTransition.play();
         deleteBtn.setVisible(false);
-        addConfirmBtn.setVisible(false);
 
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(1000),
@@ -78,12 +62,11 @@ public class AddWController implements Initializable {
                         if (!newWord.equals("")) {
                             deleteBtn.setVisible(true);
                             inputDefText.setEditable(true);
-                            addConfirmBtn.setVisible(true);
                             isInDictionary = (boolean) DictionaryManagement.isInDictionary(newWord);
 
                             System.out.println(newWord);
                             System.out.println(isInDictionary + " is");
-
+                            //xem xet bỏ điều kiện if else này, thay bằng shareInfoaddword.setnewword(newword);
                             if (isInDictionary) {
                                 ShareInfoAddWord.setNewWord(newWord);
                             }
@@ -92,7 +75,6 @@ public class AddWController implements Initializable {
                             }
                         } else {
                             ShareInfoAddWord.setNewWord("");
-                            addConfirmBtn.setVisible(false);
                             inputDefText.setEditable(false);
                         }
                     }

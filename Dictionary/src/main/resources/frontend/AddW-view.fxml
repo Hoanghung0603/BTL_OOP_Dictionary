@@ -38,11 +38,6 @@
             <Image url="@../Utils/icons/coral.png" />
          </image>
       </ImageView>
-      <Button fx:id="addConfirmBtn" layoutX="246.0" layoutY="142.0" mnemonicParsing="false" onMouseClicked="#handleMouseClickAdd" styleClass="alert" stylesheets="@../Utils/Style.css" text="Add">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Button>
       <Label layoutX="48.0" layoutY="38.0" stylesheets="@../Utils/Style.css" text="New word" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />

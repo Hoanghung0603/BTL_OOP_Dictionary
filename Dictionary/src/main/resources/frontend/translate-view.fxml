@@ -19,22 +19,38 @@
       </ImageView>
       <Pane layoutX="25.0" layoutY="27.0" prefHeight="530.0" prefWidth="336.0" styleClass="translate-box" stylesheets="@../Utils/Style.css">
          <children>
-            <AnchorPane layoutX="19.0" layoutY="61.0" prefHeight="455.0" prefWidth="298.0" styleClass="translate-textContainer" stylesheets="@../Utils/Style.css">
+            <AnchorPane layoutX="19.0" layoutY="61.0" prefHeight="463.0" prefWidth="309.0" styleClass="translate-textContainer" stylesheets="@../Utils/Style.css">
                <children>
-                  <TextArea fx:id="toBeTranslatedText" layoutX="12.0" layoutY="28.0" prefHeight="398.0" prefWidth="273.0" styleClass="translate-textArea" stylesheets="@../Utils/Style.css" text="&#10;" wrapText="true">
+                  <TextArea fx:id="toBeTranslatedText" layoutX="11.0" layoutY="24.0" prefHeight="398.0" prefWidth="286.0" styleClass="translate-textArea" stylesheets="@../Utils/Style.css" text="&#10;" wrapText="true">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextArea>
-                  <ButtonBar layoutX="117.0" layoutY="423.0" prefHeight="40.0" prefWidth="178.0">
+                  <ButtonBar layoutX="11.0" layoutY="422.0" prefHeight="40.0" prefWidth="178.0">
                     <buttons>
-                      <Button fx:id="soundSource" mnemonicParsing="false" onMouseClicked="#handleMouseClickSoundSource" text="Sound" />
+                      <Button fx:id="soundSource" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#handleMouseClickSoundSource" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="Sound">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Utils/icons/speaker.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                         <Button fx:id="translateBtn" mnemonicParsing="false" text="Translate" />
+                        <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="functionalBtn" stylesheets="@../Utils/Style.css" text="delete">
+                           <graphic>
+                              <ImageView fx:id="deleteText" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Utils/icons/Xicon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                     </buttons>
                   </ButtonBar>
                </children>
             </AnchorPane>
-            <Label fx:id="labelTextIn" alignment="CENTER" layoutX="120.0" layoutY="8.0" prefHeight="42.0" prefWidth="96.0" styleClass="translate-stateLabel" stylesheets="@../Utils/Style.css" text="Việt">
+            <Label fx:id="labelTextIn" alignment="CENTER" layoutX="125.0" layoutY="8.0" prefHeight="42.0" prefWidth="96.0" styleClass="translate-stateLabel" stylesheets="@../Utils/Style.css" text="Việt">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -43,22 +59,29 @@
       </Pane>
       <Pane layoutX="382.0" layoutY="27.0" prefHeight="529.0" prefWidth="336.0" styleClass="translate-box" stylesheets="@../Utils/Style.css">
          <children>
-            <AnchorPane layoutX="19.0" layoutY="61.0" prefHeight="455.0" prefWidth="298.0" styleClass="translate-textContainer" stylesheets="@../Utils/Style.css">
+            <AnchorPane layoutX="19.0" layoutY="61.0" prefHeight="463.0" prefWidth="309.0" styleClass="translate-textContainer" stylesheets="@../Utils/Style.css">
                <children>
-                  <TextArea fx:id="translateText" layoutX="12.0" layoutY="28.0" prefHeight="398.0" prefWidth="273.0" wrapText="true">
+                  <TextArea fx:id="translateText" layoutX="11.0" layoutY="24.0" prefHeight="398.0" prefWidth="286.0" wrapText="true">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextArea>
-                  <ButtonBar layoutX="97.0" layoutY="406.0" prefHeight="40.0" prefWidth="200.0">
+                  <ButtonBar layoutX="48.0" layoutY="422.0" prefHeight="40.0" prefWidth="200.0">
                     <buttons>
-                      <Button fx:id="soundTarget" mnemonicParsing="false" onMouseClicked="#handleMouseClickSoundTarget" text="Sound" />
+                      <Button fx:id="soundTarget" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#handleMouseClickSoundTarget" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="Sound">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Utils/icons/speaker.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                         <Button mnemonicParsing="false" text="Copy" />
                     </buttons>
                   </ButtonBar>
                </children>
             </AnchorPane>
-            <Label fx:id="labelTranslate" alignment="CENTER" layoutX="120.0" layoutY="8.0" prefHeight="42.0" prefWidth="96.0" styleClass="translate-stateLabel" stylesheets="@../Utils/Style.css" text="Anh">
+            <Label fx:id="labelTranslate" alignment="CENTER" layoutX="120.0" layoutY="7.0" prefHeight="42.0" prefWidth="96.0" styleClass="translate-stateLabel" stylesheets="@../Utils/Style.css" text="Anh">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -69,7 +92,7 @@
          <children>
             <Button fx:id="change" contentDisplay="GRAPHIC_ONLY" layoutX="8.0" layoutY="1.0" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT;" text="change">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Utils/icons/change.png" />
                      </image>

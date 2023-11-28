@@ -20,7 +20,7 @@ public class TranslateController implements Initializable {
     @FXML
     Button change, translateBtn;
     @FXML
-    Button soundTarget, soundSource;
+    Button soundTarget, soundSource, deleteText;
     @FXML
     Label labelTextIn, labelTranslate;
 
@@ -29,6 +29,12 @@ public class TranslateController implements Initializable {
         // văn bản vào:    inputString
         // phát âm thanh từ nhập vào
         System.out.println("Phát âm thanh source");
+    }
+
+    @FXML
+    private void handleMouseClickDelTextBtn() {
+        toBeTranslatedText.setText("");
+        translateText.setText("");
     }
 
     @FXML
