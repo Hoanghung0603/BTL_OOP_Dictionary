@@ -9,6 +9,9 @@ module Module {
     requires net.synedra.validatorfx;
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
+    requires com.google.gson;
+    requires okhttp3;
+
 
 
     opens frontend to javafx.fxml;

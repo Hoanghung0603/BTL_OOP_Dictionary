@@ -76,8 +76,9 @@ public class AddWsuggController implements Initializable, Listener {
                 defTextArea.setEditable(false);
                 confEditBtn.setVisible(false);
                 //nếu từ có trong từ điển -> sửa nghĩa
-                //nếu không -> thêm vào từ điển
-                //lấy định nghĩa vừa sửa:     defTextArea.getText()
+                //nếu không -> thêm vào từ điển FORMAT LẠI CÁI NÀY -> WORD VÀ ADD VÀO LISTWORD
+                //lấy định nghĩa vừa sửa:     defTextArea.getText() FORMAT LẠI CÁI NÀY -> WORD VÀ REPLACE VÀO LISTWORD
+
                 //sửa lại nghĩa của từ
             }
         });

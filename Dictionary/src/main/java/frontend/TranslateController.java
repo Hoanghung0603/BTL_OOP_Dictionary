@@ -8,7 +8,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
-import models.API;
+import models.APITranslate;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import java.io.IOException;
 import java.net.URL;
@@ -47,8 +57,10 @@ public class TranslateController implements Initializable {
 
     String inputString, translateString;
     boolean vietToEng = true;
-    String target;
-    String source;
+
+    String out = "en";
+    String in = "vi";
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         change.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -58,15 +70,15 @@ public class TranslateController implements Initializable {
                 if(vietToEng) {
                     labelTextIn.setText("Việt");
                     labelTranslate.setText("Anh");
-                    target = "en";
-                    source = "vi";
+                    out = "en";
+                    in = "vi";
                 }
 
                 else {
                     labelTextIn.setText("Anh");
                     labelTranslate.setText("Việt");
-                    target = "vi";
-                    source = "en";
+                    out = "vi";
+                    in = "en";
                 }
             }
         });
@@ -82,8 +94,9 @@ public class TranslateController implements Initializable {
         translateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                APITranslate apiTranslate = new APITranslate();
                 try {
-                    translateString = API.translate(inputString, target, source);
+                    translateString = apiTranslate.translate(inputString, in, out);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -91,5 +104,9 @@ public class TranslateController implements Initializable {
                     translateText.setText(translateString);
             }
         });
+    }
+    public static void main (String[] args) throws IOException {
+        APITranslate apiTranslate = new APITranslate();
+        System.out.println(APITranslate.translate("xin chào" + '\n' + "hài", "vi", "en"));
     }
 }

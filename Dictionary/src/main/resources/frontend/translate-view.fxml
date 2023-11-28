@@ -37,9 +37,9 @@
                               </ImageView>
                            </graphic></Button>
                         <Button fx:id="translateBtn" mnemonicParsing="false" text="Translate" />
-                        <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="functionalBtn" stylesheets="@../Utils/Style.css" text="delete">
+                        <Button fx:id="deleteText" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="functionalBtn" stylesheets="@../Utils/Style.css" text="delete">
                            <graphic>
-                              <ImageView fx:id="deleteText" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Utils/icons/Xicon.png" />
                                  </image>

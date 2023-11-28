@@ -55,7 +55,6 @@ public class DictionaryManagement extends Dictionary {
                         wordTarget = result[0];
                         wordSpelling = "";
                     }
-
                     listWord.add(new Word(wordTarget.trim(), wordSpelling.trim(), wordExplain.trim()));
                 }
             }
@@ -64,6 +63,26 @@ public class DictionaryManagement extends Dictionary {
         }
     }
 
+    public static Word formatStringtoWord(String content) {
+        String[] result = content.split("\r?\n", 2);
+        if (result.length > 1) {
+            String wordExplain = result[1];
+            String wordTarget = "";
+            String wordSpelling = "";
+            if (result[0].contains("/")) {
+                wordTarget = result[0].substring(0, result[0].indexOf("/"));
+                //Cắt từ đầu đến kí tự /
+                wordSpelling = result[0].substring(result[0].indexOf("/"));
+                //Từ kí tự / đến cuối
+            } else {
+                wordTarget = result[0];
+                wordSpelling = "";
+            }
+            return new Word(wordTarget.trim(), wordSpelling.trim(), wordExplain.trim());
+        }
+        return new Word("","", "");
+
+    }
     public static void exportToFile() {
         try {
             String content = "";
@@ -246,7 +265,18 @@ public class DictionaryManagement extends Dictionary {
         fav.exportToFile();
     }
     public static void main (String[] args) throws IOException {
-
+    System.out.print(formatStringtoWord("Hello" + "\t" + "/hə'lou/ (halloa) /hə'lou/ (hello) /'he'lou/\n" + "*  thán từ\n" +
+            "- chào anh!, chào chị!\n" +
+            "- này, này\n" +
+            "- ô này! (tỏ ý ngạc nhiên)\n" +
+            "*  danh từ\n" +
+            "- tiếng chào\n" +
+            "- tiếng gọi \"này, này\" !\n" +
+            "- tiếng kêu ô này \"! (tỏ ý ngạc nhiên)\n" +
+            "*  nội động từ\n" +
+            "- chào\n" +
+            "- gọi \"này, này\" \n" +
+            "- kêu \"ô này\" (tỏ ý ngạc nhiên)").toString());
     }
 
 
