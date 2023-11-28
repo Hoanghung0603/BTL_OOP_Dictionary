@@ -33,17 +33,17 @@
       </Label>
       <ButtonBar layoutX="102.0" layoutY="416.0" prefHeight="40.0" prefWidth="75.0">
          <buttons>
-            <Button fx:id="editBtn" mnemonicParsing="false" styleClass="addWsugg-Btn" stylesheets="@../Utils/Style.css" text="Edit">
+            <Button fx:id="resetBtn" layoutX="102.0" layoutY="15.0" mnemonicParsing="false" styleClass="addWsugg-Btn" stylesheets="@../Utils/Style.css" text="Reset" visible="false">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="resetBtn" layoutX="102.0" layoutY="15.0" mnemonicParsing="false" styleClass="addWsugg-Btn" stylesheets="@../Utils/Style.css" text="Reset">
+            <Button fx:id="editBtn" mnemonicParsing="false" styleClass="addWsugg-Btn" stylesheets="@../Utils/Style.css" text="Edit" visible="false">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="confEditBtn" mnemonicParsing="false" styleClass="addWsugg-Btn" stylesheets="@../Utils/Style.css" text="Add">
+            <Button fx:id="confEditBtn" mnemonicParsing="false" styleClass="addWsugg-Btn" stylesheets="@../Utils/Style.css" text="Add" visible="false">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

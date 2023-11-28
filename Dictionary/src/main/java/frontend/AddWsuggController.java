@@ -1,6 +1,5 @@
 package frontend;
 
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 import models.DictionaryManagement;
 import models.Word;
 
@@ -24,16 +22,6 @@ public class AddWsuggController implements Initializable, Listener {
     TextArea defTextArea;
 
     String prevDef = "";
-//    @FXML
-//    private void handleMouseClickAdd() {
-//        Word word = DictionaryManagement.dictionaryLookup(newWord);
-//        // DictionaryManagement.dictionaryExportToFile();
-//        deleteBtn.setVisible(false);
-//        inputText.setText("");
-//        inputDefText.setText("");
-//        inputDefText.setEditable(false);
-//        ShareInfoAddWord.setNewWord("");
-//    }
 
     @Override
     public void onNewWordChange() {
@@ -54,9 +42,6 @@ public class AddWsuggController implements Initializable, Listener {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        TranslateTransition tranTransition = new TranslateTransition(Duration.seconds(0.75), addWsuggPane);
-//        tranTransition.setByX(26);
-//        tranTransition.play();
         ShareInfoAddWord.setListener(this);
 
         editBtn.setOnAction(new EventHandler<ActionEvent>() {
