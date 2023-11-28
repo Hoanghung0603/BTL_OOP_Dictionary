@@ -163,7 +163,6 @@ public class SearchController implements Initializable {
         suggList.add("");
         recentSearch.setAll(Dictionary.recentWord);
         suggResults.setItems(recentSearch);
-        favWords.addAll(Arrays.asList("chicken", "dog", "cat", "stupid", "rat", "snake"));
 
         inputWord.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
