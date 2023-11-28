@@ -67,11 +67,14 @@ public class DictionaryManagement extends Dictionary {
 
     public static Word formatStringtoWord(String content) {
         String[] result = content.split("\r?\n", 2);
+        System.out.println(result[0]);
+        String wordExplain;
+        String wordTarget = "";
+        String wordSpelling = "";
         if (result.length > 1) {
-            String wordExplain = result[1];
+            wordExplain = result[1];
             System.out.println(wordExplain);
-            String wordTarget = "";
-            String wordSpelling = "";
+
             if (result[0].contains("/")) {
                 wordTarget = result[0].substring(0, result[0].indexOf("/"));
                 //Cắt từ đầu đến kí tự /
@@ -81,10 +84,12 @@ public class DictionaryManagement extends Dictionary {
                 wordTarget = result[0];
                 wordSpelling = "";
             }
-            return new Word(wordTarget.trim(), wordSpelling.trim(), wordExplain.trim());
+        }  else {
+                String[] split = result[0].split("\t", 2);
+                wordTarget = split[0];
+                wordExplain = split[1];
         }
-        return new Word("", "", "");
-
+            return new Word(wordTarget.trim(), wordSpelling.trim(), wordExplain.trim());
     }
 
     public static void exportToFile() {
