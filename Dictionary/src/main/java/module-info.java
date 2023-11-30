@@ -11,7 +11,7 @@ module Module {
     requires com.almasb.fxgl.all;
     requires com.google.gson;
     requires okhttp3;
-
+    requires client.sdk;
 
 
     opens frontend to javafx.fxml;

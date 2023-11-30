@@ -1,4 +1,4 @@
-package models;
+package service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,13 +15,12 @@ import java.io.InterruptedIOException;
 import java.net.SocketTimeoutException;
 import java.util.concurrent.TimeUnit;
 
-public class APITranslate {
+public class APITranslate extends API {
+
+
+
     private static int timeout; // Milliseconds
     private static OkHttpClient client;
-
-    protected static String subscriptionKey;
-    protected static String serviceRegion;
-
     protected static String endpoint = "https://api.cognitive.microsofttranslator.com/";
 
     public APITranslate() {
