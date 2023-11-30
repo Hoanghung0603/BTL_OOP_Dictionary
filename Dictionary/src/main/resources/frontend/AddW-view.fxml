@@ -70,5 +70,6 @@
                </image>
             </ImageView>
          </graphic></Button>
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="141.0" layoutY="470.0" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT;" text="Button" />
    </children>
 </AnchorPane>

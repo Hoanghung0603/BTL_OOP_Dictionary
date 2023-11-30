@@ -45,6 +45,7 @@ public class SearchController implements Initializable {
     ImageView yellowStar;
 
     String sourceWord = "";   //từ đang cần tra
+    boolean isShowingFavWords = false;
 
     @FXML
     private void suggInputWord() {
@@ -124,23 +125,24 @@ public class SearchController implements Initializable {
 
     @FXML
     private void handleClickShowFavorWords() {
-        yellowStar.setVisible(false);
-        suggList.setAll(Dictionary.favoriteWord.reversed());
-
-        suggResults.setItems(suggList);
-        inputWord.setText("");
-
         setDefaultSearchGUI();
-
-        deleteBtn.setVisible(false);
+        if(!isShowingFavWords) {
+            suggList.setAll(Dictionary.favoriteWord.reversed());
+            suggResults.setItems(suggList);
+            inputWord.setText("");
+            deleteBtn.setVisible(false);
+            isShowingFavWords = true;
+        }
+        else {
+            isShowingFavWords = false;
+            suggResults.setItems(recentSearch);
+        }
     }
 
     //them
     @FXML
     private void handleClickDeleteBtn() {
-        yellowStar.setVisible(false);
         sourceWord = "";
-
         setDefaultSearchGUI();
 
         inputWord.setText("");
@@ -154,6 +156,7 @@ public class SearchController implements Initializable {
     }
 
     private void setDefaultSearchGUI() {
+        yellowStar.setVisible(false);
         wordTarget.setText("Definition");
         soundBtn.setDisable(true);
         saveBtn.setDisable(true);
@@ -174,7 +177,6 @@ public class SearchController implements Initializable {
             @Override
             public void handle(KeyEvent keyEvent) {
                 setDefaultSearchGUI();
-
                 sourceWord = inputWord.getText().trim();
                 deleteBtn.setVisible(true);
                 if (!sourceWord.equals("")) {
