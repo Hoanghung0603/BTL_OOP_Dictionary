@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="559.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameApplication.GameTracNghiemController">
+   <children>
+      <Pane layoutX="41.0" layoutY="40.0" prefHeight="485.0" prefWidth="665.0" style="-fx-background-color: #009394; -fx-background-radius: 30;">
+         <children>
+            <HBox layoutX="148.0" layoutY="14.0" prefHeight="32.0" prefWidth="370.0">
+               <children>
+                  <Button fx:id="button1" mnemonicParsing="false" text="Q1" />
+                  <Button fx:id="button2" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Q2" />
+                  <Button fx:id="button3" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Q3" />
+                  <Button fx:id="button4" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Q4" />
+                  <Button fx:id="button5" layoutX="120.0" layoutY="10.0" mnemonicParsing="false" text="Q5" />
+                  <Button fx:id="button6" layoutX="175.0" layoutY="10.0" mnemonicParsing="false" text="Q6" />
+                  <Button fx:id="button7" layoutX="230.0" layoutY="10.0" mnemonicParsing="false" text="Q7" />
+                  <Button fx:id="button8" layoutX="340.0" layoutY="10.0" mnemonicParsing="false" text="Q8" />
+                  <Button fx:id="button9" layoutX="395.0" layoutY="10.0" mnemonicParsing="false" text="Q9" />
+                  <Button fx:id="button10" layoutX="450.0" layoutY="10.0" mnemonicParsing="false" text="Q10" />
+               </children>
+            </HBox>
+            <Button fx:id="retryButton" layoutX="148.0" layoutY="62.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="107.0" text="Retry" />
+            <Button fx:id="menuButton" layoutX="411.0" layoutY="62.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="107.0" text="Home" />
+            <Label fx:id="question" layoutX="7.0" layoutY="147.0" prefHeight="51.0" prefWidth="652.0" text="Click on any question to start.">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="answerA" layoutX="30.0" layoutY="243.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="275.0" text="A" />
+            <Button fx:id="answerB" layoutX="348.0" layoutY="243.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="275.0" text="B" />
+            <Button fx:id="answerC" layoutX="30.0" layoutY="342.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="275.0" text="C" />
+            <Button fx:id="answerD" layoutX="348.0" layoutY="334.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="275.0" text="D" />
+            <Label fx:id="timeLeft" layoutX="7.0" layoutY="98.0" prefHeight="32.0" prefWidth="132.0" text="Countdown">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="doneButton" layoutX="279.0" layoutY="62.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="107.0" text="Done" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
