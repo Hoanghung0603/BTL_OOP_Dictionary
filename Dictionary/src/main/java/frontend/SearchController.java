@@ -61,11 +61,6 @@ public class SearchController implements Initializable {
             suggList.add("");
 
             AlertManager.showAlert(invalidWordAlert);
-//            alert.setVisible(true);
-//            FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
-//            fadeAlert.setFromValue(1.0);
-//            fadeAlert.setToValue(0.0);
-//            fadeAlert.play();
         }
         suggResults.setItems(suggList);
     }
@@ -75,7 +70,7 @@ public class SearchController implements Initializable {
     private void handleMouseClickSuggWord(MouseEvent event) {
         sourceWord = suggResults.getSelectionModel().getSelectedItem();
         if (sourceWord != null) sourceWord.trim();
-        else sourceWord = "";
+        else return;
         if (Dictionary.favoriteWord.contains(sourceWord))  {
             yellowStar.setVisible(true);
             System.out.println("true");
@@ -85,7 +80,7 @@ public class SearchController implements Initializable {
             soundBtn.setDisable(false);
             saveBtn.setDisable(false);
         }
-//
+
         String word = suggResults.getSelectionModel().getSelectedItem();
         if (word == null) return;
         wordTarget.setText(word);
@@ -131,7 +126,6 @@ public class SearchController implements Initializable {
 
     @FXML
     private void handleClickShowFavorWords() {
-        setDefaultSearchGUI();
         if(!isShowingFavWords) {
             showFavWordAlert.setText("Showing favorite words list!");
             AlertManager.showAlert(showFavWordAlert);
@@ -145,8 +139,10 @@ public class SearchController implements Initializable {
             showFavWordAlert.setText("Close favorite words list!");
             AlertManager.showAlert(showFavWordAlert);
             isShowingFavWords = false;
+            if(suggList.isEmpty()) suggList.add("");
             suggResults.setItems(recentSearch);
         }
+        setDefaultSearchGUI();
     }
 
     //them
@@ -186,6 +182,7 @@ public class SearchController implements Initializable {
             @Override
             public void handle(KeyEvent keyEvent) {
                 setDefaultSearchGUI();
+                isShowingFavWords = false;
                 sourceWord = inputWord.getText().trim();
                 deleteBtn.setVisible(true);
                 if (!sourceWord.equals("")) {

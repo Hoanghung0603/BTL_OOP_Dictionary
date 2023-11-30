@@ -26,9 +26,9 @@
                         <Font size="17.0" />
                      </font>
                   </TextArea>
-                  <ButtonBar layoutX="11.0" layoutY="422.0" prefHeight="40.0" prefWidth="178.0">
+                  <ButtonBar layoutY="422.0" prefHeight="40.0" prefWidth="286.0">
                     <buttons>
-                      <Button fx:id="soundSource" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#handleMouseClickSoundSource" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="Sound">
+                      <Button fx:id="soundSource" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#handleMouseClickSoundSource" styleClass="translate-functionalBtn" stylesheets="@../Utils/Style.css" text="Sound">
                            <graphic>
                               <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -36,8 +36,11 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button fx:id="translateBtn" mnemonicParsing="false" text="Translate" />
-                        <Button fx:id="deleteText" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="functionalBtn" stylesheets="@../Utils/Style.css" text="delete">
+                        <Button fx:id="translateBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" styleClass="translateBtn" stylesheets="@../Utils/Style.css" text="Translate">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Button>
+                        <Button fx:id="deleteText" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#handleMouseClickDelTextBtn" styleClass="translate-functionalBtn" stylesheets="@../Utils/Style.css" text="delete">
                            <graphic>
                               <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -68,7 +71,7 @@
                   </TextArea>
                   <ButtonBar layoutX="48.0" layoutY="422.0" prefHeight="40.0" prefWidth="200.0">
                     <buttons>
-                      <Button fx:id="soundTarget" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#handleMouseClickSoundTarget" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="Sound">
+                      <Button fx:id="soundTarget" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#handleMouseClickSoundTarget" styleClass="translate-functionalBtn" stylesheets="@../Utils/Style.css" text="Sound">
                            <graphic>
                               <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -76,7 +79,14 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button mnemonicParsing="false" text="Copy" />
+                        <Button fx:id="copyTextBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#handleMouseClickCopyBtn" styleClass="translate-functionalBtn" stylesheets="@../Utils/Style.css" text="Copy">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Utils/icons/copyIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                     </buttons>
                   </ButtonBar>
                </children>
@@ -90,7 +100,7 @@
       </Pane>
       <Pane layoutX="339.0" layoutY="27.0" prefHeight="42.0" prefWidth="64.0" styleClass="translate-box" stylesheets="@../Utils/Style.css">
          <children>
-            <Button fx:id="change" contentDisplay="GRAPHIC_ONLY" layoutX="8.0" layoutY="1.0" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT;" text="change">
+            <Button fx:id="change" contentDisplay="GRAPHIC_ONLY" layoutX="8.0" layoutY="1.0" mnemonicParsing="false" styleClass="translate-functionalBtn" stylesheets="@../Utils/Style.css" text="change">
                <graphic>
                   <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -26,8 +26,6 @@ public class AddWController implements Initializable {
     @FXML
     AnchorPane addWpane;
     @FXML
-    TextArea inputDefText;
-    @FXML
     TextField inputText;
     @FXML
     Button deleteBtn;
@@ -39,8 +37,6 @@ public class AddWController implements Initializable {
     private void handleMouseClickDelete() {
         deleteBtn.setVisible(false);
         inputText.setText("");
-        inputDefText.setText("");
-        inputDefText.setEditable(false);
         ShareInfoAddWord.setNewWord("");
     }
 
@@ -61,7 +57,6 @@ public class AddWController implements Initializable {
                         newWord = inputText.getText().trim();
                         if (!newWord.equals("")) {
                             deleteBtn.setVisible(true);
-                            inputDefText.setEditable(true);
                             isInDictionary = (boolean) DictionaryManagement.isInDictionary(newWord);
                             //xem xet bỏ điều kiện if else này, thay bằng shareInfoaddword.setnewword(newword);
                             if (isInDictionary) {
@@ -72,7 +67,6 @@ public class AddWController implements Initializable {
                             }
                         } else {
                             ShareInfoAddWord.setNewWord("");
-                            inputDefText.setEditable(false);
                         }
                     }
                 }));
@@ -88,13 +82,6 @@ public class AddWController implements Initializable {
                 if(inputText.getText().equals("Type your word")) {
                     inputText.setText("");
                 }
-            }
-        });
-
-        inputDefText.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                newExplain = inputDefText.getText();
             }
         });
 

@@ -24,11 +24,16 @@
       <Pane layoutX="45.0" layoutY="77.0" prefHeight="339.0" prefWidth="382.0" styleClass="suggestW-box" stylesheets="@../Utils/Style.css">
          <children>
             <TextArea fx:id="defTextArea" editable="false" layoutX="12.0" layoutY="9.0" prefHeight="322.0" prefWidth="359.0" wrapText="true" />
+            <Label fx:id="stateUpdateAlert" alignment="CENTER" layoutX="80.0" layoutY="145.0" prefHeight="50.0" prefWidth="223.0" styleClass="suggW-alert" stylesheets="@../Utils/Style.css" text="Cập nhật không thành công!" visible="false">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Label layoutX="76.0" layoutY="25.0" prefHeight="43.0" prefWidth="342.0" text="The word you want to edit will show up here! ">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="76.0" layoutY="25.0" prefHeight="43.0" prefWidth="342.0" text="Explaination">
          <font>
-            <Font name="System Bold Italic" size="16.0" />
+            <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
       <ButtonBar layoutX="102.0" layoutY="404.0" prefHeight="53.0" prefWidth="267.0">

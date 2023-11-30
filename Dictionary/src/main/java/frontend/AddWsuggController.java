@@ -1,11 +1,11 @@
 package frontend;
 
+import Alert.AlertManager;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import models.Dictionary;
 import models.DictionaryCommandline;
@@ -13,6 +13,7 @@ import models.DictionaryManagement;
 import models.Word;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AddWsuggController implements Initializable, Listener {
@@ -22,6 +23,8 @@ public class AddWsuggController implements Initializable, Listener {
     Button editBtn, confEditBtn, resetBtn;
     @FXML
     TextArea defTextArea;
+    @FXML
+    Label stateUpdateAlert;
 
     String prevDef = "";
     @Override
@@ -64,6 +67,16 @@ public class AddWsuggController implements Initializable, Listener {
             public void handle(ActionEvent actionEvent) {
                 setDefaultGUI(false);
                 //nếu từ có trong từ điển -> sửa nghĩa
+                Alert confirmation = new AlertManager().alertConfirmation("Update", "Nghĩa của từ " + ShareInfoAddWord.getNewWord() + " sẽ được thay đổi");
+                Optional<ButtonType> option = confirmation.showAndWait();
+                if (option.get() == ButtonType.OK) {
+                    //thay đổi nghĩa của từ
+                    stateUpdateAlert.setText("Cập nhật thành công!");
+                    AlertManager.showAlert(stateUpdateAlert);
+                } else {
+                    stateUpdateAlert.setText("Cập nhật không thành công!");
+                    AlertManager.showAlert(stateUpdateAlert);
+                }
                 //nếu không -> thêm vào từ điển FORMAT LẠI CÁI NÀY -> WORD VÀ ADD VÀO LISTWORD
                 //lấy định nghĩa vừa sửa:     defTextArea.getText() FORMAT LẠI CÁI NÀY -> WORD VÀ REPLACE VÀO LISTWORD
                 System.out.print("ADD");

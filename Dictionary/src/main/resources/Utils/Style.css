@@ -129,6 +129,11 @@
     -fx-background-color: #00e0c7;
 }
 
+.suggW-alert {
+    -fx-background-radius: 20;
+    -fx-background-color: #edac6c90;
+}
+
 .showWsearch {
     -fx-control-inner-background: TRANSPARENT;
     -fx-border-radius: 50;
@@ -188,3 +193,23 @@
     -fx-background-radius: 20;
 }
 
+.translate-functionalBtn {
+    -fx-background-color: TRANSPARENT;
+    -fx-background-radius: 20;
+}
+
+.translate-functionalBtn: pressed, focused {
+    -fx-effect: dropshadow(gaussian, #00000010, 5, 5, 0, 0);
+}
+
+.translateBtn {
+    -fx-background-radius: 20;
+    -fx-background-color: TRANSPARENT;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 20;
+    -fx-border-color: #000000;
+}
+
+.translateBtn: pressed, focused {
+    -fx-effect: dropshadow(gaussian, #00000010, 5, 5, 0, 0);
+}

@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyEvent;
 import models.APITranslate;
 
@@ -19,6 +21,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import org.controlsfx.dialog.CommandLinksDialog;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,7 +33,7 @@ public class TranslateController implements Initializable {
     @FXML
     Button change, translateBtn;
     @FXML
-    Button soundTarget, soundSource, deleteText;
+    Button soundTarget, soundSource, deleteText, copyTextBtn;
     @FXML
     Label labelTextIn, labelTranslate;
 
@@ -39,6 +42,14 @@ public class TranslateController implements Initializable {
         // văn bản vào:    inputString
         // phát âm thanh từ nhập vào
         System.out.println("Phát âm thanh source");
+    }
+
+    @FXML
+    private void handleMouseClickCopyBtn() {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(translateText.getText());
+        clipboard.setContent(content);
     }
 
     @FXML
