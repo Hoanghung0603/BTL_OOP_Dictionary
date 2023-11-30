@@ -142,7 +142,7 @@
 
 .alert {
     -fx-background-radius: 30;
-    -fx-background-color: rgba(0, 224, 199, 0.7);
+    -fx-background-color: rgba(0, 224, 199, 0.9);
 }
 
 .keyWbox {

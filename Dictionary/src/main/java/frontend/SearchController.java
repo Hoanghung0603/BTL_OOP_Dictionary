@@ -1,5 +1,7 @@
 package frontend;
 
+import Alert.AlertManager;
+
 import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,8 +23,6 @@ import java.util.ArrayList;
 
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
@@ -32,7 +32,7 @@ public class SearchController implements Initializable {
     @FXML
     AnchorPane searchPane;
     @FXML
-    Label alert, wordTarget;  //wordtarget la label hien tu tieng anh dang search
+    Label invalidWordAlert, showFavWordAlert, wordTarget, likeWordAlert;  //wordtarget la label hien tu tieng anh dang search
     @FXML
     Button saveBtn, soundBtn, deleteBtn, showFavorWords;
     @FXML
@@ -60,11 +60,12 @@ public class SearchController implements Initializable {
         if (suggList.isEmpty()) {
             suggList.add("");
 
-            alert.setVisible(true);
-            FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
-            fadeAlert.setFromValue(1.0);
-            fadeAlert.setToValue(0.0);
-            fadeAlert.play();
+            AlertManager.showAlert(invalidWordAlert);
+//            alert.setVisible(true);
+//            FadeTransition fadeAlert = new FadeTransition(Duration.seconds(2.5), alert);
+//            fadeAlert.setFromValue(1.0);
+//            fadeAlert.setToValue(0.0);
+//            fadeAlert.play();
         }
         suggResults.setItems(suggList);
     }
@@ -72,8 +73,10 @@ public class SearchController implements Initializable {
     //khi click vao mot tu trong suggResults
     @FXML
     private void handleMouseClickSuggWord(MouseEvent event) {
-        sourceWord = suggResults.getSelectionModel().getSelectedItem().trim();
-        if(Dictionary.favoriteWord.contains(sourceWord))  {
+        sourceWord = suggResults.getSelectionModel().getSelectedItem();
+        if (sourceWord != null) sourceWord.trim();
+        else sourceWord = "";
+        if (Dictionary.favoriteWord.contains(sourceWord))  {
             yellowStar.setVisible(true);
             System.out.println("true");
         }
@@ -112,21 +115,26 @@ public class SearchController implements Initializable {
     private void handleClickSaveBtn() {
         //thêm từ vừa tra vào danh sách từ đã lưu
         if(!Dictionary.favoriteWord.contains(sourceWord)) {
+            likeWordAlert.setText("Add to favorite words list");
+            AlertManager.showAlert(likeWordAlert);
             Dictionary.favoriteWord.add(sourceWord);
             yellowStar.setVisible((true));
         }
         else {
+            likeWordAlert.setText("Remove from favorite words list");
+            AlertManager.showAlert(likeWordAlert);
             //Neu da co thi xoa
             Dictionary.favoriteWord.remove(sourceWord);
             yellowStar.setVisible((false));
         }
-
     }
 
     @FXML
     private void handleClickShowFavorWords() {
         setDefaultSearchGUI();
         if(!isShowingFavWords) {
+            showFavWordAlert.setText("Showing favorite words list!");
+            AlertManager.showAlert(showFavWordAlert);
             suggList.setAll(Dictionary.favoriteWord.reversed());
             suggResults.setItems(suggList);
             inputWord.setText("");
@@ -134,6 +142,8 @@ public class SearchController implements Initializable {
             isShowingFavWords = true;
         }
         else {
+            showFavWordAlert.setText("Close favorite words list!");
+            AlertManager.showAlert(showFavWordAlert);
             isShowingFavWords = false;
             suggResults.setItems(recentSearch);
         }
@@ -168,7 +178,6 @@ public class SearchController implements Initializable {
         fadeTrans.setFromValue(0);
         fadeTrans.setToValue(1);
         fadeTrans.play();
-        alert.setVisible(false);
         suggList.add("");
         recentSearch.setAll(Dictionary.recentWord);
         suggResults.setItems(recentSearch);
