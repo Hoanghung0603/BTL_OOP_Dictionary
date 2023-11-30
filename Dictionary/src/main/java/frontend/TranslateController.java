@@ -8,17 +8,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
-import models.APITranslate;
+import service.APITranslate;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import service.SpeechAPI;
+import service.T2SThread;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,8 +28,10 @@ public class TranslateController implements Initializable {
     Label labelTextIn, labelTranslate;
 
     @FXML
-    private void handleMouseClickSoundSource() {
+    private void handleMouseClickSoundSource() throws Exception {
         // văn bản vào:    inputString
+        T2SThread t2sThread = new T2SThread();
+        t2sThread.getSpeechFromTextThread(inputString, in);
         // phát âm thanh từ nhập vào
         System.out.println("Phát âm thanh source");
     }
@@ -48,10 +43,11 @@ public class TranslateController implements Initializable {
     }
 
     @FXML
-    private void handleMouseClickSoundTarget() {
+    private void handleMouseClickSoundTarget() throws Exception {
         // phát âm thanh văn bản đã dịch
         // translateString
-
+        T2SThread t2sThread = new T2SThread();
+        t2sThread.getSpeechFromTextThread(translateString, out);
         System.out.println("phát âm thanh target");
     }
 

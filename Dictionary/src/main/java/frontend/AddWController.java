@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import models.Dictionary;
+
 import models.DictionaryManagement;
 import models.Word;
 
@@ -34,6 +35,7 @@ public class AddWController implements Initializable {
 
     String newWord, newExplain;
     boolean isInDictionary = false;
+
 
     @FXML
     private void handleMouseClickDelete() {

@@ -12,16 +12,17 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
-import models.Dictionary;
-import models.DictionaryCommandline;
-import models.Word;
+import models.*;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
+import service.API;
+import service.SpeechAPI;
+import service.T2SThread;
+
 import java.util.ArrayList;
 
 
 import java.net.URL;
-import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.ResourceBundle;
 
@@ -99,13 +100,19 @@ public class SearchController implements Initializable {
     }
 
     @FXML //DONE
-    private void clickSoundBtn() {
-        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
-        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
-        if (voice != null) {
-            voice.allocate();
-            voice.speak(sourceWord);
-        } else throw new IllegalStateException("Cannot find voice: kevin16");
+    private void clickSoundBtn() throws Exception {
+        if(!API.isInternetAvailable()) {
+            System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+            Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+            if (voice != null) {
+                voice.allocate();
+                voice.speak(sourceWord);
+            } else throw new IllegalStateException("Cannot find voice: kevin16");
+        }
+        else {
+            T2SThread t2sThread = new T2SThread();
+            t2sThread.getSpeechFromTextThread(sourceWord, "en");
+        }
     }
 
     @FXML
