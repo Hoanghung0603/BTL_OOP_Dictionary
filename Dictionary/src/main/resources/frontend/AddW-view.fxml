@@ -24,16 +24,16 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </TextField>
-      <Pane layoutX="30.0" layoutY="175.0" prefHeight="274.0" prefWidth="267.0" styleClass="suggestW-box" stylesheets="@../Utils/Style.css">
+      <Pane layoutX="30.0" layoutY="175.0" prefHeight="324.0" prefWidth="291.0" styleClass="suggestW-box" stylesheets="@../Utils/Style.css">
          <children>
-            <TextArea fx:id="inputDefText" editable="false" layoutX="12.0" layoutY="13.0" prefHeight="249.0" prefWidth="243.0">
+            <TextArea fx:id="inputDefText" editable="false" layoutX="12.0" layoutY="13.0" prefHeight="299.0" prefWidth="267.0" text="1. Nhập từ cần thêm vào từ điển (hoặc sửa nghĩa) vào thanh &quot;New word&quot;.&#10;2. Click Edit để sửa nghĩa của từ.&#10;3. Click Save để thêm từ vào từ điển (hoặc sửa nghĩa)." wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
             </TextArea>
          </children>
       </Pane>
-      <ImageView fitHeight="236.0" fitWidth="259.0" layoutX="95.0" layoutY="345.0" opacity="0.62" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="236.0" fitWidth="259.0" layoutX="95.0" layoutY="345.0" opacity="0.48" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Utils/icons/coral.png" />
          </image>
@@ -50,7 +50,7 @@
             </DropShadow>
          </effect>
       </Label>
-      <Label layoutX="48.0" layoutY="140.0" text="Explanation" textFill="WHITE">
+      <Label layoutX="48.0" layoutY="140.0" text="Quick Guide" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -70,5 +70,6 @@
                </image>
             </ImageView>
          </graphic></Button>
+      <Button contentDisplay="GRAPHIC_ONLY" layoutX="141.0" layoutY="470.0" mnemonicParsing="false" style="-fx-background-color: TRANSPARENT;" text="Button" />
    </children>
 </AnchorPane>
