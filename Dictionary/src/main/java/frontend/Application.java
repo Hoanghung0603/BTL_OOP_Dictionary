@@ -1,5 +1,6 @@
 package frontend;
 
+import game.javafxwordle.Toast;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,6 +33,7 @@ public class Application extends javafx.application.Application {
         stage.setTitle("Dictionary Application");
         stage.initStyle(StageStyle.TRANSPARENT);
 
+        Toast.setStage(stage);
 
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
