@@ -12,8 +12,10 @@ module Module {
     requires com.google.gson;
     requires okhttp3;
     requires client.sdk;
+    requires java.desktop;
 
 
     opens frontend to javafx.fxml;
     exports frontend;
+
 }

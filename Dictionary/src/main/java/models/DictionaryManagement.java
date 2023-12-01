@@ -237,6 +237,33 @@ public class DictionaryManagement extends Dictionary {
         return wordEntry;
     }
 
+    public static void returnToDefault() {
+        String sourceFilePath = "src\\main\\resources\\data\\dictionaryDefault.txt";
+        String destinationFilePath = "src\\main\\resources\\data\\dictionary.txt";
+
+        try {
+            // Đọc nội dung từ file nguồn
+            FileInputStream fis = new FileInputStream(sourceFilePath);
+            byte[] sourceData = new byte[fis.available()];
+            fis.read(sourceData);
+            fis.close();
+
+            // Xóa nội dung trong file đích
+            FileOutputStream fos = new FileOutputStream(destinationFilePath, false);
+            fos.write(new byte[0]);
+            fos.close();
+
+            // Ghi nội dung đã đọc từ file nguồn vào file đích
+            fos = new FileOutputStream(destinationFilePath, true);
+            fos.write(sourceData);
+            fos.close();
+
+            System.out.println("Đã copy thành công và xóa hết nội dung file đích.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /* public static void clear(String file) {
          String filePath = "src/main/resources/data/" + file + ".txt";
@@ -276,7 +303,7 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.print(formatStringtoWord("Hello" + "\t" + "- xin chào").toString());
-
+        returnToDefault();
     }
+
 }
