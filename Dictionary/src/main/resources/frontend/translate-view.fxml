@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -48,6 +49,9 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <tooltip>
+                              <Tooltip text="delete text" />
+                           </tooltip>
                         </Button>
                     </buttons>
                   </ButtonBar>
@@ -86,7 +90,10 @@
                                     <Image url="@../Utils/icons/copyIcon.png" />
                                  </image>
                               </ImageView>
-                           </graphic></Button>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="copy" />
+                           </tooltip></Button>
                     </buttons>
                   </ButtonBar>
                </children>

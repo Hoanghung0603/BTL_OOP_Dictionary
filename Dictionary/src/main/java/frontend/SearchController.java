@@ -22,19 +22,15 @@ import com.sun.speech.freetts.VoiceManager;
 import service.API;
 import service.SpeechAPI;
 import service.T2SThread;
-
 import java.util.ArrayList;
 
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
     ObservableList<String> suggList = FXCollections.observableArrayList();
     ObservableList<String> recentSearch = FXCollections.observableArrayList();
-    LinkedHashSet<String> favWords = new LinkedHashSet<>();
 
     @FXML
     AnchorPane searchPane;
@@ -91,7 +87,6 @@ public class SearchController implements Initializable {
         String word = suggResults.getSelectionModel().getSelectedItem();
         if (word == null) return;
         wordTarget.setText(word);
-        //defTextArea.setText();  // settext dinh nghia cua tu can tra
         Word tmp = DictionaryCommandline.dictionaryLookup(word);
         String text = tmp.getWordSpelling() + "\n" + tmp.getWordExplain();
         defTextArea.setText(text);
@@ -136,7 +131,6 @@ public class SearchController implements Initializable {
             Dictionary.favoriteWord.remove(sourceWord);
             yellowStar.setVisible((false));
         }
-
     }
 
     @FXML
@@ -171,6 +165,7 @@ public class SearchController implements Initializable {
         suggList.clear();
         suggList.add("");
         suggResults.setItems(recentSearch);
+
         deleteBtn.setVisible(false);
 
     }
@@ -182,8 +177,9 @@ public class SearchController implements Initializable {
         saveBtn.setDisable(true);
         defTextArea.setText("");
     }
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
-      //  dictionaryManagement.insertFromFile();
+        //  dictionaryManagement.insertFromFile();
         FadeTransition fadeTrans = new FadeTransition(Duration.seconds(1.0), searchPane);
         fadeTrans.setFromValue(0);
         fadeTrans.setToValue(1);

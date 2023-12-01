@@ -14,16 +14,6 @@ import service.APITranslate;
 
 import service.SpeechAPI;
 import service.T2SThread;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import org.controlsfx.dialog.CommandLinksDialog;
 
 import java.io.IOException;
 import java.net.URL;
@@ -117,7 +107,7 @@ public class TranslateController implements Initializable {
                     throw new RuntimeException(e);
                 }
                 System.out.println(translateString);
-                    translateText.setText(translateString);
+                translateText.setText(translateString);
             }
         });
     }
