@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="864.0" style="-fx-background-color: #030f0c;" stylesheets="@../Utils/Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.MenuController">
    <children>
@@ -15,61 +17,101 @@
          <children>
             <VBox layoutX="1.0" layoutY="139.0" prefHeight="370.0" prefWidth="81.0" spacing="20.0" stylesheets="@../Utils/Style.css">
                <children>
-                  <Button fx:id="searchBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="Button">
+                  <Button fx:id="searchBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="search">
                      <graphic>
                         <ImageView fitHeight="41.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Utils/icons/findw.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
-                  <Button fx:id="AddBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="57.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="Button">
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Tra từ offline">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip></Button>
+                  <Button fx:id="AddBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="57.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="addw">
                      <graphic>
                         <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Utils/icons/addWbtn.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
-                  <Button fx:id="TranslateBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="60.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="Button">
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Chức năng thay đổi, thêm từ vào từ điển">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip></Button>
+                  <Button fx:id="TranslateBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="60.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="translate">
                      <graphic>
                         <ImageView fitHeight="45.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Utils/icons/translateBtn.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
-                  <Button fx:id="GameBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="61.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="Button">
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Tra từ online">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip></Button>
+                  <Button fx:id="GameBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="61.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="game">
                      <graphic>
                         <ImageView fitHeight="38.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Utils/icons/gameBtn.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
-                  <Button fx:id="QuitBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="62.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="Button">
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Game học tiếng Anh">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip></Button>
+                  <Button fx:id="QuitBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="62.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="quit">
                      <graphic>
                         <ImageView fitHeight="39.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Utils/icons/quitBtn.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Đóng ứng dụng">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip></Button>
                </children>
             </VBox>
          </children>
       </AnchorPane>
-      <StackPane layoutX="454.0" layoutY="26.0" prefHeight="563.0" prefWidth="394.0" styleClass="support-pane" stylesheets="@../Utils/Style.css">
+      <StackPane layoutX="390.0" layoutY="26.0" prefHeight="563.0" prefWidth="460.0" styleClass="support-pane" stylesheets="@../Utils/Style.css">
          <children>
-            <AnchorPane fx:id="supportPane" prefHeight="563.0" prefWidth="366.0" />
-            <Pane fx:id="efPanefather" prefHeight="563.0" prefWidth="366.0" stylesheets="@../Utils/Style.css">
+            <AnchorPane prefHeight="563.0" prefWidth="460.0">
+               <children>
+                  <AnchorPane fx:id="supportPane" prefHeight="563.0" prefWidth="460.0" style="-fx-background-color: TRANSPARENT;" />
+               </children>
+            </AnchorPane>
+            <Pane fx:id="efPanefather" maxWidth="296.0" prefHeight="563.0" prefWidth="296.0" stylesheets="@../Utils/Style.css">
                <effect>
                   <Blend />
                </effect>
                <children>
-                  <Pane fx:id="efPane" layoutX="-369.0" prefHeight="584.0" prefWidth="775.0" styleClass="view-pane" stylesheets="@../Utils/Style.css" />
-               </children></Pane>
+                  <Pane fx:id="efPane" layoutX="-369.0" prefHeight="584.0" prefWidth="775.0" styleClass="view-pane" stylesheets="@../Utils/Style.css" translateX="-10.0" />
+               </children>
+            </Pane>
          </children></StackPane>
-      <AnchorPane fx:id="mainPain" layoutX="76.0" layoutY="26.0" prefHeight="584.0" prefWidth="424.0" styleClass="mpane1" stylesheets="@../Utils/Style.css" />
+      <AnchorPane fx:id="mainPain" layoutX="76.0" layoutY="26.0" prefHeight="584.0" prefWidth="355.0" styleClass="mpane1" stylesheets="@../Utils/Style.css" />
    </children>
 </AnchorPane>

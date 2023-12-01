@@ -1,6 +1,5 @@
 package frontend;
 
-
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -15,6 +14,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import models.Dictionary;
+
 import models.DictionaryManagement;
 import models.Word;
 
@@ -26,27 +27,18 @@ public class AddWController implements Initializable {
     @FXML
     AnchorPane addWpane;
     @FXML
-    TextArea inputDefText;
-    @FXML
     TextField inputText;
     @FXML
-    Button addConfirmBtn;
+    Button deleteBtn;
 
     String newWord, newExplain;
     boolean isInDictionary = false;
+
+
     @FXML
-    private void handleMouseClickAdd() {
-        Word word = DictionaryManagement.dictionaryLookup(newWord);
-        if (isInDictionary) {
-            String lookup = word.toString() + "\n" + newExplain;
-        } else {
-            //thêm newWord vào từ điển với newExplain
-        }
-        // DictionaryManagement.dictionaryExportToFile();
+    private void handleMouseClickDelete() {
+        deleteBtn.setVisible(false);
         inputText.setText("");
-        inputDefText.setText("");
-        addConfirmBtn.setVisible(false);
-        inputDefText.setEditable(false);
         ShareInfoAddWord.setNewWord("");
     }
 
@@ -56,6 +48,7 @@ public class AddWController implements Initializable {
         fadeTransition.setFromValue(0);
         fadeTransition.setToValue(1);
         fadeTransition.play();
+        deleteBtn.setVisible(false);
 
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(1000),
@@ -65,21 +58,17 @@ public class AddWController implements Initializable {
                         // Xử lý sự kiện sau khi đã chờ đợi 1 giây
                         newWord = inputText.getText().trim();
                         if (!newWord.equals("")) {
-                            System.out.println("New Word: " + newWord);
-                            inputDefText.setEditable(true);
-                            addConfirmBtn.setVisible(true);
-                            isInDictionary = DictionaryManagement.TFlookup(newWord);
-
-                            System.out.println(newWord);
-                            System.out.println(isInDictionary + " is");
-
+                            deleteBtn.setVisible(true);
+                            isInDictionary = (boolean) DictionaryManagement.isInDictionary(newWord);
+                            //xem xet bỏ điều kiện if else này, thay bằng shareInfoaddword.setnewword(newword);
                             if (isInDictionary) {
                                 ShareInfoAddWord.setNewWord(newWord);
                             }
+                            else {
+                                ShareInfoAddWord.setNewWord("");
+                            }
                         } else {
                             ShareInfoAddWord.setNewWord("");
-                            addConfirmBtn.setVisible(false);
-                            inputDefText.setEditable(false);
                         }
                     }
                 }));
@@ -95,13 +84,6 @@ public class AddWController implements Initializable {
                 if(inputText.getText().equals("Type your word")) {
                     inputText.setText("");
                 }
-            }
-        });
-
-        inputDefText.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                newExplain = inputDefText.getText();
             }
         });
 
