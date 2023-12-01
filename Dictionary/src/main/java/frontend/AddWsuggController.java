@@ -57,6 +57,7 @@ public class AddWsuggController implements Initializable, Listener {
         editBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                if(confEditBtn.isVisible()) return;
                 setDefaultGUI(true);
                 prevDef = defTextArea.getText();
             }

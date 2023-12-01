@@ -7,18 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyEvent;
-import models.APITranslate;
+import service.APITranslate;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import service.SpeechAPI;
+import service.T2SThread;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,15 +25,25 @@ public class TranslateController implements Initializable {
     @FXML
     Button change, translateBtn;
     @FXML
-    Button soundTarget, soundSource, deleteText;
+    Button soundTarget, soundSource, deleteText, copyTextBtn;
     @FXML
     Label labelTextIn, labelTranslate;
 
     @FXML
-    private void handleMouseClickSoundSource() {
+    private void handleMouseClickSoundSource() throws Exception {
         // văn bản vào:    inputString
+        T2SThread t2sThread = new T2SThread();
+        t2sThread.getSpeechFromTextThread(inputString, in);
         // phát âm thanh từ nhập vào
         System.out.println("Phát âm thanh source");
+    }
+
+    @FXML
+    private void handleMouseClickCopyBtn() {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(translateText.getText());
+        clipboard.setContent(content);
     }
 
     @FXML
@@ -48,10 +53,11 @@ public class TranslateController implements Initializable {
     }
 
     @FXML
-    private void handleMouseClickSoundTarget() {
+    private void handleMouseClickSoundTarget() throws Exception {
         // phát âm thanh văn bản đã dịch
         // translateString
-
+        T2SThread t2sThread = new T2SThread();
+        t2sThread.getSpeechFromTextThread(translateString, out);
         System.out.println("phát âm thanh target");
     }
 
@@ -101,7 +107,7 @@ public class TranslateController implements Initializable {
                     throw new RuntimeException(e);
                 }
                 System.out.println(translateString);
-                    translateText.setText(translateString);
+                translateText.setText(translateString);
             }
         });
     }
