@@ -13,7 +13,8 @@ module Module {
     requires okhttp3;
     requires client.sdk;
 
-
     opens frontend to javafx.fxml;
     exports frontend;
+    opens game.javafxwordle to javafx.fxml;
+    exports game.javafxwordle;
 }

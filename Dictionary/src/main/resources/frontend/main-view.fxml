@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="624.0" prefWidth="625.0" styleClass="main-screen" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.javafxwordle.MainController">
+
+    <stylesheets>
+        <URL value="@../game.javafxwordle/wordle.css" />
+    </stylesheets>
+
+        <VBox alignment="TOP_CENTER" layoutX="203.0" layoutY="23.0" minWidth="480.0">
+   
+            <HBox alignment="CENTER">
+                <padding>
+                    <Insets bottom="8" left="30" />
+                </padding>
+                <Pane>
+                    <padding>
+                        <Insets right="7" />
+                    </padding>
+                    <ImageView fx:id="githubIcon" fitHeight="32" fitWidth="32" />
+                </Pane>
+                <Pane>
+                    <ImageView fx:id="helpIcon" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#showHelp">
+               <image>
+                  <Image url="@../Utils/icons/help.png" />
+               </image></ImageView>
+                </Pane>
+                <HBox fx:id="titleHBox" alignment="CENTER" prefHeight="50.0">
+                    <padding>
+                        <Insets bottom="8" left="27" right="30" />
+                    </padding>
+                </HBox>
+                <Pane>
+                    <ImageView fx:id="restartIcon" fitHeight="40" fitWidth="40" onMouseClicked="#restart">
+               <image>
+                  <Image url="@../Utils/images/icons8-restart-40.png" />
+               </image></ImageView>
+                </Pane>
+   
+               <padding>
+                   <Insets right="35" />
+               </padding>
+            </HBox>
+        </VBox>
+
+        <GridPane fx:id="gridPane" alignment="CENTER" hgap="5" layoutX="432.0" layoutY="82.0" onKeyPressed="#onKeyPressed" prefHeight="434.0" prefWidth="421.0" vgap="5" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="15.0" top="15.0" />
+            </BorderPane.margin>
+        </GridPane>
+
+        <VBox layoutX="13.0" layoutY="199.0" prefHeight="16.0" prefWidth="0.0">
+            <GridPane fx:id="keyboardRow1" alignment="BOTTOM_CENTER" hgap="4" vgap="2">
+                <padding>
+                    <Insets top="10.0" />
+                </padding>
+            </GridPane>
+
+            <GridPane fx:id="keyboardRow2" alignment="BOTTOM_CENTER" hgap="4" vgap="2" />
+
+            <GridPane fx:id="keyboardRow3" alignment="BOTTOM_CENTER" hgap="4" vgap="2">
+                <padding>
+                    <Insets bottom="10.0" />
+                </padding>
+            </GridPane>
+        </VBox>
+</AnchorPane>

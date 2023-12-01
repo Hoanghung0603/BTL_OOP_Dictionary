@@ -169,7 +169,8 @@ public class MenuController implements Initializable{
         GameBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                isInSearchFunction = false;
+                showView("main-view.fxml");
             }
         });
 
