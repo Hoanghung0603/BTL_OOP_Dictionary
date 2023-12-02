@@ -131,5 +131,15 @@
             </ImageView>
          </children>
       </StackPane>
+      <Label fx:id="sugLabel" layoutX="36.0" layoutY="65.0" prefHeight="30.0" prefWidth="121.0" styleClass="searchW-textin" stylesheets="@../Utils/Style.css" text="Did you mean:" textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="correctWord" layoutX="158.0" layoutY="65.0" onMouseClicked="#handleMouseClickCorrectWordLabel" prefHeight="30.0" prefWidth="171.0" styleClass="searchW-textin" stylesheets="@../Utils/Style.css" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
