@@ -44,6 +44,7 @@ public class MenuGameController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 showView("main-view.fxml");
+
                 Button quitBtn = new Button();
                 quitBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
@@ -55,8 +56,8 @@ public class MenuGameController implements Initializable {
                 Pane pane = (Pane) temp.getChildren().getLast();
                 pane.getChildren().add(quitBtn);
 
-                gamePane.getChildren().getFirst().setTranslateX(0);
-                gamePane.getChildren().getFirst().setTranslateY(0);
+                gamePane.getChildren().getFirst().setTranslateX(-70);
+                gamePane.getChildren().getFirst().setTranslateY(-12);
             }
         });
 

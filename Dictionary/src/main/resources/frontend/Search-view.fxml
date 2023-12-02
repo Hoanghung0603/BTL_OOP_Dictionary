@@ -140,6 +140,9 @@
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
+         <tooltip>
+            <Tooltip text="Click here to search this word" />
+         </tooltip>
       </Label>
    </children>
 </AnchorPane>
