@@ -17,6 +17,7 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 
+import java.io.InputStream;
 import java.util.*;
 import java.net.URL;
 import java.util.Scanner;
@@ -25,11 +26,11 @@ import java.io.FileNotFoundException;
 
 
 public class GameTracNghiemController implements Initializable {
-    private final String questionFilePath = "C:\\Users\\adsri\\Documents\\BTL_OOP_Dictionary\\Dictionary\\src\\main\\resources\\CauHoiTracNghiem.txt";
+    private final String questionFilePath = "Dictionary/src/main/resources/CauHoiTracNghiem.txt";
 
-    private final String multipleChoicePathFile = "C:\\Users\\adsri\\Documents\\BTL_OOP_Dictionary\\Dictionary\\src\\main\\resources\\LuaChonTracNghiem.txt";
+    private final String multipleChoicePathFile = "/resources/LuaChonTracNghiem.txt";
 
-    private final String answerFilePath = "C:\\Users\\adsri\\Documents\\BTL_OOP_Dictionary\\Dictionary\\src\\main\\resources\\DapAnTracNghiem.txt";
+    private final String answerFilePath = "DapAnTracNghiem.txt";
 
     @FXML
     private Button doneButton = new Button();
@@ -99,17 +100,12 @@ public class GameTracNghiemController implements Initializable {
      * đưa 50 câu hỏi vào
      */
     public void loadQuestion() {
-        try {
-            questionArray = new ArrayList<>();
-            File readQuestionFromFile = new File(questionFilePath);
-            Scanner sc = new Scanner(readQuestionFromFile);
-            while (sc.hasNextLine()) {
-                questionArray.add(sc.nextLine());
-            }
-        }
-        catch(FileNotFoundException e) {
-            System.out.println("Cannot load questions");
-            e.printStackTrace();
+        questionArray = new ArrayList<>();
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("CauHoiTracNghiem.txt");
+        //File readQuestionFromFile = new File(ClassLoader.getSystemResourceAsStream("CauHoiTracNghiem.txt"));
+        Scanner sc = new Scanner(inputStream);
+        while (sc.hasNextLine()) {
+            questionArray.add(sc.nextLine());
         }
     }
 
@@ -122,17 +118,12 @@ public class GameTracNghiemController implements Initializable {
         for (int i = 0; i < 10; i++) {
             chosenChoiceArray.add("no answer");
         }
-        try {
-            multipleChoiceArray = new ArrayList<>();
-            File readChoiceFromFile = new File(multipleChoicePathFile);
-            Scanner sc = new Scanner(readChoiceFromFile);
-            while (sc.hasNextLine()) {
-                multipleChoiceArray.add(sc.nextLine());
-            }
-        }
-        catch(FileNotFoundException e) {
-            System.out.println("Cannot load multiple choice");
-            e.printStackTrace();
+        multipleChoiceArray = new ArrayList<>();
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("LuaChonTracNghiem.txt");
+        // File readChoiceFromFile = new File(multipleChoicePathFile);
+        Scanner sc = new Scanner(inputStream);
+        while (sc.hasNextLine()) {
+            multipleChoiceArray.add(sc.nextLine());
         }
     }
 
@@ -140,17 +131,11 @@ public class GameTracNghiemController implements Initializable {
      * đọc 50 đáp án vào
      */
     public void loadAnswer() {
-        try {
-            answerArray = new ArrayList<>();
-            File readAnswerFromFile = new File(answerFilePath);
-            Scanner sc = new Scanner(readAnswerFromFile);
-            while (sc.hasNextLine()) {
-                answerArray.add(sc.nextLine());
-            }
-        }
-        catch(FileNotFoundException e) {
-            System.out.println("Cannot load answer");
-            e.printStackTrace();
+        answerArray = new ArrayList<>();
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("DapAnTracNghiem.txt");
+        Scanner sc = new Scanner(inputStream);
+        while (sc.hasNextLine()) {
+            answerArray.add(sc.nextLine());
         }
     }
 

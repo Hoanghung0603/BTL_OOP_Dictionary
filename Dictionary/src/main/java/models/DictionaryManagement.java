@@ -40,7 +40,7 @@ public class DictionaryManagement extends Dictionary {
 
     public static void insertFromFile() {
         try {
-            String content = readFile("C:\\Users\\adsri\\Documents\\BTL_OOP_Dictionary\\Dictionary\\src\\main\\resources\\data\\dictionary.txt", Charset.defaultCharset());
+            String content = readFile("src\\main\\resources\\data\\dictionary.txt", Charset.defaultCharset());
             String[] words = content.split("@");
             for (String word : words) {
                 String[] result = word.split("\r?\n", 2);
@@ -98,7 +98,7 @@ public class DictionaryManagement extends Dictionary {
             for (Word word : listWord) {
                 content += formatWordinDic(word);
             }
-            Files.write(Paths.get("C:\\Users\\adsri\\Documents\\BTL_OOP_Dictionary\\Dictionary\\src\\main\\resources\\data\\dictionary.txt"), content.getBytes());
+            Files.write(Paths.get("src\\main\\resources\\data\\dictionary.txt"), content.getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }
