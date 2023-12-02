@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="864.0" style="-fx-background-color: #030f0c;" stylesheets="@../Utils/Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.MenuController">
    <children>
-      <AnchorPane layoutX="14.0" layoutY="26.0" prefHeight="563.0" prefWidth="202.0" styleClass="menu-pane" stylesheets="@../Utils/Style.css">
+      <AnchorPane layoutX="14.0" layoutY="26.0" prefHeight="563.0" prefWidth="209.0" styleClass="menu-pane" stylesheets="@../Utils/Style.css">
          <children>
             <VBox layoutX="1.0" layoutY="139.0" prefHeight="370.0" prefWidth="81.0" spacing="20.0" stylesheets="@../Utils/Style.css">
                <children>
