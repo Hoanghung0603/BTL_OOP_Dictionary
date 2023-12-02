@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class MenuGameController implements Initializable {
     @FXML
-    Button wordleOption, mulChoiceOption;
+    Button wordleOption, mulChoiceOption, gameWordOption;
     @FXML
     AnchorPane gamePane;
 
@@ -55,16 +55,51 @@ public class MenuGameController implements Initializable {
                 Pane pane = (Pane) temp.getChildren().getLast();
                 pane.getChildren().add(quitBtn);
 
-                gamePane.getChildren().getFirst().setTranslateX(-71);
-                gamePane.getChildren().getFirst().setTranslateY(-11);
+                gamePane.getChildren().getFirst().setTranslateX(0);
+                gamePane.getChildren().getFirst().setTranslateY(0);
             }
         });
 
         mulChoiceOption.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                showView("trac-nghiem.fxml");
+                Button quitBtn = new Button();
+                quitBtn.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        gamePane.getChildren().clear();
+                    }
+                });
+                AnchorPane temp = (AnchorPane) gamePane.getChildren().getFirst();
+                Pane pane = (Pane) temp.getChildren().getLast();
+                pane.getChildren().add(quitBtn);
 
+                gamePane.getChildren().getFirst().setTranslateX(30);
+                gamePane.getChildren().getFirst().setTranslateY(30);
             }
         });
+
+        gameWordOption.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                showView("word-game.fxml");
+                Button quitBtn = new Button();
+                quitBtn.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        gamePane.getChildren().clear();
+                    }
+                });
+                AnchorPane temp = (AnchorPane) gamePane.getChildren().getFirst();
+                Pane pane = (Pane) temp.getChildren().getLast();
+                pane.getChildren().add(quitBtn);
+
+                gamePane.getChildren().getFirst().setTranslateX(30);
+                gamePane.getChildren().getFirst().setTranslateY(5);
+            }
+        });
+
+
     }
 }
