@@ -38,7 +38,7 @@ public class FavouriteWord implements File {
             for (String word : favoriteWord) {
                 content += word + "\n";
             }
-            Files.write(Paths.get("src\\main\\resources\\data\\favourite.txt"), content.getBytes());
+            Files.write(Paths.get("C:\\Users\\adsri\\Documents\\BTL_OOP_Dictionary\\Dictionary\\src\\main\\resources\\data\\favourite.txt"), content.getBytes());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

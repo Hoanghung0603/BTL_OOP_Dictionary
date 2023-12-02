@@ -1,6 +1,5 @@
 package TracNghiem;
 
-import TracNghiem.GameTracNghiemController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,7 +12,7 @@ import models.Word;
 import java.net.URL;
 import java.util.*;
 
-public class WordGame extends GameTracNghiemController {
+public class WordGameController extends GameTracNghiemController {
     @FXML
     private TextField input;
 
@@ -73,6 +72,7 @@ public class WordGame extends GameTracNghiemController {
 
         HashSet<Character> usedChar = new HashSet<>();
 
+        // Set nút 1
         c = (char)(generates.nextInt(26) + 'A');
         while (usedChar.contains(c)) {
             c = (char)(generates.nextInt(26) + 'A');
@@ -86,6 +86,7 @@ public class WordGame extends GameTracNghiemController {
             }
         });
 
+        //Set nút 2
         c = (char)(generates.nextInt(26) + 'A');
         while (usedChar.contains(c)) {
             c = (char)(generates.nextInt(26) + 'A');
@@ -99,11 +100,13 @@ public class WordGame extends GameTracNghiemController {
             }
         });
 
+        //Set nút 3
         int num = generates.nextInt(4);
         while (usedChar.contains(vowels[num])) {
             num = generates.nextInt(4);
         }
         thirdChar.setText(String.valueOf(vowels[num]));
+        usedChar.add(vowels[num]);
         thirdChar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -111,11 +114,13 @@ public class WordGame extends GameTracNghiemController {
             }
         });
 
+        //Set nút 4
         num = generates.nextInt(4);
         while (usedChar.contains(vowels[num])) {
             num = generates.nextInt(4);
         }
         fourthChar.setText(String.valueOf(vowels[num]));
+        usedChar.add(vowels[num]);
         fourthChar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -123,6 +128,7 @@ public class WordGame extends GameTracNghiemController {
             }
         });
 
+        //Set nút 5
         c = (char)('A' + generates.nextInt(26));
         while (usedChar.contains(c)) {
             c = (char)('A' + generates.nextInt(26));
@@ -136,6 +142,7 @@ public class WordGame extends GameTracNghiemController {
             }
         });
 
+        //Set nút 6
         c = (char)('A' + generates.nextInt(26));
         while (usedChar.contains(c)) {
             c = (char)('A' + generates.nextInt(26));
@@ -150,13 +157,13 @@ public class WordGame extends GameTracNghiemController {
         });
 
 
+        //Set nút bắt buộc
         c = (char)('A' + generates.nextInt(26));
         while (usedChar.contains(c)) {
             c = (char)('A' + generates.nextInt(26));
         }
         usedChar.add(c);
         compulsoryChar.setText(String.valueOf(c));
-
         compulsoryChar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -181,7 +188,7 @@ public class WordGame extends GameTracNghiemController {
                 String answer = input.getText();
                 Word lookUp = models.DictionaryManagement.dictionaryLookup(answer);
 
-                if (lookUp.getWordExplain().equals("")) {
+                if (lookUp.getWordTarget().equals("")) {
                     showAlertInfo("No word found", "This word is not already existed");
                     input.clear();
                     return;
@@ -197,20 +204,17 @@ public class WordGame extends GameTracNghiemController {
                     input.clear();
                     return;
                 }
-
-                if (!lookUp.getWordExplain().equals("")) {
-                    point += answer.length();
-                    Label word = new Label(answer);
-                    wordAdded.getChildren().add(word);
-                    showAlertInfo("Appropriate word", "Good job");
-                    Point.setText("Point = " + point);
-                    if (numOfWord == 0) {
-                        howManyWordAdded.setText("You have found " + ++numOfWord + " word");
-                    } else {
-                        howManyWordAdded.setText("You have found " + ++numOfWord + " words");
-                    }
-                    input.clear();
+                point += answer.length();
+                Label word = new Label(answer);
+                wordAdded.getChildren().add(word);
+                showAlertInfo("Appropriate word", "Good job");
+                Point.setText("Point = " + point);
+                if (numOfWord == 0) {
+                    howManyWordAdded.setText("You have found " + ++numOfWord + " word");
+                } else {
+                    howManyWordAdded.setText("You have found " + ++numOfWord + " words");
                 }
+                input.clear();
             }
         });
     }
