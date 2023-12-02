@@ -114,10 +114,10 @@ public class HelpWindow {
         Scene scene = new Scene(root, 500, 515);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         scene.getStylesheets()
-                .add(Objects.requireNonNull(ScoreWindow.class.getResource("wordle.css"))
+                .add(Objects.requireNonNull(ScoreWindow.class.getResource("/game.javafxwordle/wordle.css"))
                         .toExternalForm());
 
-        stage.getIcons().add(new Image(Objects.requireNonNull(HelpWindow.class.getResourceAsStream("images/help.png"))));
+        //stage.getIcons().add(new Image(Objects.requireNonNull(HelpWindow.class.getResourceAsStream("Utils/icons/help.png"))));
         stage.setScene(scene);
         stage.showAndWait();
     }

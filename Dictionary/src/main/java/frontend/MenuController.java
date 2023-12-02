@@ -171,8 +171,8 @@ public class MenuController implements Initializable{
             public void handle(ActionEvent actionEvent) {
                 isInSearchFunction = false;
                 showView("main-view.fxml");
-                mainPain.getChildren().getFirst().setTranslateX(-62);
-                mainPain.getChildren().getFirst().setTranslateY(-10);
+                mainPain.getChildren().getFirst().setTranslateX(-71);
+                mainPain.getChildren().getFirst().setTranslateY(-11);
 
             }
         });

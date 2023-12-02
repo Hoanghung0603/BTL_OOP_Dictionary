@@ -69,7 +69,6 @@ public class MainController implements Initializable {
 
     @FXML
     protected void onKeyPressed(KeyEvent keyEvent) {
-        System.out.println("keypress khởi động tại hàm mainController");
         mainHelper.onKeyPressed(gridPane, keyboardRow1, keyboardRow2, keyboardRow3, keyEvent);
     }
 
