@@ -17,7 +17,7 @@
          <children>
             <VBox layoutX="1.0" layoutY="139.0" prefHeight="370.0" prefWidth="81.0" spacing="20.0" stylesheets="@../Utils/Style.css">
                <children>
-                  <Button fx:id="searchBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="search">
+                  <Button fx:id="searchBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="53.0" prefWidth="61.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="search">
                      <graphic>
                         <ImageView fitHeight="41.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -32,7 +32,7 @@
                            </font>
                         </Tooltip>
                      </tooltip></Button>
-                  <Button fx:id="AddBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="57.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="addw">
+                  <Button fx:id="AddBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="57.0" prefWidth="62.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="addw">
                      <graphic>
                         <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -47,7 +47,7 @@
                            </font>
                         </Tooltip>
                      </tooltip></Button>
-                  <Button fx:id="TranslateBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="60.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="translate">
+                  <Button fx:id="TranslateBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="59.0" prefWidth="63.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="translate">
                      <graphic>
                         <ImageView fitHeight="45.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -62,7 +62,7 @@
                            </font>
                         </Tooltip>
                      </tooltip></Button>
-                  <Button fx:id="GameBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="61.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="game">
+                  <Button fx:id="GameBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="61.0" prefWidth="62.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="game">
                      <graphic>
                         <ImageView fitHeight="38.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -77,7 +77,7 @@
                            </font>
                         </Tooltip>
                      </tooltip></Button>
-                  <Button fx:id="QuitBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="62.0" prefWidth="58.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="quit">
+                  <Button fx:id="QuitBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="62.0" prefWidth="63.0" styleClass="menu-item" stylesheets="@../Utils/Style.css" text="quit">
                      <graphic>
                         <ImageView fitHeight="39.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>

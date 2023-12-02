@@ -170,9 +170,22 @@ public class MenuController implements Initializable{
             @Override
             public void handle(ActionEvent actionEvent) {
                 isInSearchFunction = false;
-                showView("main-view.fxml");
-                mainPain.getChildren().getFirst().setTranslateX(-71);
-                mainPain.getChildren().getFirst().setTranslateY(-11);
+                showView("Menu-game.fxml");
+
+//                showView("main-view.fxml");
+//                Button quitBtn = new Button();
+//                quitBtn.setOnAction(new EventHandler<ActionEvent>() {
+//                    @Override
+//                    public void handle(ActionEvent actionEvent) {
+//                        mainPain.getChildren().clear();
+//                    }
+//                });
+//                AnchorPane temp = (AnchorPane) mainPain.getChildren().getFirst();
+//                Pane pane = (Pane) temp.getChildren().getLast();
+//                pane.getChildren().add(quitBtn);
+//
+//                mainPain.getChildren().getFirst().setTranslateX(-71);
+//                mainPain.getChildren().getFirst().setTranslateY(-11);
 
             }
         });
