@@ -10,19 +10,21 @@ import javafx.scene.layout.HBox;
 
 import java.io.*;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
 
 public class MainController implements Initializable {
-    public static final ArrayList<String> winningWords = new ArrayList<>();
-    public static final ArrayList<String> dictionaryWords = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeWordLists();
         this.createUI();
-        this.getRandomWord();
+        try {
+            this.getRandomWord();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         Platform.runLater(() -> {
             gridPane.requestFocus();
@@ -68,11 +70,11 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    protected void onKeyPressed(KeyEvent keyEvent) {
+    protected void onKeyPressed(KeyEvent keyEvent) throws SQLException {
         mainHelper.onKeyPressed(gridPane, keyboardRow1, keyboardRow2, keyboardRow3, keyEvent);
     }
 
-    public void getRandomWord() {
+    public void getRandomWord() throws SQLException {
         mainHelper.getRandomWord();
     }
 
@@ -95,18 +97,6 @@ public class MainController implements Initializable {
         System.exit(0);
     }
 
-    public void initializeWordLists() {
-        InputStream winning_words = getClass().getResourceAsStream("/winning-words.txt");
-        InputStream dictionary = getClass().getResourceAsStream("/dictionary.txt");
-        if(winning_words == null) System.out.println("CHWA LOAD FILE");
-        if(dictionary == null) System.out.println("CUNG CHUA LOAD DIC");
-        if (winning_words != null && dictionary != null) {
-            Stream<String> winning_words_lines = new BufferedReader(new InputStreamReader(winning_words)).lines();
-            winning_words_lines.forEach(winningWords::add);
-            Stream<String> dictionary_lines = new BufferedReader(new InputStreamReader(dictionary)).lines();
-            dictionary_lines.forEach(dictionaryWords::add);
-        } else {
-            System.out.println("Error!! Fail to load file");
-        }
-    }
+
 }
+

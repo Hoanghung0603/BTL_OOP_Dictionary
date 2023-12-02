@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import models.Dictionary;
 import models.DictionaryCommandline;
+import models.DictionaryManagement;
 import models.Word;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
@@ -195,6 +196,7 @@ public class SearchController implements Initializable {
                 isShowingFavWords = false;
                 sourceWord = inputWord.getText().trim();
                 deleteBtn.setVisible(true);
+                System.out.println(DictionaryManagement.autoCorrect(sourceWord));
                 if (!sourceWord.equals("")) {
                     suggInputWord();
                 } else {

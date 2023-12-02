@@ -12,13 +12,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
+import usingDatabase.MainModel;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
-
-import static game.javafxwordle.MainController.dictionaryWords;
-import static game.javafxwordle.MainController.winningWords;
 
 public class MainHelper {
 
@@ -212,7 +211,7 @@ public class MainHelper {
     }
 
     public void onKeyPressed(GridPane gridPane, GridPane keyboardRow1, GridPane keyboardRow2,
-                             GridPane keyboardRow3, KeyEvent keyEvent) {
+                             GridPane keyboardRow3, KeyEvent keyEvent) throws SQLException {
         if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
             onBackspacePressed(gridPane);
         } else if (keyEvent.getCode().isLetterKey()) {
@@ -263,7 +262,7 @@ public class MainHelper {
     }
 
     private void onEnterPressed(GridPane gridPane, GridPane keyboardRow1, GridPane keyboardRow2,
-                                GridPane keyboardRow3) {
+                                GridPane keyboardRow3) throws SQLException {
         if (CURRENT_ROW <= MAX_ROW && CURRENT_COLUMN == MAX_COLUMN) {
             String guess = getWordFromCurrentRow(gridPane).toLowerCase();
             if (guess.equals(winningWord)) {
@@ -292,16 +291,16 @@ public class MainHelper {
         }
     }
 
-    public void getRandomWord() {
-        winningWord = winningWords.get(new Random().nextInt(winningWords.size()));
+    public void getRandomWord() throws SQLException {
+        winningWord = MainModel.getWordleWord();
     }
 
-    private boolean isValidGuess(String guess) {
-        return binarySearch(winningWords, guess) || binarySearch(dictionaryWords, guess);
+    private boolean isValidGuess(String guess) throws SQLException {
+        return MainModel.checkWordleWordExists(guess);
     }
 
     public void resetGame(GridPane gridPane, GridPane keyboardRow1, GridPane keyboardRow2,
-                          GridPane keyboardRow3) {
+                          GridPane keyboardRow3) throws SQLException {
         getRandomWord();
         Label label;
         for (Node child : gridPane.getChildren())
@@ -342,7 +341,13 @@ public class MainHelper {
         RotateTransition rotateTransition = new RotateTransition(Duration.millis(500), restartIcon);
         rotateTransition.setFromAngle(0);
         rotateTransition.setToAngle(360);
-        rotateTransition.setOnFinished(ae -> resetGame(gridPane, keyboardRow1, keyboardRow2, keyboardRow3));
+        rotateTransition.setOnFinished(ae -> {
+            try {
+                resetGame(gridPane, keyboardRow1, keyboardRow2, keyboardRow3);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
         rotateTransition.play();
     }
 
