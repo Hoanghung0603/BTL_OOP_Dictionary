@@ -13,7 +13,7 @@ import static models.Dictionary.recentWord;
 public class FavouriteWord implements File {
     @Override
     public void insertFromFile() {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/main/resources/data/favourite.txt"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\adsri\\Documents\\BTL_OOP_Dictionary\\Dictionary\\src\\main\\resources\\data\\dictionary.txt"))) {
             String line;
             int i = 0;
             while ((line = bufferedReader.readLine()) != null) {

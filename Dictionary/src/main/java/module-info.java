@@ -12,9 +12,12 @@ module Module {
     requires com.google.gson;
     requires okhttp3;
     requires client.sdk;
+    requires java.sql;
 
     opens frontend to javafx.fxml;
     exports frontend;
-    opens game.javafxwordle to javafx.fxml;
+    opens TracNghiem to javafx.fxml;
+    exports TracNghiem;
     exports game.javafxwordle;
+    opens game.javafxwordle to javafx.fxml;
 }
