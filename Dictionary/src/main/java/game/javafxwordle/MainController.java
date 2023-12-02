@@ -1,17 +1,16 @@
 package game.javafxwordle;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.image.Image;
 
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
 
@@ -24,15 +23,15 @@ public class MainController implements Initializable {
         initializeWordLists();
         this.createUI();
         this.getRandomWord();
-//        try {
-//            this.helpIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("icons/help.png"))));
-//            //this.restartIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("Utils/images/icons8-restart-40.png"))));
-//        } catch (NullPointerException e) {
-//            // Xử lý ngoại lệ, ví dụ: hiển thị thông báo lỗi hoặc thực hiện hành động phù hợp.
-//            e.printStackTrace();
-//        }
 
-        this.gridRequestFocus();
+        Platform.runLater(() -> {
+            gridPane.requestFocus();
+            if (gridPane.isFocused()) {
+                System.out.println("focusing grid");
+            } else {
+                System.out.println("focus fail");
+            }
+        });
     }
 
     private final MainHelper mainHelper = MainHelper.getInstance();
@@ -66,10 +65,6 @@ public class MainController implements Initializable {
 
     public void createKeyboard() {
         mainHelper.createKeyboard(keyboardRow1, keyboardRow2, keyboardRow3);
-    }
-
-    public void gridRequestFocus() {
-        gridPane.requestFocus();
     }
 
     @FXML
@@ -111,7 +106,7 @@ public class MainController implements Initializable {
             Stream<String> dictionary_lines = new BufferedReader(new InputStreamReader(dictionary)).lines();
             dictionary_lines.forEach(dictionaryWords::add);
         } else {
-            System.exit(0);
+            System.out.println("Error!! Fail to load file");
         }
     }
 }

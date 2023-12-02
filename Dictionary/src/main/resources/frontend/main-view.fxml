@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="624.0" prefWidth="625.0" styleClass="main-screen" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.javafxwordle.MainController">
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="610.0" prefWidth="844.0" style="-fx-border-width: 4; -fx-border-color: #006270;" styleClass="main-screen" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.javafxwordle.MainController">
 
     <stylesheets>
         <URL value="@../game.javafxwordle/wordle.css" />
@@ -53,13 +53,13 @@
             </HBox>
         </VBox>
 
-        <GridPane fx:id="gridPane" alignment="CENTER" hgap="5" layoutX="432.0" layoutY="82.0" onKeyPressed="#onKeyPressed" prefHeight="434.0" prefWidth="421.0" vgap="5" BorderPane.alignment="CENTER">
+        <GridPane fx:id="gridPane" alignment="CENTER" hgap="5" layoutX="449.0" layoutY="80.0" onKeyPressed="#onKeyPressed" prefHeight="482.0" prefWidth="380.0" vgap="5" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets bottom="15.0" top="15.0" />
             </BorderPane.margin>
         </GridPane>
 
-        <VBox layoutX="13.0" layoutY="199.0" prefHeight="16.0" prefWidth="0.0">
+        <VBox layoutX="14.0" layoutY="248.0" prefHeight="16.0" prefWidth="14.0">
             <GridPane fx:id="keyboardRow1" alignment="BOTTOM_CENTER" hgap="4" vgap="2">
                 <padding>
                     <Insets top="10.0" />
@@ -74,4 +74,5 @@
                 </padding>
             </GridPane>
         </VBox>
+   <AnchorPane layoutX="769.0" layoutY="37.0" prefHeight="26.0" prefWidth="39.0" style="-fx-background-color: #000000;" />
 </AnchorPane>
