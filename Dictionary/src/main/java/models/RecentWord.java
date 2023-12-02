@@ -13,7 +13,7 @@ import static models.Dictionary.recentWord;
 public class RecentWord implements File {
     @Override
     public void insertFromFile() {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src/main/resources/data/recentword.txt"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("\\src\\main\\resources\\data\\dictionary.txt"))) {
             String line;
             int i = 0;
             while ((line = bufferedReader.readLine()) != null) {

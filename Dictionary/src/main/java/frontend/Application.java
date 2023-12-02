@@ -26,7 +26,6 @@ public class Application extends javafx.application.Application {
         DictionaryManagement dictionaryManagement = new DictionaryManagement();
         DictionaryManagement.insertData();
 
-
         Parent root = FXMLLoader.load(getClass().getResource("/frontend/Menu-view.fxml"));
         root.setStyle("-fx-background-color: TRANSPARENT");
 

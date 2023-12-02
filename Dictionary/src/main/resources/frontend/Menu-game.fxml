@@ -8,10 +8,11 @@
 
 <AnchorPane prefHeight="584.0" prefWidth="798.0" styleClass="searchW-pane" stylesheets="@../Utils/Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.MenuGameController">
    <children>
-      <ButtonBar layoutX="107.0" layoutY="224.0" prefHeight="159.0" prefWidth="451.0">
+      <ButtonBar layoutX="195.0" layoutY="227.0" prefHeight="159.0" prefWidth="352.0">
         <buttons>
-          <Button fx:id="wordleOption" mnemonicParsing="false" text="wordle" />
             <Button fx:id="mulChoiceOption" mnemonicParsing="false" text="multiple Choice" />
+            <Button fx:id="gameWordOption" layoutX="253.0" layoutY="77.0" mnemonicParsing="false" text="Spelling Word" />
+          <Button fx:id="wordleOption" mnemonicParsing="false" text="wordle" />
         </buttons>
       </ButtonBar>
       <Label alignment="CENTER" layoutX="243.0" layoutY="22.0" prefHeight="50.0" prefWidth="256.0" styleClass="dictionary" stylesheets="@../Utils/Style.css" text="Game">

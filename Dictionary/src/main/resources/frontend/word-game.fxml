@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="624.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TracNghiem.WordGameController">
+    <children>
+        <Pane layoutX="17.0" layoutY="4.0" prefHeight="595.0" prefWidth="666.0" style="-fx-background-color: #009394; -fx-background-radius: 30;">
+            <children>
+                <Button fx:id="firstChar" layoutX="104.0" layoutY="186.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="A" />
+                <TextField fx:id="input" layoutX="55.0" layoutY="74.0" prefHeight="74.0" prefWidth="280.0" promptText="Input here" style="-fx-background-color: TRANSPARENt;">
+                    <font>
+                        <Font size="32.0" />
+                    </font>
+                </TextField>
+                <VBox fx:id="wordAdded" layoutX="387.0" layoutY="74.0" prefHeight="503.0" prefWidth="260.0" style="-fx-background-color: #FFFFFF;">
+                    <children>
+                        <Label fx:id="howManyWordAdded" prefHeight="35.0" prefWidth="284.0" text="You have found 0 word">
+                            <font>
+                                <Font size="19.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <Label fx:id="Point" layoutX="384.0" layoutY="14.0" prefHeight="35.0" prefWidth="266.0" style="-fx-background-color: #FFFFFF;" text="Point: 0 ">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Label>
+                <Button fx:id="secondChar" layoutX="208.0" layoutY="186.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="A" />
+                <Button fx:id="thirdChar" layoutX="51.0" layoutY="278.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="A" />
+                <Button fx:id="fourthChar" layoutX="104.0" layoutY="372.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="A" />
+                <Button fx:id="fifthChar" layoutX="208.0" layoutY="372.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="A" />
+                <Button fx:id="sixChar" layoutX="260.0" layoutY="278.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="A" />
+                <Button fx:id="compulsoryChar" layoutX="155.0" layoutY="278.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" text="A" />
+                <Button fx:id="delete" layoutX="51.0" layoutY="454.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF;" text="Delete" />
+                <Button fx:id="enter" layoutX="260.0" layoutY="454.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF;" text="Enter" />
+            </children></Pane>
+    </children>
+</AnchorPane>
