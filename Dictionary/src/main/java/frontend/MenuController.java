@@ -139,7 +139,7 @@ public class MenuController implements Initializable{
         TranslateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (isInSearchFunction) {
+                if (isInSearchFunction || isInGameFunction) {
                     isInSearchFunction = false;
                     isInGameFunction = false;
                     showView("translate-view.fxml");
@@ -176,10 +176,10 @@ public class MenuController implements Initializable{
             @Override
             public void handle(ActionEvent actionEvent) {
                 if (!isInGameFunction) {
-                    isInSearchFunction = true;
+                    isInSearchFunction = false;
+                    isInGameFunction = true;
                     showView("Menu-game.fxml");
                 }
-
             }
         });
 
