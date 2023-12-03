@@ -85,11 +85,11 @@ public class DictionaryManagement extends Dictionary {
                 wordSpelling = "";
             }
         }  else {
-                String[] split = result[0].split("\t", 2);
-                wordTarget = split[0];
-                wordExplain = split[1];
+            String[] split = result[0].split("\t", 2);
+            wordTarget = split[0];
+            wordExplain = split[1];
         }
-            return new Word(wordTarget.trim(), wordSpelling.trim(), wordExplain.trim());
+        return new Word(wordTarget.trim(), wordSpelling.trim(), wordExplain.trim());
     }
 
     public static void exportToFile() {
@@ -342,7 +342,7 @@ public class DictionaryManagement extends Dictionary {
 
     public static void main(String[] args) throws IOException {
         insertData();
-       System.out.println(autoCorrect("honeye"));
+        System.out.println(autoCorrect("honeye"));
     }
 
 }
