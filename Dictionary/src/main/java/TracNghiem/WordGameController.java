@@ -1,5 +1,7 @@
 package TracNghiem;
 
+import javafx.animation.AnimationTimer;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,6 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Pane;
+import javafx.animation.FadeTransition;
+
+import javafx.util.Duration;
 import models.DictionaryManagement;
 import models.Word;
 
@@ -35,13 +40,7 @@ public class WordGameController extends GameTracNghiemController {
     private Label Point, howManyWordAdded;
 
     @FXML
-    private Label right = new Label("Good job");
-
-    @FXML
-    private Label noWord = new Label("No word found");
-
-    @FXML
-    private Label noCompulsoryChar = new Label("No compulsory word");
+    private Label result = new Label("Result");
 
     private ArrayList<String> listWordAdded;
 
@@ -51,7 +50,7 @@ public class WordGameController extends GameTracNghiemController {
 
     public boolean alreadyAdded(String ans) {
         for (String fromList : listWordAdded) {
-            if (fromList.equals(listWordAdded)) {
+            if (fromList.equals(ans)) {
                 return true;
             }
         }
@@ -69,6 +68,24 @@ public class WordGameController extends GameTracNghiemController {
 
     public boolean containAEIOU(char c) {
         return (c == 'A' || c == 'E' || c == 'U' || c == 'I' || c == 'O');
+    }
+
+    public void announceResult(String results) {
+        result.setText(results);
+        result.setStyle("-fx-background-color: black; -fx-text-fill: white; -fx-padding: 10px;");
+
+        // Create fade animation
+        FadeTransition fade = new FadeTransition(Duration.seconds(3), result);
+        fade.setFromValue(1.0);
+        fade.setToValue(0.0);
+
+        // Play animation when label shown
+        fade.setOnFinished(event -> result.setVisible(false));
+        result.setVisible(true);
+        fade.play();
+
+        fade.setNode(result);
+        fade.play();
     }
 
 
@@ -186,7 +203,7 @@ public class WordGameController extends GameTracNghiemController {
                 }
             }
         });
-
+        result.setVisible(false);
         listWordAdded = new ArrayList<>();
         enter.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -194,23 +211,23 @@ public class WordGameController extends GameTracNghiemController {
                 String answer = input.getText();
                 String searchWord = answer.toLowerCase();
                 if (!hasCompulsoryChar(answer)) {
-                    showAlertInfo("Inappropriate word", "No compulsory character found");
+                    announceResult("No compulsory character");
                     input.clear();
                 }
 
                 else if(alreadyAdded(answer)) {
-                    showAlertInfo("Inappropriate word", "Already added");
+                    announceResult("Already add");
                     input.clear();
                 }
                 else if (DictionaryManagement.isInDictionary(searchWord) == false) {
-                    showAlertInfo("No word found", "This word is not already existed");
+                    announceResult("This word is not already existed");
                     input.clear();
                 }
                 else {
                     point += answer.length();
                     Label word = new Label(answer);
                     wordAdded.getChildren().add(word);
-                    showAlertInfo("Appropriate word", "Good job");
+                    announceResult("Good job");
                     Point.setText("Point = " + point);
                     listWordAdded.add(answer);
                     if (numOfWord == 0) {

@@ -28,7 +28,7 @@
                         <Button fx:id="button10" layoutX="450.0" layoutY="10.0" mnemonicParsing="false" styleClass="nav-button" stylesheets="@../game.javafxwordle/multipleChoice.css" text="Q10" />
                     </children>
                 </HBox>
-                <Button fx:id="retryButton" layoutX="175.0" layoutY="70.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="69.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
+                <Button fx:id="retryButton" layoutX="157.0" layoutY="70.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="69.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -50,7 +50,7 @@
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Button fx:id="doneButton" layoutX="417.0" layoutY="73.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="44.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
+                <Button fx:id="doneButton" layoutX="319.0" layoutY="73.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="44.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
                <graphic>
                   <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,7 +58,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="retryButton1" layoutX="285.0" layoutY="70.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="69.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
+            <Button layoutX="230.0" layoutY="70.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="69.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                      <image>

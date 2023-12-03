@@ -49,6 +49,7 @@
                </styleClass></Button>
                 <Button fx:id="delete" layoutX="51.0" layoutY="454.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF;" text="Delete" />
                 <Button fx:id="enter" layoutX="260.0" layoutY="454.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="79.0" style="-fx-background-color: #FFFFFF;" text="Enter" />
+            <Label fx:id="result" layoutX="69.0" layoutY="32.0" prefHeight="35.0" prefWidth="250.0" style="-fx-background-color: #111111; -fx-background-radius: 10; -fx-alignment: CENTER;" text="Label" textFill="WHITE" />
             </children></Pane>
     </children>
 </AnchorPane>
