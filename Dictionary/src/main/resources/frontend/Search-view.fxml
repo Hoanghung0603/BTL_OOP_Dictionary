@@ -144,9 +144,9 @@
             <Tooltip text="Click here to search this word" />
          </tooltip>
       </Label>
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="24.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: TRANSPARANT;" text="Button">
+      <Button fx:id="resetBtn" contentDisplay="GRAPHIC_ONLY" layoutX="24.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#handleMouseClickResetBtn" style="-fx-background-color: TRANSPARENT;" text="Button">
          <graphic>
-            <ImageView fx:id="resetBtn" fitHeight="42.0" fitWidth="42.0" onMouseClicked="#handleclick" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Utils/icons/icons8-restart-40.png" />
                </image>
