@@ -16,6 +16,8 @@ module Module {
 
     opens frontend to javafx.fxml;
     exports frontend;
-    opens game.javafxwordle to javafx.fxml;
+    opens TracNghiem to javafx.fxml;
+    exports TracNghiem;
     exports game.javafxwordle;
+    opens game.javafxwordle to javafx.fxml;
 }
