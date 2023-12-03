@@ -97,7 +97,7 @@ public class MenuGameController implements Initializable {
                 showView("word-game.fxml");
                 Button quitBtn = new Button();
                 quitBtn.setTranslateX(175);
-                quitBtn.setTranslateY(435);
+                quitBtn.setTranslateY(447);
                 quitBtn.setPrefSize(44,46);
                 quitBtn.setStyle("-fx-background-color: TRANSPARENT;");
                 Image image = new Image(getClass().getResource("/Utils/icons/home-button.png").toExternalForm());
