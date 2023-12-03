@@ -12,6 +12,10 @@
     -fx-background-color: #fdc859;
 }
 
+.hex-button:pressed {
+    -fx-opacity: 1.2;
+}
+
 
 .hex-complusoryButton {
     -fx-background-color: yellow;
@@ -25,5 +29,9 @@
 
 .hex-complusorybutton:focused {
     -fx-background-color: #fdc859;
+}
+
+.hex-complusorybutton:pressed {
+    -fx-opacity: 1.2;
 }
 

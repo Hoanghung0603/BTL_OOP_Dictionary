@@ -18,6 +18,7 @@
     -fx-background-color: #B9BABB;
     -fx-border-color: black;
     -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-alignment: center;
 }
 
 .choice-box:hover {
@@ -36,6 +37,23 @@
     -fx-background-color: yellow;
     -fx-border-color: black;
     -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-alignment: center;
+}
+
+.choice-box-right {
+    -fx-padding: 10px 0 10px 10px;
+    -fx-background-color: green;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-alignment: center;
+}
+
+.choice-box-wrong {
+    -fx-padding: 10px 0 10px 10px;
+    -fx-background-color: red;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-alignment: center;
 }
 
 

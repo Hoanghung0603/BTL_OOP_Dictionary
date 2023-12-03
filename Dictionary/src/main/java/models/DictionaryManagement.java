@@ -342,7 +342,7 @@ public class DictionaryManagement extends Dictionary {
 
     public static void main(String[] args) throws IOException {
         insertData();
-       System.out.println(autoCorrect("honeye"));
+       System.out.println(isInDictionary("hello"));
     }
 
 }

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Pane;
 import models.DictionaryManagement;
 import models.Word;
@@ -66,6 +67,10 @@ public class WordGameController extends GameTracNghiemController {
         return false;
     }
 
+    public boolean containAEIOU(char c) {
+        return (c == 'A' || c == 'E' || c == 'U' || c == 'I' || c == 'O');
+    }
+
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -75,7 +80,7 @@ public class WordGameController extends GameTracNghiemController {
 
         // Set nút 1
         c = (char)(generates.nextInt(26) + 'A');
-        while (usedChar.contains(c)) {
+        while (usedChar.contains(c) || containAEIOU(c)) {
             c = (char)(generates.nextInt(26) + 'A');
         }
         usedChar.add(c);
@@ -89,7 +94,7 @@ public class WordGameController extends GameTracNghiemController {
 
         //Set nút 2
         c = (char)(generates.nextInt(26) + 'A');
-        while (usedChar.contains(c)) {
+        while (usedChar.contains(c) || containAEIOU(c)) {
             c = (char)(generates.nextInt(26) + 'A');
         }
         usedChar.add(c);
@@ -131,7 +136,7 @@ public class WordGameController extends GameTracNghiemController {
 
         //Set nút 5
         c = (char)('A' + generates.nextInt(26));
-        while (usedChar.contains(c)) {
+        while (usedChar.contains(c) || containAEIOU(c)) {
             c = (char)('A' + generates.nextInt(26));
         }
         usedChar.add(c);
@@ -145,7 +150,7 @@ public class WordGameController extends GameTracNghiemController {
 
         //Set nút 6
         c = (char)('A' + generates.nextInt(26));
-        while (usedChar.contains(c)) {
+        while (usedChar.contains(c) || containAEIOU(c)) {
             c = (char)('A' + generates.nextInt(26));
         }
         usedChar.add(c);
@@ -187,37 +192,35 @@ public class WordGameController extends GameTracNghiemController {
             @Override
             public void handle(ActionEvent actionEvent) {
                 String answer = input.getText();
-                DictionaryManagement check = new DictionaryManagement();
+                String searchWord = answer.toLowerCase();
                 if (!hasCompulsoryChar(answer)) {
                     showAlertInfo("Inappropriate word", "No compulsory character found");
                     input.clear();
-                    return;
                 }
 
-                if(alreadyAdded(answer)) {
+                else if(alreadyAdded(answer)) {
                     showAlertInfo("Inappropriate word", "Already added");
                     input.clear();
-                    return;
                 }
-
-                if (!check.isInDictionary(answer)) {
+                else if (DictionaryManagement.isInDictionary(searchWord) == false) {
                     showAlertInfo("No word found", "This word is not already existed");
                     input.clear();
-                    return;
+                }
+                else {
+                    point += answer.length();
+                    Label word = new Label(answer);
+                    wordAdded.getChildren().add(word);
+                    showAlertInfo("Appropriate word", "Good job");
+                    Point.setText("Point = " + point);
+                    listWordAdded.add(answer);
+                    if (numOfWord == 0) {
+                        howManyWordAdded.setText("You have found " + ++numOfWord + " word");
+                    } else {
+                        howManyWordAdded.setText("You have found " + ++numOfWord + " words");
+                    }
+                    input.clear();
                 }
 
-                point += answer.length();
-                Label word = new Label(answer);
-                wordAdded.getChildren().add(word);
-                showAlertInfo("Appropriate word", "Good job");
-                Point.setText("Point = " + point);
-                listWordAdded.add(answer);
-                if (numOfWord == 0) {
-                    howManyWordAdded.setText("You have found " + ++numOfWord + " word");
-                } else {
-                    howManyWordAdded.setText("You have found " + ++numOfWord + " words");
-                }
-                input.clear();
             }
         });
     }

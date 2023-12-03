@@ -59,6 +59,8 @@ public class GameTracNghiemController implements Initializable {
 
     private int currQuestion = 1;
 
+    private boolean isRunning;
+
 
     protected final int timeForAGame = 90;
 
@@ -80,6 +82,7 @@ public class GameTracNghiemController implements Initializable {
             seconds.set(seconds.get() - 1);
             timeLeft.setText("Time left: " + seconds.get() + " seconds");
             if (seconds.get() <= 0) {
+                isRunning = false;
                 setMark();
                 Alert result = alertInfo("Kết quả", "Số điểm là: " + point);
                 Platform.runLater(() -> {
@@ -157,24 +160,18 @@ public class GameTracNghiemController implements Initializable {
     }
 
     public void clearSelection() {
-        if (answerA.getStyleClass().contains("choice-box-selected")) {
-            answerA.getStyleClass().remove("choice-box-selected");
-            answerA.getStyleClass().add("choice-box");
-        }
+        answerA.getStyleClass().clear();
+        answerA.getStyleClass().add("choice-box");
 
-        if (answerB.getStyleClass().contains("choice-box-selected")) {
-            answerB.getStyleClass().remove("choice-box-selected");
-            answerB.getStyleClass().add("choice-box");
-        }
 
-        if (answerC.getStyleClass().contains("choice-box-selected")) {
-            answerC.getStyleClass().remove("choice-box-selected");
-            answerC.getStyleClass().add("choice-box");
-        }
-        if (answerD.getStyleClass().contains("choice-box-selected")) {
-            answerD.getStyleClass().remove("choice-box-selected");
-            answerD.getStyleClass().add("choice-box");
-        }
+        answerB.getStyleClass().clear();
+        answerB.getStyleClass().add("choice-box");
+
+        answerC.getStyleClass().clear();
+        answerC.getStyleClass().add("choice-box");
+
+        answerD.getStyleClass().clear();
+        answerD.getStyleClass().add("choice-box");
     }
 
 
@@ -182,6 +179,9 @@ public class GameTracNghiemController implements Initializable {
 
         needToSet.setOnAction(event -> {
             clearSelection();
+            if (!isRunning) {
+                showRightAndWrong(i);
+            }
             question.setText(questionArray.get(counter[i]));
             answerA.setText(multipleChoiceArray.get(4 * counter[i]));
             if (chosenChoiceArray.get(i).equals(answerA.getText())) {
@@ -234,6 +234,7 @@ public class GameTracNghiemController implements Initializable {
                     needToSet.getStyleClass().add("nav-button");
                     answerC.getStyleClass().remove("choice-box-selected");
                     answerC.getStyleClass().add("choice-box");
+                    chosenChoiceArray.set(i, "no answer");
                     return;
                 }
                 clearSelection();
@@ -271,8 +272,40 @@ public class GameTracNghiemController implements Initializable {
         if (chosenChoiceArray.get(i).equals(answerArray.get(counter[i]))) {
             point++;
             needToSet.getStyleClass().add("right");
+            listOfResult[i] = true;
         } else {
             needToSet.getStyleClass().add("wrong");
+            listOfResult[i] = false;
+        }
+    }
+
+    public void showRightAndWrong(int i) {
+        if (answerArray.get(counter[i]).equals(answerA.getText())) {
+            answerA.getStyleClass().add("choice-box-right");
+        }
+        if (chosenChoiceArray.get(i).equals(answerA.getText()) && !listOfResult[i]) {
+            answerA.getStyleClass().add("choice-box-wrong");
+        }
+
+        if (answerArray.get(counter[i]).equals(answerB.getText())) {
+            answerB.getStyleClass().add("choice-box-right");
+        }
+        if (chosenChoiceArray.get(i).equals(answerB.getText()) && !listOfResult[i]) {
+            answerB.getStyleClass().add("choice-box-wrong");
+        }
+
+        if (answerArray.get(counter[i]).equals(answerC.getText())) {
+            answerC.getStyleClass().add("choice-box-right");
+        }
+        if (chosenChoiceArray.get(i).equals(answerC.getText()) && !listOfResult[i]) {
+            answerC.getStyleClass().add("choice-box-wrong");
+        }
+
+        if (answerArray.get(counter[i]).equals(answerD.getText())) {
+            answerD.getStyleClass().add("choice-box-right");
+        }
+        if (chosenChoiceArray.get(i).equals(answerD.getText()) && !listOfResult[i]) {
+            answerD.getStyleClass().add("choice-box-wrong");
         }
     }
 
@@ -387,9 +420,11 @@ public class GameTracNghiemController implements Initializable {
         setQuestion(7, button8);
         setQuestion(8, button9);
         setQuestion(9, button10);
+        isRunning = true;
         doneButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                isRunning = false;
                 setMark();
                 showAlertInfo("Result", "Point: " + point);
                 countdown.stop();
@@ -403,6 +438,7 @@ public class GameTracNghiemController implements Initializable {
                 countdown.stop();
                 setUpOpening();
                 startCountDownClock(timeForAGame);
+                isRunning = true;
             }
         });
         startCountDownClock(timeForAGame);
