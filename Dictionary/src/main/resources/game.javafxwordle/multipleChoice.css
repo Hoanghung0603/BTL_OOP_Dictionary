@@ -5,13 +5,9 @@
     -fx-background-radius: 30;
 }
 
-.question-title {
-    -fx-font-size: 1.2em;
-    -fx-font-weight: bold;
-}
-
 .question-text {
-    -fx-font-size: 1em;
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
 }
 
 .choice-box {
@@ -68,7 +64,6 @@
     -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
     -fx-alignment: center;
     -fx-background-radius: 30;
-    -fx-border-radius: 30;
 }
 
 
@@ -146,16 +141,16 @@
 }
 
 .countdown {
-    -fx-text-fill: yellow;
+    -fx-text-fill: #FFFFFF;
     -fx-font-size: 2em;
-    -fx-font-weight: normal;
+    -fx-font-weight: light;
     -fx-padding: 10px;
-    -fx-border-color: yellow;
+    -fx-border-color: #FFFFFF;
     -fx-border-width: 2px;
     -fx-border-radius: 10px;
     -fx-background-radius: 8px;
     -fx-background-color: rgba(255,0,0,0.1);
-    -fx-effect: dropshadow(gaussian, yellow, 10, 0, 2, 2);
+    -fx-effect: dropshadow(gaussian, #FFFFFF, 10, 0, 2, 2);
 }
 
 .countdown.warning {

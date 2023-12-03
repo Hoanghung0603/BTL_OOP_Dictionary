@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 import javafx.application.Platform;
 
@@ -22,15 +23,9 @@ import java.io.FileNotFoundException;
 
 
 public class GameTracNghiemController implements Initializable {
-    private final String questionFilePath = "Dictionary/src/main/resources/CauHoiTracNghiem.txt";
-
-    private final String multipleChoicePathFile = "/resources/LuaChonTracNghiem.txt";
-
-    private final String answerFilePath = "DapAnTracNghiem.txt";
 
     @FXML
     private Button doneButton = new Button();
-
     private int point = 0;
 
     @FXML
@@ -51,8 +46,6 @@ public class GameTracNghiemController implements Initializable {
 
     @FXML
     protected Label timeLeft = new Label();
-
-    private int currQuestion = 1;
 
     private boolean isRunning;
 
@@ -76,7 +69,7 @@ public class GameTracNghiemController implements Initializable {
         countdown = new Timeline(new KeyFrame(Duration.seconds(1), evt -> {
             seconds.set(seconds.get() - 1);
             timeLeft.setText("Time left: " + seconds.get() + " seconds");
-            if (seconds.get() <= 0 && !isRunning) {
+            if (seconds.get() <= 0) {
                 countdown.stop();
                 isRunning = false;
                 setMark();
@@ -191,6 +184,7 @@ public class GameTracNghiemController implements Initializable {
             if (!isRunning) {
                 showRightAndWrong(i);
             }
+            question.getStyleClass().add("question-text");
             question.setText(questionArray.get(counter[i]));
             answerA.setText(multipleChoiceArray.get(4 * counter[i]));
             if (chosenChoiceArray.get(i).equals(answerA.getText())) {
@@ -456,6 +450,7 @@ public class GameTracNghiemController implements Initializable {
     }
 
     public void setUpOpening() {
+        timeLeft.setText("Time left : 90 seconds");
         question.setText("Click on any question to start");
         answerA.setText("A");
         answerB.setText("B");

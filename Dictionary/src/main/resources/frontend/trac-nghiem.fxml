@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="574.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TracNghiem.GameTracNghiemController">
+<AnchorPane prefHeight="551.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TracNghiem.GameTracNghiemController">
     <children>
-        <Pane layoutX="10.0" layoutY="6.0" prefHeight="541.0" prefWidth="746.0" style="-fx-background-color: #009394; -fx-background-radius: 30;">
+        <Pane prefHeight="585.0" prefWidth="807.0" styleClass="searchW-pane" stylesheets="@../Utils/Style.css">
             <children>
-                <HBox layoutX="189.0" layoutY="14.0" prefHeight="42.0" prefWidth="428.0">
+                <HBox layoutX="175.0" layoutY="30.0" prefHeight="42.0" prefWidth="428.0">
                     <children>
                         <Button fx:id="button1" mnemonicParsing="false" styleClass="nav-button" stylesheets="@../game.javafxwordle/multipleChoice.css" text="Q1" />
                         <Button fx:id="button2" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="nav-button" stylesheets="@../game.javafxwordle/multipleChoice.css" text="Q2" />
@@ -28,44 +28,49 @@
                         <Button fx:id="button10" layoutX="450.0" layoutY="10.0" mnemonicParsing="false" styleClass="nav-button" stylesheets="@../game.javafxwordle/multipleChoice.css" text="Q10" />
                     </children>
                 </HBox>
-                <Button fx:id="retryButton" layoutX="359.0" layoutY="117.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="53.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
+                <Button fx:id="retryButton" layoutX="435.0" layoutY="119.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
                <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Utils/images/icons8-restart-40.png" />
+                        <Image url="@../Utils/icons/icons8-restart-40.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
-                <Label fx:id="question" alignment="TOP_LEFT" layoutX="35.0" layoutY="197.0" prefHeight="122.0" prefWidth="648.0" styleClass="question" stylesheets="@../game.javafxwordle/multipleChoice.css" text="Click on any question to start." wrapText="true">
+                <Label fx:id="question" alignment="TOP_LEFT" layoutX="68.0" layoutY="201.0" prefHeight="99.0" prefWidth="597.0" styleClass="question" stylesheets="@../game.javafxwordle/multipleChoice.css" text="Click on any question to start." wrapText="true">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Button fx:id="answerA" layoutX="35.0" layoutY="341.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="275.0" styleClass="choice-box" stylesheets="@../game.javafxwordle/multipleChoice.css" text="A" />
-                <Button fx:id="answerB" layoutX="440.0" layoutY="341.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="275.0" styleClass="choice-box" stylesheets="@../game.javafxwordle/multipleChoice.css" text="B" />
-                <Button fx:id="answerC" layoutX="35.0" layoutY="446.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="275.0" styleClass="choice-box" stylesheets="@../game.javafxwordle/multipleChoice.css" text="C" />
-                <Button fx:id="answerD" layoutX="440.0" layoutY="452.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="275.0" styleClass="choice-box" stylesheets="@../game.javafxwordle/multipleChoice.css" text="D" />
-                <Label fx:id="timeLeft" layoutX="35.0" layoutY="113.0" prefHeight="52.0" prefWidth="285.0" styleClass="countdown" stylesheets="@../game.javafxwordle/multipleChoice.css" text="Time left : 90 seconds">
+                <Button fx:id="answerA" layoutX="68.0" layoutY="341.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="275.0" styleClass="choice-box" stylesheets="@../game.javafxwordle/multipleChoice.css" text="A" />
+                <Button fx:id="answerB" layoutX="390.0" layoutY="341.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="275.0" styleClass="choice-box" stylesheets="@../game.javafxwordle/multipleChoice.css" text="B" />
+                <Button fx:id="answerC" layoutX="68.0" layoutY="446.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="275.0" styleClass="choice-box" stylesheets="@../game.javafxwordle/multipleChoice.css" text="C" />
+                <Button fx:id="answerD" layoutX="390.0" layoutY="446.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="275.0" styleClass="choice-box" stylesheets="@../game.javafxwordle/multipleChoice.css" text="D" />
+                <Label fx:id="timeLeft" layoutX="68.0" layoutY="116.0" prefHeight="52.0" prefWidth="285.0" styleClass="countdown" stylesheets="@../game.javafxwordle/multipleChoice.css" text="Time left : 90 seconds">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Button fx:id="doneButton" layoutX="430.0" layoutY="120.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="44.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
+                <Button fx:id="doneButton" layoutX="496.0" layoutY="119.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
                <graphic>
-                  <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Utils/icons/done.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button layoutX="493.0" layoutY="117.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="69.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
+            <Button layoutX="557.0" layoutY="120.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="29.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
+               <tooltip>
+                  <Tooltip text="BẤM VÀO NÚT CÂU HỎI HAI LẦN ĐỂ XEM KẾT QUẢ" />
+               </tooltip>
                <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Utils/icons/qsmark.png" />
+                        <Image url="@../Utils/icons/help.png" />
                      </image>
                   </ImageView>
                </graphic>
+            </Button>
+            <Button layoutX="618.0" layoutY="119.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="29.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
                <tooltip>
                   <Tooltip text="BẤM VÀO NÚT CÂU HỎI HAI LẦN ĐỂ XEM KẾT QUẢ" />
                </tooltip>
