@@ -21,9 +21,6 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Dictionary dictionary = new Dictionary();
-        DictionaryCommandline dictionaryCommandline = new DictionaryCommandline();
-        DictionaryManagement dictionaryManagement = new DictionaryManagement();
         DictionaryManagement.insertData();
 
         Parent root = FXMLLoader.load(getClass().getResource("/frontend/Menu-view.fxml"));
