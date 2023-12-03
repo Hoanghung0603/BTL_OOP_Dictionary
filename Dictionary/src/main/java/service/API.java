@@ -16,17 +16,15 @@ public class API {
     public static boolean isInternetAvailable() {
         try {
             URL url = new URL("https://www.google.com");
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("HEAD");
-            int responseCode = connection.getResponseCode();
-            return (responseCode == HttpURLConnection.HTTP_OK);
-        } catch (IOException e) {
-            return false;
+            URLConnection connection = url.openConnection();
+            connection.connect();
+            return true;
+        } catch (Exception e) {
+           return false;
         }
     }
     protected static String subscriptionKey;
     protected static String serviceRegion;
-
 
 }
 

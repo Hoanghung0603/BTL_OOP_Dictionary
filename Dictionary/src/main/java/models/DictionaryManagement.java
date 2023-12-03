@@ -289,7 +289,7 @@ public class DictionaryManagement extends Dictionary {
     {
         word = formatWord(word);
         if (!DictionaryCommandline.dictionarySearcher(word).isEmpty()) {
-            return "Did you mean " + DictionaryCommandline.dictionarySearcher(word).get(0).getWordTarget() + " ?";
+            return DictionaryCommandline.dictionarySearcher(word).get(0).getWordTarget();
 
         }
         for (Word w : listWord)
@@ -298,7 +298,7 @@ public class DictionaryManagement extends Dictionary {
                 continue;
             int d = editDistance(word, w.getWordTarget());
             if ( d == 1 )
-                return "Did you mean " + w.getWordTarget() + " ?";
+                return w.getWordTarget();
         }
         return "Not found";
     }

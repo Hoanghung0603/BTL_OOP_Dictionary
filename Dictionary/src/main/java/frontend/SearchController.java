@@ -54,32 +54,37 @@ public class SearchController implements Initializable {
 
     // hàm này để dựa vào word, setText của correct word thành từ auto correct
     private void setCorrectWord(String word) {
-        String word_da_sua = "hello";  // đang mặc định từ auto correct là hello
-        correctWord.setText(word_da_sua);
-    }
-    @FXML
-    private void suggInputWord() {
-        suggList.clear();
-        sourceWord = sourceWord.toLowerCase();
-        System.out.println(sourceWord);
-        ArrayList<Word> list = new ArrayList<>();
-        list = DictionaryCommandline.dictionarySearcher(sourceWord);
-        for(Word x : list) {
-            suggList.add(x.getWordTarget());
+        String word_da_sua = DictionaryManagement.autoCorrect(sourceWord);
+        // đang mặc định từ auto correct là hello
+        if(!word_da_sua.equals("Not found")) {
+            correctWord.setText(word_da_sua);
         }
-        if (suggList.isEmpty()) {
-            suggList.add("");
-
-            sugLabel.setVisible(false);
-            correctWord.setText("");
-
-            AlertManager.showAlert(invalidWordAlert);
-        }
-        suggResults.setItems(suggList);
-
-        sugLabel.setVisible(true);
-        setCorrectWord(sourceWord);
+        else sugLabel.setVisible(false);
     }
+        @FXML
+        private void suggInputWord() {
+            suggList.clear();
+            sourceWord = sourceWord.toLowerCase();
+            System.out.println(sourceWord);
+            ArrayList<Word> list = new ArrayList<>();
+            list = DictionaryCommandline.dictionarySearcher(sourceWord);
+            for(Word x : list) {
+                suggList.add(x.getWordTarget());
+            }
+            if (suggList.isEmpty()) {
+                suggList.add("");
+
+                sugLabel.setVisible(false);
+                correctWord.setText("");
+
+                AlertManager.showAlert(invalidWordAlert);
+            }
+            suggResults.setItems(suggList);
+
+            sugLabel.setVisible(true);
+
+            setCorrectWord(sourceWord);
+        }
 
     //khi click vao mot tu trong suggResults
     @FXML
@@ -201,26 +206,8 @@ public class SearchController implements Initializable {
     @FXML
     private void handleMouseClickCorrectWordLabel() {
         sourceWord = correctWord.getText();
-        if (Dictionary.favoriteWord.contains(sourceWord))  {
-            yellowStar.setVisible(true);
-            System.out.println("true");
-        }
-        else yellowStar.setVisible(false);
-        if (!wordTarget.equals("") && !wordTarget.equals("Definition")) {
-            soundBtn.setDisable(false);
-            saveBtn.setDisable(false);
-        }
-
-        wordTarget.setText(sourceWord);
-        Word tmp = DictionaryCommandline.dictionaryLookup(sourceWord);
-        String text = tmp.getWordSpelling() + "\n" + tmp.getWordExplain();
-        defTextArea.setText(text);
-        if(Dictionary.recentWord.size() == 10) Dictionary.recentWord.remove(0);
-        if(Dictionary.recentWord.contains(sourceWord)) Dictionary.recentWord.remove(sourceWord);
-        Dictionary.recentWord.add(sourceWord);
-        recentSearch.setAll(Dictionary.recentWord.reversed());
-        //if(suggList.getFirst().equals("")) suggResults.getSelectionModel().selectFirst();
-        defTextArea.setVisible(true);
+        inputWord.setText(sourceWord);
+        suggInputWord();
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
