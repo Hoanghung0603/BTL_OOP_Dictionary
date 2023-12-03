@@ -35,3 +35,36 @@
     -fx-opacity: 1.2;
 }
 
+.enter{
+    -fx-padding: 10px 0 10px 10px;
+    -fx-background-color: Green;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-alignment: center;
+}
+
+.enter:hover{
+    -fx-opacity: 0.7;
+}
+
+.enter:pressed{
+    -fx-opacity: 0.5;
+}
+
+.delete{
+    -fx-padding: 10px 0 10px 10px;
+    -fx-background-color: Orange;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-alignment: center;
+}
+
+.delete:hover{
+    -fx-opacity: 0.7;
+}
+
+.delete:pressed{
+    -fx-opacity: 0.5;
+}
+
+
