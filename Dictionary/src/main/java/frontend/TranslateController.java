@@ -7,8 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyEvent;
-import models.API;
+import service.APITranslate;
+
+import service.SpeechAPI;
+import service.T2SThread;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,19 +25,67 @@ public class TranslateController implements Initializable {
     @FXML
     Button change, translateBtn;
     @FXML
+    Button soundTarget, soundSource, deleteText, copyTextBtn;
+    @FXML
     Label labelTextIn, labelTranslate;
+
+    @FXML
+    private void handleMouseClickSoundSource() throws Exception {
+        // văn bản vào:    inputString
+        T2SThread t2sThread = new T2SThread();
+        t2sThread.getSpeechFromTextThread(inputString, in);
+        // phát âm thanh từ nhập vào
+        System.out.println("Phát âm thanh source");
+    }
+
+    @FXML
+    private void handleMouseClickCopyBtn() {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(translateText.getText());
+        clipboard.setContent(content);
+    }
+
+    @FXML
+    private void handleMouseClickDelTextBtn() {
+        toBeTranslatedText.setText("");
+        translateText.setText("");
+    }
+
+    @FXML
+    private void handleMouseClickSoundTarget() throws Exception {
+        // phát âm thanh văn bản đã dịch
+        // translateString
+        T2SThread t2sThread = new T2SThread();
+        t2sThread.getSpeechFromTextThread(translateString, out);
+        System.out.println("phát âm thanh target");
+    }
 
     String inputString, translateString;
     boolean vietToEng = true;
+
+    String out = "en";
+    String in = "vi";
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         change.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 //...
                 vietToEng = !vietToEng;
-                labelTextIn.setText(vietToEng ? "Việt" : "Anh");
-                labelTranslate.setText(vietToEng ? "Anh" : "Việt");
+                if(vietToEng) {
+                    labelTextIn.setText("Việt");
+                    labelTranslate.setText("Anh");
+                    out = "en";
+                    in = "vi";
+                }
 
+                else {
+                    labelTextIn.setText("Anh");
+                    labelTranslate.setText("Việt");
+                    out = "vi";
+                    in = "en";
+                }
             }
         });
         toBeTranslatedText.setOnKeyTyped(new EventHandler<KeyEvent>() {
@@ -47,23 +100,19 @@ public class TranslateController implements Initializable {
         translateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                    if(vietToEng) {
-                        try {
-                            translateString = API.VtranslatetoE(inputString);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                    else {
-                        try {
-                            translateString = API.EtranslatetoV(inputString);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                    System.out.println(translateString);
-                    translateText.setText(translateString);
+                APITranslate apiTranslate = new APITranslate();
+                try {
+                    translateString = apiTranslate.translate(inputString, in, out);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.println(translateString);
+                translateText.setText(translateString);
             }
         });
+    }
+    public static void main (String[] args) throws IOException {
+        APITranslate apiTranslate = new APITranslate();
+        System.out.println(APITranslate.translate("xin chào" + '\n' + "hài", "vi", "en"));
     }
 }
