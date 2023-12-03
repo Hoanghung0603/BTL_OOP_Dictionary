@@ -57,14 +57,7 @@ public class WordGameController extends GameTracNghiemController {
         return false;
     }
 
-    public boolean hasCompulsoryChar(String ans) {
-        for (int i = 0; i < ans.length(); i++) {
-            if (ans.charAt(i) == c) {
-                return true;
-            }
-        }
-        return false;
-    }
+
 
     public boolean containAEIOU(char c) {
         return (c == 'A' || c == 'E' || c == 'U' || c == 'I' || c == 'O');
@@ -209,8 +202,9 @@ public class WordGameController extends GameTracNghiemController {
             @Override
             public void handle(ActionEvent actionEvent) {
                 String answer = input.getText();
+                answer = DictionaryManagement.formatWord(answer);
                 String searchWord = answer.toLowerCase();
-                if (!hasCompulsoryChar(answer)) {
+                if (!DictionaryManagement.isInDictionary(answer)) {
                     announceResult("No compulsory character");
                     input.clear();
                 }
