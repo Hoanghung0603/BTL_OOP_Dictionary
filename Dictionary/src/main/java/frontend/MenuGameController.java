@@ -44,7 +44,7 @@ public class MenuGameController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 showView("main-view.fxml");
-                Button quitBtn = new Button();
+                Button quitBtn = new Button("Quit");
                 quitBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
@@ -64,7 +64,7 @@ public class MenuGameController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 showView("trac-nghiem.fxml");
-                Button quitBtn = new Button();
+                Button quitBtn = new Button("Quit");
                 quitBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
@@ -75,8 +75,8 @@ public class MenuGameController implements Initializable {
                 Pane pane = (Pane) temp.getChildren().getLast();
                 pane.getChildren().add(quitBtn);
 
-                gamePane.getChildren().getFirst().setTranslateX(30);
-                gamePane.getChildren().getFirst().setTranslateY(30);
+                gamePane.getChildren().getFirst().setTranslateX(0);
+                gamePane.getChildren().getFirst().setTranslateY(0);
             }
         });
 
@@ -84,7 +84,7 @@ public class MenuGameController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 showView("word-game.fxml");
-                Button quitBtn = new Button();
+                Button quitBtn = new Button("Quit");
                 quitBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
@@ -95,8 +95,8 @@ public class MenuGameController implements Initializable {
                 Pane pane = (Pane) temp.getChildren().getLast();
                 pane.getChildren().add(quitBtn);
 
-                gamePane.getChildren().getFirst().setTranslateX(30);
-                gamePane.getChildren().getFirst().setTranslateY(5);
+                gamePane.getChildren().getFirst().setTranslateX(0);
+                gamePane.getChildren().getFirst().setTranslateY(0);
             }
         });
 

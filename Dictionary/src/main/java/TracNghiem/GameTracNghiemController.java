@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
+import javafx.application.Platform;
 
 
 import java.io.InputStream;
@@ -36,14 +37,6 @@ public class GameTracNghiemController implements Initializable {
     private Button doneButton = new Button();
 
     private int point = 0;
-
-    private String choseButton= "-fx-background-color: yellow";
-
-    private String rightAnswer = "-fx-background-color: green";
-
-    private String wrongAnswer = "-fx-background-color: red";
-
-    private String notChoseButton = "-fx-background-color: white";
 
     @FXML
     private Label question = new Label();
@@ -88,6 +81,10 @@ public class GameTracNghiemController implements Initializable {
             timeLeft.setText("Time left: " + seconds.get() + " seconds");
             if (seconds.get() <= 0) {
                 setMark();
+                Alert result = alertInfo("Kết quả", "Số điểm là: " + point);
+                Platform.runLater(() -> {
+                    result.showAndWait();
+                });
                 countdown.stop();
             }
 
@@ -159,94 +156,124 @@ public class GameTracNghiemController implements Initializable {
 
     }
 
+    public void clearSelection() {
+        if (answerA.getStyleClass().contains("choice-box-selected")) {
+            answerA.getStyleClass().remove("choice-box-selected");
+            answerA.getStyleClass().add("choice-box");
+        }
+
+        if (answerB.getStyleClass().contains("choice-box-selected")) {
+            answerB.getStyleClass().remove("choice-box-selected");
+            answerB.getStyleClass().add("choice-box");
+        }
+
+        if (answerC.getStyleClass().contains("choice-box-selected")) {
+            answerC.getStyleClass().remove("choice-box-selected");
+            answerC.getStyleClass().add("choice-box");
+        }
+        if (answerD.getStyleClass().contains("choice-box-selected")) {
+            answerD.getStyleClass().remove("choice-box-selected");
+            answerD.getStyleClass().add("choice-box");
+        }
+    }
+
+
     public void setQuestion(int i, Button needToSet) {
+
         needToSet.setOnAction(event -> {
+            clearSelection();
             question.setText(questionArray.get(counter[i]));
             answerA.setText(multipleChoiceArray.get(4 * counter[i]));
             if (chosenChoiceArray.get(i).equals(answerA.getText())) {
-                answerA.setStyle(choseButton);
-            } else {
-                answerA.setStyle(notChoseButton);
+                answerA.getStyleClass().remove("choice-box");
+                answerA.getStyleClass().add("choice-box-selected");
             }
             answerA.setOnAction(event1 -> {
                 if (chosenChoiceArray.get(i).equals(answerA.getText())) {
-                    button1.setStyle(notChoseButton);
-                    answerA.setStyle(notChoseButton);
+                    needToSet.getStyleClass().remove("choose");
+                    needToSet.getStyleClass().add("nav-button");
+                    answerA.getStyleClass().remove("choice-box-selected");
+                    answerA.getStyleClass().add("choice-box");
                     chosenChoiceArray.set(i, "no answer");
                     return;
                 }
-                answerA.setStyle(choseButton);
-                needToSet.setStyle(choseButton);
-                answerB.setStyle(notChoseButton);
-                answerC.setStyle(notChoseButton);
-                answerD.setStyle(notChoseButton);
+                clearSelection();
+                answerA.getStyleClass().add("choice-box-selected");
+                needToSet.getStyleClass().add("choose");
                 chosenChoiceArray.set(i, answerA.getText());
             });
 
             answerB.setText(multipleChoiceArray.get(4 * counter[i] + 1));
             if (chosenChoiceArray.get(i).equals(answerB.getText())) {
-                answerB.setStyle(choseButton);
-            } else {
-                answerB.setStyle(notChoseButton);
+                answerB.getStyleClass().remove("choice-box");
+                answerB.getStyleClass().add("choice-box-selected");
             }
             answerB.setOnAction(event1 -> {
                 if (chosenChoiceArray.get(i).equals(answerB.getText())) {
-                    needToSet.setStyle(notChoseButton);
-                    answerB.setStyle(notChoseButton);
+                    needToSet.getStyleClass().remove("choose");
+                    needToSet.getStyleClass().add("nav-button");
+                    answerB.getStyleClass().remove("choice-box-selected");
+                    answerB.getStyleClass().add("choice-box");
                     chosenChoiceArray.set(i, "no answer");
                     return;
                 }
-                needToSet.setStyle(choseButton);
-                answerB.setStyle(choseButton);
-                answerA.setStyle(notChoseButton);
-                answerC.setStyle(notChoseButton);
-                answerD.setStyle(notChoseButton);
+                clearSelection();
+                needToSet.getStyleClass().add("choose");
+                answerB.getStyleClass().add("choice-box-selected");
                 chosenChoiceArray.set(i, answerB.getText());
             });
 
             answerC.setText(multipleChoiceArray.get(4 * counter[i] + 2));
             if (chosenChoiceArray.get(i).equals(answerC.getText())) {
-                answerC.setStyle(choseButton);
-            } else {
-                answerC.setStyle(notChoseButton);
+                answerC.getStyleClass().remove("choice-box");
+                answerC.getStyleClass().add("choice-box-selected");
             }
             answerC.setOnAction(event1 -> {
-                if (!chosenChoiceArray.get(i).equals("no answer")) {
-                    needToSet.setStyle(notChoseButton);
-                    answerC.setStyle(notChoseButton);
-                    chosenChoiceArray.set(i, "no answer");
+                if (chosenChoiceArray.get(i).equals(answerC.getText())) {
+                    needToSet.getStyleClass().remove("choose");
+                    needToSet.getStyleClass().add("nav-button");
+                    answerC.getStyleClass().remove("choice-box-selected");
+                    answerC.getStyleClass().add("choice-box");
                     return;
                 }
-                needToSet.setStyle(choseButton);
-                answerC.setStyle(choseButton);
-                answerB.setStyle(notChoseButton);
-                answerD.setStyle(notChoseButton);
-                answerA.setStyle(notChoseButton);
+                clearSelection();
+                needToSet.getStyleClass().add("choose");
+                answerC.getStyleClass().add("choice-box-selected");
                 chosenChoiceArray.set(i, answerC.getText());
             });
 
             answerD.setText(multipleChoiceArray.get(4 * counter[i] + 3));
             if (chosenChoiceArray.get(i).equals(answerD.getText())) {
-                answerD.setStyle(choseButton);
-            } else {
-                answerD.setStyle(notChoseButton);
+                answerD.getStyleClass().remove("choice-box");
+                answerD.getStyleClass().add("choice-box-selected");
             }
             answerD.setOnAction(event1 -> {
                 if (chosenChoiceArray.get(i).equals(answerD.getText())) {
-                    needToSet.setStyle(notChoseButton);
-                    answerD.setStyle(notChoseButton);
+                    needToSet.getStyleClass().remove("choose");
+                    needToSet.getStyleClass().add("nav-button");
+                    answerD.getStyleClass().add("choice-box");
+                    answerD.getStyleClass().remove("choice-box-selected");
                     chosenChoiceArray.set(i, "no answer");
                     return;
                 }
-
-                needToSet.setStyle(choseButton);
-                answerD.setStyle(choseButton);
-                answerB.setStyle(notChoseButton);
-                answerC.setStyle(notChoseButton);
-                answerA.setStyle(notChoseButton);
+                clearSelection();
+                needToSet.getStyleClass().add("choose");
+                answerD.getStyleClass().add("choice-box-selected");
                 chosenChoiceArray.set(i, answerD.getText());
             });
         });
+    }
+
+    public void setCertainMark(Button needToSet, int i) {
+        if (needToSet.getStyleClass().contains("choose") || needToSet.getStyleClass().contains("nav.button")) {
+            needToSet.getStyleClass().clear();
+        }
+        if (chosenChoiceArray.get(i).equals(answerArray.get(counter[i]))) {
+            point++;
+            needToSet.getStyleClass().add("right");
+        } else {
+            needToSet.getStyleClass().add("wrong");
+        }
     }
 
     /*
@@ -255,67 +282,16 @@ public class GameTracNghiemController implements Initializable {
      * tính điểm
      */
     public void setMark() {
-        if (chosenChoiceArray.get(0).equals(answerArray.get(counter[0]))) {
-            point++;
-            button1.setStyle(rightAnswer);
-        } else {
-            button1.setStyle(wrongAnswer);
-        }
-        if (chosenChoiceArray.get(1).equals(answerArray.get(counter[1]))) {
-            point++;
-            button2.setStyle(rightAnswer);
-        } else {
-            button2.setStyle(wrongAnswer);
-        }
-        if (chosenChoiceArray.get(2).equals(answerArray.get(counter[2]))) {
-            point++;
-            button3.setStyle(rightAnswer);
-        } else {
-            button3.setStyle(wrongAnswer);
-        }
-        if (chosenChoiceArray.get(3).equals(answerArray.get(counter[3]))) {
-            point++;
-            button4.setStyle(rightAnswer);
-        } else {
-            button4.setStyle(wrongAnswer);
-        }
-        if (chosenChoiceArray.get(4).equals(answerArray.get(counter[4]))) {
-            point++;
-            button5.setStyle(rightAnswer);
-        } else {
-            button5.setStyle(wrongAnswer);
-        }
-        if (chosenChoiceArray.get(5).equals(answerArray.get(counter[5]))) {
-            point++;
-            button6.setStyle(rightAnswer);
-        } else {
-            button6.setStyle(wrongAnswer);
-        }
-        if (chosenChoiceArray.get(6).equals(answerArray.get(counter[6]))) {
-            point++;
-            button7.setStyle(rightAnswer);
-        } else {
-            button7.setStyle(wrongAnswer);
-        }
-        if (chosenChoiceArray.get(7).equals(answerArray.get(counter[7]))) {
-            point++;
-            button8.setStyle(rightAnswer);
-        } else {
-            button8.setStyle(wrongAnswer);
-        }
-        if (chosenChoiceArray.get(8).equals(answerArray.get(counter[8]))) {
-            point++;
-            button9.setStyle(rightAnswer);
-        } else {
-            button9.setStyle(wrongAnswer);
-        }
-        if (chosenChoiceArray.get(9).equals(answerArray.get(counter[9]))) {
-            point++;
-            button10.setStyle(rightAnswer);
-        } else {
-            button10.setStyle(wrongAnswer);
-        }
-        showAlertInfo("Kết quả", "Số điểm là: " + point);
+        setCertainMark(button1, 0);
+        setCertainMark(button2, 1);
+        setCertainMark(button3, 2);
+        setCertainMark(button4, 3);
+        setCertainMark(button5, 4);
+        setCertainMark(button6, 5);
+        setCertainMark(button7, 6);
+        setCertainMark(button8, 7);
+        setCertainMark(button9, 8);
+        setCertainMark(button10, 9);
     }
 
     /**
@@ -330,6 +306,14 @@ public class GameTracNghiemController implements Initializable {
         alert.setContentText(content);
         alert.showAndWait();
         alert.hide();
+    }
+
+    public static Alert alertInfo(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        return alert;
     }
 
     public void startQuiz() {
@@ -351,6 +335,41 @@ public class GameTracNghiemController implements Initializable {
 
     public void resetQuiz() {
         point = 0;
+        for (int i = 0; i < 10; i++) {
+            chosenChoiceArray.set(i, "no answer");
+        }
+        button1.getStyleClass().clear();
+        button2.getStyleClass().clear();
+        button3.getStyleClass().clear();
+        button4.getStyleClass().clear();
+        button5.getStyleClass().clear();
+        button6.getStyleClass().clear();
+        button7.getStyleClass().clear();
+        button8.getStyleClass().clear();
+        button9.getStyleClass().clear();
+        button10.getStyleClass().clear();
+
+        button1.getStyleClass().add("nav-button");
+        button2.getStyleClass().add("nav-button");
+        button3.getStyleClass().add("nav-button");
+        button4.getStyleClass().add("nav-button");
+        button5.getStyleClass().add("nav-button");
+        button6.getStyleClass().add("nav-button");
+        button7.getStyleClass().add("nav-button");
+        button8.getStyleClass().add("nav-button");
+        button9.getStyleClass().add("nav-button");
+        button10.getStyleClass().add("nav-button");
+
+
+        answerA.getStyleClass().clear();
+        answerB.getStyleClass().clear();
+        answerC.getStyleClass().clear();
+        answerD.getStyleClass().clear();
+
+        answerA.getStyleClass().add("choice-box");
+        answerB.getStyleClass().add("choice-box");
+        answerC.getStyleClass().add("choice-box");
+        answerD.getStyleClass().add("choice-box");
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -372,6 +391,7 @@ public class GameTracNghiemController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 setMark();
+                showAlertInfo("Result", "Point: " + point);
                 countdown.stop();
             }
         });
@@ -389,12 +409,11 @@ public class GameTracNghiemController implements Initializable {
     }
 
     public void setUpOpening() {
-        question.setText(questionArray.get(counter[0]));
-        answerA.setText(multipleChoiceArray.get(4 * counter[0]));
-        answerB.setText(multipleChoiceArray.get(4 * counter[0] + 1));
-        answerC.setText(multipleChoiceArray.get(4 * counter[0] + 2));
-        answerD.setText(multipleChoiceArray.get(4 * counter[0] + 3));
-        setQuestion(0, button1);
+        question.setText("click on any question to answer");
+        answerA.setText("A");
+        answerB.setText("B");
+        answerC.setText("C");
+        answerD.setText("D");
     }
 
 }

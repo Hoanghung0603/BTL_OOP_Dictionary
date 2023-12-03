@@ -1,0 +1,29 @@
+.hex-button {
+    -fx-background-color: #e4e4e7;
+    -fx-padding: 10px;
+    -fx-shape: "M 0 0 L 10 -20 L 30 -20 L 40 0 L 30 20 L 10 20 Z";
+}
+
+.hex-button:armed {
+    -fx-background-color: #e4e4e7;
+}
+
+.hex-button:focused {
+    -fx-background-color: #fdc859;
+}
+
+
+.hex-complusoryButton {
+    -fx-background-color: yellow;
+    -fx-padding: 10px;
+    -fx-shape: "M 0 0 L 10 -20 L 30 -20 L 40 0 L 30 20 L 10 20 Z";
+}
+
+.hex-complusorybutton:armed {
+    -fx-background-color: #e4e4e7;
+}
+
+.hex-complusorybutton:focused {
+    -fx-background-color: #fdc859;
+}
+

@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import models.DictionaryManagement;
 import models.Word;
 
 import java.net.URL;
@@ -186,10 +187,9 @@ public class WordGameController extends GameTracNghiemController {
             @Override
             public void handle(ActionEvent actionEvent) {
                 String answer = input.getText();
-                Word lookUp = models.DictionaryManagement.dictionaryLookup(answer);
-
-                if (lookUp.getWordTarget().equals("")) {
-                    showAlertInfo("No word found", "This word is not already existed");
+                DictionaryManagement check = new DictionaryManagement();
+                if (!hasCompulsoryChar(answer)) {
+                    showAlertInfo("Inappropriate word", "No compulsory character found");
                     input.clear();
                     return;
                 }
@@ -199,16 +199,19 @@ public class WordGameController extends GameTracNghiemController {
                     input.clear();
                     return;
                 }
-                if (!hasCompulsoryChar(answer)) {
-                    showAlertInfo("Inappropriate word", "No compulsory character found");
+
+                if (!check.isInDictionary(answer)) {
+                    showAlertInfo("No word found", "This word is not already existed");
                     input.clear();
                     return;
                 }
+
                 point += answer.length();
                 Label word = new Label(answer);
                 wordAdded.getChildren().add(word);
                 showAlertInfo("Appropriate word", "Good job");
                 Point.setText("Point = " + point);
+                listWordAdded.add(answer);
                 if (numOfWord == 0) {
                     howManyWordAdded.setText("You have found " + ++numOfWord + " word");
                 } else {
