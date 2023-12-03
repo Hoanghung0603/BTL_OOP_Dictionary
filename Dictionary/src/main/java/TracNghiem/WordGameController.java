@@ -12,6 +12,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Pane;
 import javafx.animation.FadeTransition;
 
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 import models.DictionaryManagement;
 import models.Word;
@@ -24,7 +25,7 @@ public class WordGameController extends GameTracNghiemController {
     private TextField input;
 
     @FXML
-    private Button enter, delete, shuffle;
+    private Button enter, delete;
 
     private int point;
 
@@ -57,14 +58,13 @@ public class WordGameController extends GameTracNghiemController {
         return false;
     }
 
-    public boolean hasCompulsoryChar(String ans) {
+    public boolean hasCompulsoryWord(String ans) {
         for (int i = 0; i < ans.length(); i++) {
-            if (ans.charAt(i) == c) {
-                return true;
-            }
+            if (ans.charAt(i) == c) return true;
         }
         return false;
     }
+
 
     public boolean containAEIOU(char c) {
         return (c == 'A' || c == 'E' || c == 'U' || c == 'I' || c == 'O');
@@ -97,7 +97,7 @@ public class WordGameController extends GameTracNghiemController {
 
         // Set nút 1
         c = (char)(generates.nextInt(26) + 'A');
-        while (usedChar.contains(c) || containAEIOU(c)) {
+        while (containAEIOU(c)) {
             c = (char)(generates.nextInt(26) + 'A');
         }
         usedChar.add(c);
@@ -197,10 +197,7 @@ public class WordGameController extends GameTracNghiemController {
         delete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                String getText = input.getText();
-                if (getText.length() > 0) {
-                    input.setText(getText.substring(0, getText.length() - 1));
-                }
+                input.clear();
             }
         });
         result.setVisible(false);
@@ -208,24 +205,25 @@ public class WordGameController extends GameTracNghiemController {
         enter.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                String answer = input.getText();
+                String answer = input.getText().toUpperCase();
                 String searchWord = answer.toLowerCase();
-                if (!hasCompulsoryChar(answer)) {
+                searchWord = DictionaryManagement.formatWord(searchWord);
+                if (!hasCompulsoryWord(answer)) {
                     announceResult("No compulsory character");
                     input.clear();
                 }
-
                 else if(alreadyAdded(answer)) {
                     announceResult("Already add");
                     input.clear();
                 }
-                else if (DictionaryManagement.isInDictionary(searchWord) == false) {
+                else if (!DictionaryManagement.isInDictionary(searchWord)) {
                     announceResult("This word is not already existed");
                     input.clear();
                 }
                 else {
                     point += answer.length();
                     Label word = new Label(answer);
+                    word.setFont(new Font( 19));
                     wordAdded.getChildren().add(word);
                     announceResult("Good job");
                     Point.setText("Point = " + point);

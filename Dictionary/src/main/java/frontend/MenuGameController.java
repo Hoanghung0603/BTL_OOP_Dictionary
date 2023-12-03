@@ -74,14 +74,14 @@ public class MenuGameController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 showView("trac-nghiem.fxml");
                 Button quitBtn = new Button();
-                quitBtn.setTranslateX(399);
-                quitBtn.setTranslateY(73);
-                quitBtn.setPrefSize(44,46);
+                quitBtn.setTranslateX(620);
+                quitBtn.setTranslateY(118);
+                quitBtn.setPrefSize(45,45);
                 quitBtn.setStyle("-fx-background-color: TRANSPARENT;");
-                Image image = new Image(getClass().getResource("/Utils/icons/home-button.png").toExternalForm());
+                Image image = new Image(getClass().getResource("/Utils/icons/home.png").toExternalForm());
                 ImageView homes = new ImageView(image);
-                homes.setFitHeight(39);
-                homes.setFitWidth(37);
+                homes.setFitHeight(45);
+                homes.setFitWidth(45);
                 quitBtn.setGraphic(homes);
                 quitBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
@@ -89,6 +89,9 @@ public class MenuGameController implements Initializable {
                         gamePane.getChildren().clear();
                     }
                 });
+
+
+
                 AnchorPane temp = (AnchorPane) gamePane.getChildren().getFirst();
                 Pane pane = (Pane) temp.getChildren().getLast();
                 pane.getChildren().add(quitBtn);
@@ -103,11 +106,10 @@ public class MenuGameController implements Initializable {
             public void handle(ActionEvent event) {
                 showView("word-game.fxml");
                 Button quitBtn = new Button();
-                quitBtn.setTranslateX(175);
-                quitBtn.setTranslateY(447);
-                quitBtn.setPrefSize(44,46);
+                quitBtn.setTranslateX(173);
+                quitBtn.setTranslateY(467);
                 quitBtn.setStyle("-fx-background-color: TRANSPARENT;");
-                Image image = new Image(getClass().getResource("/Utils/icons/home-button.png").toExternalForm());
+                Image image = new Image(getClass().getResource("/Utils/icons/home.png").toExternalForm());
                 ImageView homes = new ImageView(image);
                 homes.setFitHeight(39);
                 homes.setFitWidth(37);

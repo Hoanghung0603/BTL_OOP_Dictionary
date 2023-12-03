@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 import javafx.application.Platform;
 
@@ -22,15 +23,9 @@ import java.io.FileNotFoundException;
 
 
 public class GameTracNghiemController implements Initializable {
-    private final String questionFilePath = "Dictionary/src/main/resources/CauHoiTracNghiem.txt";
-
-    private final String multipleChoicePathFile = "/resources/LuaChonTracNghiem.txt";
-
-    private final String answerFilePath = "DapAnTracNghiem.txt";
 
     @FXML
     private Button doneButton = new Button();
-
     private int point = 0;
 
     @FXML
@@ -51,8 +46,6 @@ public class GameTracNghiemController implements Initializable {
 
     @FXML
     protected Label timeLeft = new Label();
-
-    private int currQuestion = 1;
 
     private boolean isRunning;
 
@@ -77,13 +70,13 @@ public class GameTracNghiemController implements Initializable {
             seconds.set(seconds.get() - 1);
             timeLeft.setText("Time left: " + seconds.get() + " seconds");
             if (seconds.get() <= 0) {
+                countdown.stop();
                 isRunning = false;
                 setMark();
                 Alert result = alertInfo("Kết quả", "Số điểm là: " + point);
                 Platform.runLater(() -> {
                     result.showAndWait();
                 });
-                countdown.stop();
             }
 
         }));
@@ -154,6 +147,20 @@ public class GameTracNghiemController implements Initializable {
 
     }
 
+    public void lockAnswer() {
+        answerA.setDisable(true);
+        answerB.setDisable(true);
+        answerC.setDisable(true);
+        answerD.setDisable(true);
+    }
+
+    public void openAnswer() {
+        answerA.setDisable(false);
+        answerB.setDisable(false);
+        answerC.setDisable(false);
+        answerD.setDisable(false);
+    }
+
     public void clearSelection() {
         answerA.getStyleClass().clear();
         answerA.getStyleClass().add("choice-box");
@@ -171,12 +178,13 @@ public class GameTracNghiemController implements Initializable {
 
 
     public void setQuestion(int i, Button needToSet) {
-
+        openAnswer();
         needToSet.setOnAction(event -> {
             clearSelection();
             if (!isRunning) {
                 showRightAndWrong(i);
             }
+            question.getStyleClass().add("question-text");
             question.setText(questionArray.get(counter[i]));
             answerA.setText(multipleChoiceArray.get(4 * counter[i]));
             if (chosenChoiceArray.get(i).equals(answerA.getText())) {
@@ -310,6 +318,7 @@ public class GameTracNghiemController implements Initializable {
      * tính điểm
      */
     public void setMark() {
+        lockAnswer();
         setCertainMark(button1, 0);
         setCertainMark(button2, 1);
         setCertainMark(button3, 2);
@@ -328,7 +337,7 @@ public class GameTracNghiemController implements Initializable {
      * @param content
      */
     public static void showAlertInfo(String title, String content) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
@@ -405,6 +414,7 @@ public class GameTracNghiemController implements Initializable {
         loadMultipleChoice();
         loadAnswer();
         loadCounter();
+        lockAnswer();
         setQuestion(0, button1);
         setQuestion(1, button2);
         setQuestion(2, button3);
@@ -421,7 +431,7 @@ public class GameTracNghiemController implements Initializable {
             public void handle(ActionEvent event) {
                 isRunning = false;
                 setMark();
-                showAlertInfo("Result", "Point: " + point);
+                showAlertInfo("Kết quả", "Point: " + point);
                 countdown.stop();
             }
         });
@@ -440,7 +450,8 @@ public class GameTracNghiemController implements Initializable {
     }
 
     public void setUpOpening() {
-        question.setText("click on any question to answer");
+        timeLeft.setText("Time left : 90 seconds");
+        question.setText("Click on any question to start");
         answerA.setText("A");
         answerB.setText("B");
         answerC.setText("C");

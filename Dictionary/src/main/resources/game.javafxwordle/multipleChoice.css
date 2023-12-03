@@ -2,23 +2,22 @@
     -fx-padding: 20px;
     -fx-background-color: lightblue;
     -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
-}
-
-.question-title {
-    -fx-font-size: 1.2em;
-    -fx-font-weight: bold;
+    -fx-background-radius: 30;
 }
 
 .question-text {
-    -fx-font-size: 1em;
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
 }
 
 .choice-box {
+    -fx-border: 1px solid black;
+    -fx-border-radius: 30;
     -fx-padding: 10px 0 10px 10px;
     -fx-background-color: #B9BABB;
-    -fx-border-color: black;
     -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
     -fx-alignment: center;
+    -fx-background-radius: 30;
 }
 
 .choice-box:hover {
@@ -26,6 +25,7 @@
 }
 
 .choice-box:selected {
+
     -fx-background-color: yellow;
     -fx-text-fill: black;
     -fx-font-weight: bold;
@@ -33,27 +33,37 @@
 }
 
 .choice-box-selected {
+    -fx-border: 1px solid black;
+    -fx-border-radius: 30;
     -fx-padding: 10px 0 10px 10px;
     -fx-background-color: yellow;
-    -fx-border-color: black;
     -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
     -fx-alignment: center;
+    -fx-background-radius: 30;
+}
+
+.choice-box-selected:hover {
+    -fx-opacity: 0.5;
 }
 
 .choice-box-right {
+    -fx-border: 1px solid black;
+    -fx-border-radius: 30;
     -fx-padding: 10px 0 10px 10px;
     -fx-background-color: green;
-    -fx-border-color: black;
     -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
     -fx-alignment: center;
+    -fx-background-radius: 30;
 }
 
 .choice-box-wrong {
+    -fx-border: 1px solid black;
     -fx-padding: 10px 0 10px 10px;
     -fx-background-color: red;
-    -fx-border-color: black;
+    -fx-border-radius: 30;
     -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
     -fx-alignment: center;
+    -fx-background-radius: 30;
 }
 
 
@@ -85,6 +95,10 @@
 
 .nav-button .glyph-icon {
     -fx-fill: white;
+}
+
+.nav-button.marked {
+    -fx-background-color: grey;
 }
 
 .nav-button Text {
@@ -127,16 +141,16 @@
 }
 
 .countdown {
-    -fx-text-fill: yellow;
+    -fx-text-fill: #FFFFFF;
     -fx-font-size: 2em;
-    -fx-font-weight: bold;
+    -fx-font-weight: light;
     -fx-padding: 10px;
-    -fx-border-color: yellow;
+    -fx-border-color: #FFFFFF;
     -fx-border-width: 2px;
     -fx-border-radius: 10px;
     -fx-background-radius: 8px;
     -fx-background-color: rgba(255,0,0,0.1);
-    -fx-effect: dropshadow(gaussian, yellow, 10, 0, 2, 2);
+    -fx-effect: dropshadow(gaussian, #FFFFFF, 10, 0, 2, 2);
 }
 
 .countdown.warning {

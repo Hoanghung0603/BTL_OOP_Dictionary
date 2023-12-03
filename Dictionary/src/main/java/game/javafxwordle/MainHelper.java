@@ -48,7 +48,7 @@ public class MainHelper {
             Label label = new Label(letter);
             if (letter.equals("W") || letter.equals("L"))
                 label.getStyleClass().setAll("correct-letter-example");
-            else if (letter.equals("R"))
+            else if (letter.equals("R") || letter.equals("E"))
                 label.getStyleClass().setAll("present-letter-example");
             else
                 label.getStyleClass().setAll("wrong-letter-example");

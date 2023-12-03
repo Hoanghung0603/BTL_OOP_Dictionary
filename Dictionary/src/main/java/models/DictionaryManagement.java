@@ -40,7 +40,7 @@ public class DictionaryManagement extends Dictionary {
 
     public static void insertFromFile() {
         try {
-            String content = readFile("src\\main\\resources\\data\\dictionary.txt", Charset.defaultCharset());
+            String content = readFile("Dictionary/src/main/resources/data/dictionary.txt", Charset.defaultCharset());
             String[] words = content.split("@");
             for (String word : words) {
                 String[] result = word.split("\r?\n", 2);
