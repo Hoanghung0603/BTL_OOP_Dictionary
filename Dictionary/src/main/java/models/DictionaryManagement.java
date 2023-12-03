@@ -40,7 +40,7 @@ public class DictionaryManagement extends Dictionary {
 
     public static void insertFromFile() {
         try {
-            String content = readFile("Dictionary/src/main/resources/data/dictionary.txt", Charset.defaultCharset());
+            String content = readFile("src\\main\\resources\\data\\dictionary.txt", Charset.defaultCharset());
             String[] words = content.split("@");
             for (String word : words) {
                 String[] result = word.split("\r?\n", 2);
@@ -238,23 +238,21 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public static void returnToDefault() {
-        String sourceFilePath = "src\\main\\resources\\data\\dictionaryDefault.txt";
-        String destinationFilePath = "src\\main\\resources\\data\\dictionary.txt";
 
         try {
             // Đọc nội dung từ file nguồn
-            FileInputStream fis = new FileInputStream(sourceFilePath);
+            FileInputStream fis = new FileInputStream("src\\main\\resources\\data\\dictionaryDefault.txt");
             byte[] sourceData = new byte[fis.available()];
             fis.read(sourceData);
             fis.close();
 
             // Xóa nội dung trong file đích
-            FileOutputStream fos = new FileOutputStream(destinationFilePath, false);
+            FileOutputStream fos = new FileOutputStream("src\\main\\resources\\data\\dictionary.txt", false);
             fos.write(new byte[0]);
             fos.close();
 
             // Ghi nội dung đã đọc từ file nguồn vào file đích
-            fos = new FileOutputStream(destinationFilePath, true);
+            fos = new FileOutputStream("src\\main\\resources\\data\\dictionary.txt", true);
             fos.write(sourceData);
             fos.close();
 

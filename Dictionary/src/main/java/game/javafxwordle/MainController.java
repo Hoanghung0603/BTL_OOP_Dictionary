@@ -35,10 +35,6 @@ public class MainController implements Initializable {
         helpParagraph.setTextAlignment(TextAlignment.CENTER);
         helpParagraph.getStyleClass().setAll("lead");
 
-//        Line line1 = new Line();
-//        line1.setStroke(Paint.valueOf("b8b8b8"));
-//        line1.setEndX(2000);
-
         Label labelExample = new Label("Examples");
         labelExample.getStyleClass().setAll("h3");
         labelExample.setTextAlignment(TextAlignment.LEFT);
@@ -99,10 +95,6 @@ public class MainController implements Initializable {
             thirdWordVBox.getChildren().add(label);
         Label thirdWordLabel = new Label("The letter U is not in the word in any spot.");
         thirdWordLabel.getStyleClass().setAll("lead");
-
-//        Line line2 = new Line();
-////        line2.setStroke(Paint.valueOf("b8b8b8"));
-////        line2.setEndX(2000);
 
         //guideVbox.setAlignment(Pos.TOP_CENTER);
         guideVbox.getChildren().addAll(helpParagraph, labelExample, firstWordVBox,

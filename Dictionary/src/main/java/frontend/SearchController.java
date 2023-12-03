@@ -42,7 +42,7 @@ public class SearchController implements Initializable {
     @FXML
     Label sugLabel, correctWord;
     @FXML
-    Button saveBtn, soundBtn, deleteBtn, showFavorWords;
+    Button saveBtn, soundBtn, deleteBtn, showFavorWords, resetBtn;
     @FXML
     ListView<String> suggResults;
     @FXML
@@ -176,6 +176,11 @@ public class SearchController implements Initializable {
             Dictionary.favoriteWord.remove(sourceWord);
             yellowStar.setVisible((false));
         }
+    }
+
+    @FXML
+    private void handleMouseClickResetBtn() {
+        //reset
     }
 
     @FXML
