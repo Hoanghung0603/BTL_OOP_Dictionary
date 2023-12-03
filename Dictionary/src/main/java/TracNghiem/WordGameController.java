@@ -1,12 +1,19 @@
 package TracNghiem;
 
+import javafx.animation.AnimationTimer;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Pane;
+import javafx.animation.FadeTransition;
+
+import javafx.util.Duration;
+import models.DictionaryManagement;
 import models.Word;
 
 import java.net.URL;
@@ -33,13 +40,7 @@ public class WordGameController extends GameTracNghiemController {
     private Label Point, howManyWordAdded;
 
     @FXML
-    private Label right = new Label("Good job");
-
-    @FXML
-    private Label noWord = new Label("No word found");
-
-    @FXML
-    private Label noCompulsoryChar = new Label("No compulsory word");
+    private Label result = new Label("Result");
 
     private ArrayList<String> listWordAdded;
 
@@ -49,7 +50,7 @@ public class WordGameController extends GameTracNghiemController {
 
     public boolean alreadyAdded(String ans) {
         for (String fromList : listWordAdded) {
-            if (fromList.equals(listWordAdded)) {
+            if (fromList.equals(ans)) {
                 return true;
             }
         }
@@ -65,6 +66,28 @@ public class WordGameController extends GameTracNghiemController {
         return false;
     }
 
+    public boolean containAEIOU(char c) {
+        return (c == 'A' || c == 'E' || c == 'U' || c == 'I' || c == 'O');
+    }
+
+    public void announceResult(String results) {
+        result.setText(results);
+        result.setStyle("-fx-background-color: black; -fx-text-fill: white; -fx-padding: 10px;");
+
+        // Create fade animation
+        FadeTransition fade = new FadeTransition(Duration.seconds(3), result);
+        fade.setFromValue(1.0);
+        fade.setToValue(0.0);
+
+        // Play animation when label shown
+        fade.setOnFinished(event -> result.setVisible(false));
+        result.setVisible(true);
+        fade.play();
+
+        fade.setNode(result);
+        fade.play();
+    }
+
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,7 +97,7 @@ public class WordGameController extends GameTracNghiemController {
 
         // Set nút 1
         c = (char)(generates.nextInt(26) + 'A');
-        while (usedChar.contains(c)) {
+        while (usedChar.contains(c) || containAEIOU(c)) {
             c = (char)(generates.nextInt(26) + 'A');
         }
         usedChar.add(c);
@@ -88,7 +111,7 @@ public class WordGameController extends GameTracNghiemController {
 
         //Set nút 2
         c = (char)(generates.nextInt(26) + 'A');
-        while (usedChar.contains(c)) {
+        while (usedChar.contains(c) || containAEIOU(c)) {
             c = (char)(generates.nextInt(26) + 'A');
         }
         usedChar.add(c);
@@ -130,7 +153,7 @@ public class WordGameController extends GameTracNghiemController {
 
         //Set nút 5
         c = (char)('A' + generates.nextInt(26));
-        while (usedChar.contains(c)) {
+        while (usedChar.contains(c) || containAEIOU(c)) {
             c = (char)('A' + generates.nextInt(26));
         }
         usedChar.add(c);
@@ -144,7 +167,7 @@ public class WordGameController extends GameTracNghiemController {
 
         //Set nút 6
         c = (char)('A' + generates.nextInt(26));
-        while (usedChar.contains(c)) {
+        while (usedChar.contains(c) || containAEIOU(c)) {
             c = (char)('A' + generates.nextInt(26));
         }
         usedChar.add(c);
@@ -180,41 +203,41 @@ public class WordGameController extends GameTracNghiemController {
                 }
             }
         });
-
+        result.setVisible(false);
         listWordAdded = new ArrayList<>();
         enter.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 String answer = input.getText();
-                Word lookUp = models.DictionaryManagement.dictionaryLookup(answer);
-
-                if (lookUp.getWordTarget().equals("")) {
-                    showAlertInfo("No word found", "This word is not already existed");
-                    input.clear();
-                    return;
-                }
-
-                if(alreadyAdded(answer)) {
-                    showAlertInfo("Inappropriate word", "Already added");
-                    input.clear();
-                    return;
-                }
+                String searchWord = answer.toLowerCase();
                 if (!hasCompulsoryChar(answer)) {
-                    showAlertInfo("Inappropriate word", "No compulsory character found");
+                    announceResult("No compulsory character");
                     input.clear();
-                    return;
                 }
-                point += answer.length();
-                Label word = new Label(answer);
-                wordAdded.getChildren().add(word);
-                showAlertInfo("Appropriate word", "Good job");
-                Point.setText("Point = " + point);
-                if (numOfWord == 0) {
-                    howManyWordAdded.setText("You have found " + ++numOfWord + " word");
-                } else {
-                    howManyWordAdded.setText("You have found " + ++numOfWord + " words");
+
+                else if(alreadyAdded(answer)) {
+                    announceResult("Already add");
+                    input.clear();
                 }
-                input.clear();
+                else if (DictionaryManagement.isInDictionary(searchWord) == false) {
+                    announceResult("This word is not already existed");
+                    input.clear();
+                }
+                else {
+                    point += answer.length();
+                    Label word = new Label(answer);
+                    wordAdded.getChildren().add(word);
+                    announceResult("Good job");
+                    Point.setText("Point = " + point);
+                    listWordAdded.add(answer);
+                    if (numOfWord == 0) {
+                        howManyWordAdded.setText("You have found " + ++numOfWord + " word");
+                    } else {
+                        howManyWordAdded.setText("You have found " + ++numOfWord + " words");
+                    }
+                    input.clear();
+                }
+
             }
         });
     }

@@ -1,0 +1,70 @@
+.hex-button {
+    -fx-background-color: #e4e4e7;
+    -fx-padding: 10px;
+    -fx-shape: "M 0 0 L 10 -20 L 30 -20 L 40 0 L 30 20 L 10 20 Z";
+}
+
+.hex-button:armed {
+    -fx-background-color: #e4e4e7;
+}
+
+.hex-button:focused {
+    -fx-background-color: #fdc859;
+}
+
+.hex-button:pressed {
+    -fx-opacity: 1.2;
+}
+
+
+.hex-complusoryButton {
+    -fx-background-color: yellow;
+    -fx-padding: 10px;
+    -fx-shape: "M 0 0 L 10 -20 L 30 -20 L 40 0 L 30 20 L 10 20 Z";
+}
+
+.hex-complusorybutton:armed {
+    -fx-background-color: #e4e4e7;
+}
+
+.hex-complusorybutton:focused {
+    -fx-background-color: #fdc859;
+}
+
+.hex-complusorybutton:pressed {
+    -fx-opacity: 1.2;
+}
+
+.enter{
+    -fx-padding: 10px 0 10px 10px;
+    -fx-background-color: Green;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-alignment: center;
+}
+
+.enter:hover{
+    -fx-opacity: 0.7;
+}
+
+.enter:pressed{
+    -fx-opacity: 0.5;
+}
+
+.delete{
+    -fx-padding: 10px 0 10px 10px;
+    -fx-background-color: Orange;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-alignment: center;
+}
+
+.delete:hover{
+    -fx-opacity: 0.7;
+}
+
+.delete:pressed{
+    -fx-opacity: 0.5;
+}
+
+

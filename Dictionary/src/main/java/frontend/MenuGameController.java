@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -44,7 +46,6 @@ public class MenuGameController implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 showView("main-view.fxml");
-
                 Button quitBtn = new Button();
                 quitBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
@@ -66,6 +67,15 @@ public class MenuGameController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 showView("trac-nghiem.fxml");
                 Button quitBtn = new Button();
+                quitBtn.setTranslateX(399);
+                quitBtn.setTranslateY(73);
+                quitBtn.setPrefSize(44,46);
+                quitBtn.setStyle("-fx-background-color: TRANSPARENT;");
+                Image image = new Image(getClass().getResource("/Utils/icons/home-button.png").toExternalForm());
+                ImageView homes = new ImageView(image);
+                homes.setFitHeight(39);
+                homes.setFitWidth(37);
+                quitBtn.setGraphic(homes);
                 quitBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
@@ -76,8 +86,8 @@ public class MenuGameController implements Initializable {
                 Pane pane = (Pane) temp.getChildren().getLast();
                 pane.getChildren().add(quitBtn);
 
-                gamePane.getChildren().getFirst().setTranslateX(30);
-                gamePane.getChildren().getFirst().setTranslateY(30);
+                gamePane.getChildren().getFirst().setTranslateX(0);
+                gamePane.getChildren().getFirst().setTranslateY(0);
             }
         });
 
@@ -86,6 +96,15 @@ public class MenuGameController implements Initializable {
             public void handle(ActionEvent event) {
                 showView("word-game.fxml");
                 Button quitBtn = new Button();
+                quitBtn.setTranslateX(175);
+                quitBtn.setTranslateY(447);
+                quitBtn.setPrefSize(44,46);
+                quitBtn.setStyle("-fx-background-color: TRANSPARENT;");
+                Image image = new Image(getClass().getResource("/Utils/icons/home-button.png").toExternalForm());
+                ImageView homes = new ImageView(image);
+                homes.setFitHeight(39);
+                homes.setFitWidth(37);
+                quitBtn.setGraphic(homes);
                 quitBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
@@ -96,8 +115,8 @@ public class MenuGameController implements Initializable {
                 Pane pane = (Pane) temp.getChildren().getLast();
                 pane.getChildren().add(quitBtn);
 
-                gamePane.getChildren().getFirst().setTranslateX(30);
-                gamePane.getChildren().getFirst().setTranslateY(5);
+                gamePane.getChildren().getFirst().setTranslateX(0);
+                gamePane.getChildren().getFirst().setTranslateY(0);
             }
         });
 

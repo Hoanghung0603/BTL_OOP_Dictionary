@@ -1,0 +1,166 @@
+.question {
+    -fx-padding: 20px;
+    -fx-background-color: lightblue;
+    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+}
+
+.question-title {
+    -fx-font-size: 1.2em;
+    -fx-font-weight: bold;
+}
+
+.question-text {
+    -fx-font-size: 1em;
+}
+
+.choice-box {
+    -fx-padding: 10px 0 10px 10px;
+    -fx-background-color: #B9BABB;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-alignment: center;
+}
+
+.choice-box:hover {
+    -fx-opacity: 0.5;
+}
+
+.choice-box:selected {
+    -fx-background-color: yellow;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-opacity : 0.7;
+}
+
+.choice-box-selected {
+    -fx-padding: 10px 0 10px 10px;
+    -fx-background-color: yellow;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-alignment: center;
+}
+
+.choice-box-right {
+    -fx-padding: 10px 0 10px 10px;
+    -fx-background-color: green;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-alignment: center;
+}
+
+.choice-box-wrong {
+    -fx-padding: 10px 0 10px 10px;
+    -fx-background-color: red;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-alignment: center;
+}
+
+
+.choice-box > .label {
+    -fx-text-fill: black;
+}
+
+.nav-button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: black;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 1.2em;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-opacity : 0.5;
+}
+
+.nav-button:pressed {
+    -fx-background-color : gray;
+}
+
+.nav-button:focused {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 1, 1);
+}
+
+.nav-button .glyph-icon {
+    -fx-fill: white;
+}
+
+.nav-button Text {
+    -fx-fill: black;
+}
+.right {
+    -fx-background-color : green;
+    -fx-text-fill: black;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 1.2em;
+    -fx-cursor: hand;
+}
+
+.wrong {
+    -fx-background-color : red;
+    -fx-text-fill: black;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 1.2em;
+    -fx-cursor: hand;
+}
+
+
+.choose {
+    -fx-background-color: yellow;
+    -fx-text-fill: black;
+    -fx-padding: 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 1.2em;
+    -fx-cursor: hand;
+}
+
+.buttonChoose{
+    -fx-background-color : yellow;
+    -fx-opacity : 0.5;
+}
+
+.countdown {
+    -fx-text-fill: yellow;
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-border-color: yellow;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 8px;
+    -fx-background-color: rgba(255,0,0,0.1);
+    -fx-effect: dropshadow(gaussian, yellow, 10, 0, 2, 2);
+}
+
+.countdown.warning {
+    -fx-text-fill: orange;
+    -fx-border-color: orange;
+    -fx-effect: dropshadow(gaussian, orange, 10, 0, 2, 2);
+}
+
+.countdown.critical {
+    -fx-text-fill: red;
+    -fx-border-color: red;
+    -fx-effect: dropshadow(gaussian, red, 10, 0, 2, 2);
+    -fx-font-size: 3em;
+    -fx-animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    50% {-fx-text-fill: firebrick;}
+}
+
+.icon:hover {
+    -fx-opacity: 0.7;
+}
+
+.icon:pressed {
+    -fx-opacity: 0.5;
+}
