@@ -226,3 +226,9 @@
     -fx-font-color: #ffffff;
     -fx-font-size: 24px;
 }
+
+.gameDes {
+    -fx-control-inner-background: #00e0c7;
+    -fx-background-color: #00e0c7;
+    -fx-text-fill: #ffffff;
+}

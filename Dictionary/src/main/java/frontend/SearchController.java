@@ -55,7 +55,6 @@ public class SearchController implements Initializable {
     // hàm này để dựa vào word, setText của correct word thành từ auto correct
     private void setCorrectWord(String word) {
         String word_da_sua = "hello";  // đang mặc định từ auto correct là hello
-
         correctWord.setText(word_da_sua);
     }
     @FXML

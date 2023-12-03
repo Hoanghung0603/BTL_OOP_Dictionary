@@ -32,7 +32,7 @@
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Utils/images/icons8-restart-40.png" />
+                        <Image url="@../Utils/icons/icons8-restart-40.png" />
                      </image>
                   </ImageView>
                </graphic></Button>

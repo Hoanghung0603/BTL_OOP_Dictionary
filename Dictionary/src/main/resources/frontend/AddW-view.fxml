@@ -38,7 +38,7 @@
             <Image url="@../Utils/icons/coral.png" />
          </image>
       </ImageView>
-      <Label layoutX="48.0" layoutY="38.0" stylesheets="@../Utils/Style.css" text="New word" textFill="WHITE">
+      <Label layoutX="48.0" layoutY="38.0" stylesheets="@../Utils/Style.css" text="Your word" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
