@@ -37,7 +37,7 @@
 
 .enter{
     -fx-padding: 10px 0 10px 10px;
-    -fx-background-color: Green;
+    -fx-background-color: #39FF14;
     -fx-border-color: black;
     -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
     -fx-alignment: center;
