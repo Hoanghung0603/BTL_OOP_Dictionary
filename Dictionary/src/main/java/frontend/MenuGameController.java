@@ -45,20 +45,26 @@ public class MenuGameController implements Initializable {
         wordleOption.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                showView("main-view.fxml");
-                Button quitBtn = new Button("Quit");
+                showView("Wordle-view.fxml");
+                Button quitBtn = new Button();
                 quitBtn.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
                         gamePane.getChildren().clear();
                     }
                 });
+                Image image = new Image(getClass().getResource("/Utils/icons/home.png").toExternalForm());
+                ImageView homes = new ImageView(image);
+                homes.setFitHeight(39);
+                homes.setFitWidth(37);
+                quitBtn.setGraphic(homes);
+                quitBtn.setStyle("-fx-background-color: TRANSPARENT; -fx-font-size: 14px; -fx-font-weight: bold;");
                 AnchorPane temp = (AnchorPane) gamePane.getChildren().getFirst();
                 Pane pane = (Pane) temp.getChildren().getLast();
                 pane.getChildren().add(quitBtn);
 
-                gamePane.getChildren().getFirst().setTranslateX(0);
-                gamePane.getChildren().getFirst().setTranslateY(0);
+                gamePane.getChildren().getFirst().setTranslateX(-70);
+                gamePane.getChildren().getFirst().setTranslateY(-12);
             }
         });
 

@@ -24,7 +24,7 @@
 //    public void start(Stage stage) throws IOException {
 //        initializeWordLists();
 //        stageReference = stage;
-//        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("Wordle-view.fxml"));
 //        Parent root = fxmlLoader.load();
 //
 //        MainController mainController = fxmlLoader.getController();

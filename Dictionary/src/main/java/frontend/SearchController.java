@@ -21,7 +21,6 @@ import models.Word;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 import service.API;
-import service.SpeechAPI;
 import service.T2SThread;
 import java.util.ArrayList;
 
@@ -38,6 +37,8 @@ public class SearchController implements Initializable {
     @FXML
     Label invalidWordAlert, showFavWordAlert, wordTarget, likeWordAlert;  //wordtarget la label hien tu tieng anh dang search
     @FXML
+    Label sugLabel, correctWord;
+    @FXML
     Button saveBtn, soundBtn, deleteBtn, showFavorWords;
     @FXML
     ListView<String> suggResults;
@@ -51,23 +52,39 @@ public class SearchController implements Initializable {
     String sourceWord = "";   //từ đang cần tra
     boolean isShowingFavWords = false;
 
-    @FXML
-    private void suggInputWord() {
-        suggList.clear();
-        sourceWord = sourceWord.toLowerCase();
-        System.out.println(sourceWord);
-        ArrayList<Word> list = new ArrayList<>();
-        list = DictionaryCommandline.dictionarySearcher(sourceWord);
-        for(Word x : list) {
-            suggList.add(x.getWordTarget());
+    // hàm này để dựa vào word, setText của correct word thành từ auto correct
+    private void setCorrectWord(String word) {
+        String word_da_sua = DictionaryManagement.autoCorrect(sourceWord);
+        // đang mặc định từ auto correct là hello
+        if(!word_da_sua.equals("Not found")) {
+            correctWord.setText(word_da_sua);
         }
-        if (suggList.isEmpty()) {
-            suggList.add("");
-
-            AlertManager.showAlert(invalidWordAlert);
-        }
-        suggResults.setItems(suggList);
+        else sugLabel.setVisible(false);
     }
+        @FXML
+        private void suggInputWord() {
+            suggList.clear();
+            sourceWord = sourceWord.toLowerCase();
+            System.out.println(sourceWord);
+            ArrayList<Word> list = new ArrayList<>();
+            list = DictionaryCommandline.dictionarySearcher(sourceWord);
+            for(Word x : list) {
+                suggList.add(x.getWordTarget());
+            }
+            if (suggList.isEmpty()) {
+                suggList.add("");
+
+                sugLabel.setVisible(false);
+                correctWord.setText("");
+
+                AlertManager.showAlert(invalidWordAlert);
+            }
+            suggResults.setItems(suggList);
+
+            sugLabel.setVisible(true);
+
+            setCorrectWord(sourceWord);
+        }
 
     //khi click vao mot tu trong suggResults
     @FXML
@@ -87,6 +104,10 @@ public class SearchController implements Initializable {
 
         String word = suggResults.getSelectionModel().getSelectedItem();
         if (word == null) return;
+
+        sugLabel.setVisible(false);
+        correctWord.setText("");
+
         wordTarget.setText(word);
         Word tmp = DictionaryCommandline.dictionaryLookup(word);
         String text = tmp.getWordSpelling() + "\n" + tmp.getWordExplain();
@@ -152,6 +173,8 @@ public class SearchController implements Initializable {
             if(suggList.isEmpty()) suggList.add("");
             suggResults.setItems(recentSearch);
         }
+        sugLabel.setVisible(false);
+        correctWord.setText("");
         setDefaultSearchGUI();
     }
 
@@ -168,7 +191,8 @@ public class SearchController implements Initializable {
         suggResults.setItems(recentSearch);
 
         deleteBtn.setVisible(false);
-
+        sugLabel.setVisible(false);
+        correctWord.setText("");
     }
 
     private void setDefaultSearchGUI() {
@@ -177,6 +201,13 @@ public class SearchController implements Initializable {
         soundBtn.setDisable(true);
         saveBtn.setDisable(true);
         defTextArea.setText("");
+    }
+
+    @FXML
+    private void handleMouseClickCorrectWordLabel() {
+        sourceWord = correctWord.getText();
+        inputWord.setText(sourceWord);
+        suggInputWord();
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -204,7 +235,12 @@ public class SearchController implements Initializable {
                     suggList.add("");
                     suggResults.setItems(recentSearch);
 
-                    if (sourceWord.equals("")) deleteBtn.setVisible(false);
+                    if (sourceWord.equals("")) {
+                        deleteBtn.setVisible(false);
+
+                        sugLabel.setVisible(false);
+                        correctWord.setText("");
+                    }
                 }
             }
         });

@@ -55,6 +55,7 @@ public class MenuController implements Initializable{
 
     private boolean changeWidth = false;
     private boolean isInSearchFunction = true;
+    private boolean isInGameFunction = false;
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -68,9 +69,11 @@ public class MenuController implements Initializable{
                 if (!isInSearchFunction) {
                     showView("Search-view.fxml");
                     isInSearchFunction = true;
+                    isInGameFunction = false;
                 }
                 if (changeWidth) {
                     isInSearchFunction = true;
+                    isInGameFunction = false;
                     showView("Search-view.fxml");
                     AddBtn.setDisable(true);
                     TranslateBtn.setDisable(true);
@@ -100,6 +103,7 @@ public class MenuController implements Initializable{
             public void handle(ActionEvent actionEvent) {
                 if(!changeWidth) {
                     isInSearchFunction = false;
+                    isInGameFunction = false;
                     showView("AddW-view.fxml");
                     Node node = null;
                     try {
@@ -135,12 +139,14 @@ public class MenuController implements Initializable{
         TranslateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (isInSearchFunction) {
+                if (isInSearchFunction || isInGameFunction) {
                     isInSearchFunction = false;
+                    isInGameFunction = false;
                     showView("translate-view.fxml");
                 }
                 if (changeWidth) {
                     isInSearchFunction = false;
+                    isInGameFunction = false;
                     AddBtn.setDisable(true);
                     searchBtn.setDisable(true);
                     GameBtn.setDisable(true);
@@ -169,8 +175,11 @@ public class MenuController implements Initializable{
         GameBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                isInSearchFunction = false;
-                showView("Menu-game.fxml");
+                if (!isInGameFunction) {
+                    isInSearchFunction = false;
+                    isInGameFunction = true;
+                    showView("Menu-game.fxml");
+                }
             }
         });
 

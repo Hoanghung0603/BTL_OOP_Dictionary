@@ -62,7 +62,7 @@
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Utils/icons/help.png" />
+                        <Image url="@../Utils/icons/qsmark.png" />
                      </image>
                   </ImageView>
                </graphic>
