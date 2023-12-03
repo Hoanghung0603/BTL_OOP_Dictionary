@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -63,8 +64,8 @@ public class MenuGameController implements Initializable {
                 Pane pane = (Pane) temp.getChildren().getLast();
                 pane.getChildren().add(quitBtn);
 
-                gamePane.getChildren().getFirst().setTranslateX(-70);
-                gamePane.getChildren().getFirst().setTranslateY(-12);
+//                gamePane.getChildren().getFirst().setTranslateX(-70);
+//                gamePane.getChildren().getFirst().setTranslateY(-12);
             }
         });
 

@@ -3,8 +3,11 @@ package frontend;
 import Alert.AlertManager;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -49,17 +52,23 @@ public class SearchController implements Initializable {
     @FXML
     ImageView yellowStar;
 
+    @FXML
+    Timeline timeline;
+
     String sourceWord = "";   //từ đang cần tra
     boolean isShowingFavWords = false;
 
     // hàm này để dựa vào word, setText của correct word thành từ auto correct
     private void setCorrectWord(String word) {
+        sugLabel.setVisible(true);
         String word_da_sua = DictionaryManagement.autoCorrect(sourceWord);
         // đang mặc định từ auto correct là hello
         if(!word_da_sua.equals("Not found")) {
             correctWord.setText(word_da_sua);
         }
-        else sugLabel.setVisible(false);
+        else if(word_da_sua.equals("Not found") || DictionaryManagement.isInDictionary(word_da_sua))
+            sugLabel.setVisible(false);
+
     }
         @FXML
         private void suggInputWord() {
@@ -81,9 +90,23 @@ public class SearchController implements Initializable {
             }
             suggResults.setItems(suggList);
 
-            sugLabel.setVisible(true);
+            //setCorrectWord(sourceWord);
 
-            setCorrectWord(sourceWord);
+
+            if (timeline != null && timeline.getStatus() == Timeline.Status.RUNNING) {
+                timeline.stop(); // Dừng Timeline nếu đang chạy
+            }
+
+            timeline = new Timeline(new KeyFrame(
+                    Duration.seconds(1),
+                    new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            setCorrectWord(sourceWord);
+                        }
+                    })
+            );
+            timeline.play();
         }
 
     //khi click vao mot tu trong suggResults

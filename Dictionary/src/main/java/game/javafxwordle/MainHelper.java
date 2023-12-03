@@ -25,7 +25,7 @@ public class MainHelper {
 
     private final String[] firstRowLetters = {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"};
     private final String[] secondRowLetters = {"A", "S", "D", "F", "G", "H", "J", "K", "L"};
-    private final String[] thirdRowLetters = {"↵", "Z", "X", "C", "V", "B", "N", "M", "←"};
+    private final String[] thirdRowLetters = {"Z", "X", "C", "V", "B", "N", "M"};
 
     private int CURRENT_ROW = 1;
     private int CURRENT_COLUMN = 1;
@@ -83,10 +83,7 @@ public class MainHelper {
         }
         for (int i = 0; i < thirdRowLetters.length; i++) {
             Label label = new Label();
-            if (i == 0 || i == thirdRowLetters.length - 1)
-                label.getStyleClass().add("keyboardTileSymbol");
-            else
-                label.getStyleClass().add("keyboardTile");
+            label.getStyleClass().add("keyboardTile");
             label.setText(thirdRowLetters[i]);
             keyboardRow3.add(label, i, 3);
         }
@@ -293,6 +290,7 @@ public class MainHelper {
 
     public void getRandomWord() throws SQLException {
         winningWord = MainModel.getWordleWord();
+        System.out.println(winningWord);
     }
 
     private boolean isValidGuess(String guess) throws SQLException {

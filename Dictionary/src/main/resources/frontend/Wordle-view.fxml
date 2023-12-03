@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,13 +10,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="610.0" prefWidth="844.0" style="-fx-border-width: 4; -fx-border-color: #006270;" styleClass="main-screen" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.javafxwordle.MainController">
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="584.0" prefWidth="798.0" style="-fx-background-color: #009394;" styleClass="gamePane" stylesheets="@../game.javafxwordle/wordle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.javafxwordle.MainController">
+   <ImageView fitHeight="550.0" fitWidth="924.0" layoutX="14.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../Utils/icons/schoolOffish.png" />
+      </image>
+   </ImageView>
 
-    <stylesheets>
-        <URL value="@../game.javafxwordle/wordle.css" />
-    </stylesheets>
-
-        <VBox alignment="TOP_CENTER" layoutX="203.0" layoutY="23.0" minWidth="480.0">
+        <VBox alignment="TOP_CENTER" layoutX="137.0" layoutY="15.0" minWidth="480.0">
    
             <HBox alignment="CENTER">
                 <padding>
@@ -53,13 +53,13 @@
             </HBox>
         </VBox>
 
-        <GridPane fx:id="gridPane" alignment="CENTER" hgap="5" layoutX="449.0" layoutY="80.0" onKeyPressed="#onKeyPressed" prefHeight="482.0" prefWidth="380.0" vgap="5" BorderPane.alignment="CENTER">
+        <GridPane fx:id="gridPane" alignment="CENTER" hgap="5" layoutX="367.0" layoutY="67.0" onKeyPressed="#onKeyPressed" prefHeight="482.0" prefWidth="380.0" vgap="5" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets bottom="15.0" top="15.0" />
             </BorderPane.margin>
         </GridPane>
 
-        <VBox layoutX="14.0" layoutY="248.0" prefHeight="16.0" prefWidth="14.0">
+        <VBox layoutX="7.0" layoutY="353.0" prefHeight="16.0" prefWidth="14.0">
             <GridPane fx:id="keyboardRow1" alignment="BOTTOM_CENTER" hgap="4" vgap="2">
                 <padding>
                     <Insets top="10.0" />
@@ -74,5 +74,6 @@
                 </padding>
             </GridPane>
         </VBox>
-   <AnchorPane layoutX="789.0" layoutY="18.0" prefHeight="26.0" prefWidth="39.0" />
+   <AnchorPane layoutX="681.0" layoutY="18.0" prefHeight="26.0" prefWidth="39.0" />
+   <VBox fx:id="guideVbox" layoutX="21.0" layoutY="44.0" prefHeight="200.0" prefWidth="100.0" />
 </AnchorPane>

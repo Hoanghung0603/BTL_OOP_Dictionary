@@ -86,8 +86,9 @@
     -fx-text-fill: #000000;
     -fx-font-size: 13px;
     -fx-font-weight: bold;
-    -fx-min-width: 43px;
-    -fx-min-height: 58px;
+    /* 43  và 58 */
+    -fx-min-width: 33px;
+    -fx-min-height: 48px;
     -fx-text-alignment: center;
     -fx-alignment: center;
     -fx-background-radius: 4px;
@@ -98,8 +99,8 @@
     -fx-text-fill: #ffffff;
     -fx-font-size: 13px;
     -fx-font-weight: bold;
-    -fx-min-width: 43px;
-    -fx-min-height: 58px;
+    -fx-min-width: 33px;
+    -fx-min-height: 48px;
     -fx-text-alignment: center;
     -fx-alignment: center;
     -fx-background-radius: 4px;
@@ -110,8 +111,8 @@
     -fx-text-fill: #ffffff;
     -fx-font-size: 13px;
     -fx-font-weight: bold;
-    -fx-min-width: 43px;
-    -fx-min-height: 58px;
+    -fx-min-width: 33px;
+    -fx-min-height: 48px;
     -fx-text-alignment: center;
     -fx-alignment: center;
     -fx-background-radius: 4px;
@@ -122,8 +123,8 @@
     -fx-text-fill: #ffffff;
     -fx-font-size: 13px;
     -fx-font-weight: bold;
-    -fx-min-width: 43px;
-    -fx-min-height: 58px;
+    -fx-min-width: 33px;
+    -fx-min-height: 48px;
     -fx-text-alignment: center;
     -fx-alignment: center;
     -fx-background-radius: 4px;
@@ -133,8 +134,8 @@
     -fx-background-color: #d3d6da;
     -fx-text-fill: #000000;
     -fx-font-size: 25px;
-    -fx-min-width: 58px;
-    -fx-min-height: 58px;
+    -fx-min-width: 33px;
+    -fx-min-height: 48px;
     -fx-text-alignment: center;
     -fx-alignment: center;
     -fx-background-radius: 4px;
@@ -207,4 +208,25 @@
     -fx-pref-height: 45px;
     -fx-text-alignment: center;
     -fx-alignment: center;
+}
+
+#lead-label {
+    -fx-text-weight: bold;
+    -fx-text-size: 15px;
+}
+
+.gamePane {
+    -fx-background-color: #009394;
+    -fx-shape: "M 784 96
+                C 864 112 752 144 816 176
+                C 864 208 848 240 784 272
+                Q 752 288 800 304
+                Q 864 336 784 400
+                Q 768 416 800 432
+                C 850 464 832 496 784 512
+                L 30 512
+                Q 0 512 0 482
+                L 0 134
+                Q 0 96 30 96
+                Z";
 }
