@@ -197,10 +197,7 @@ public class WordGameController extends GameTracNghiemController {
         delete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                String getText = input.getText();
-                if (getText.length() > 0) {
-                    input.setText(getText.substring(0, getText.length() - 1));
-                }
+                input.clear();
             }
         });
         result.setVisible(false);
@@ -208,7 +205,7 @@ public class WordGameController extends GameTracNghiemController {
         enter.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                String answer = input.getText();
+                String answer = input.getText().toUpperCase();
                 String searchWord = answer.toLowerCase();
                 if (!hasCompulsoryChar(answer)) {
                     announceResult("No compulsory character");

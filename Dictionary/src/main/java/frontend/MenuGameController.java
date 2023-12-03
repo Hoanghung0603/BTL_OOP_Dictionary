@@ -67,8 +67,8 @@ public class MenuGameController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 showView("trac-nghiem.fxml");
                 Button quitBtn = new Button();
-                quitBtn.setTranslateX(399);
-                quitBtn.setTranslateY(73);
+                quitBtn.setTranslateX(621);
+                quitBtn.setTranslateY(139);
                 quitBtn.setPrefSize(44,46);
                 quitBtn.setStyle("-fx-background-color: TRANSPARENT;");
                 Image image = new Image(getClass().getResource("/Utils/icons/home-button.png").toExternalForm());
@@ -82,6 +82,9 @@ public class MenuGameController implements Initializable {
                         gamePane.getChildren().clear();
                     }
                 });
+
+
+
                 AnchorPane temp = (AnchorPane) gamePane.getChildren().getFirst();
                 Pane pane = (Pane) temp.getChildren().getLast();
                 pane.getChildren().add(quitBtn);
@@ -115,8 +118,8 @@ public class MenuGameController implements Initializable {
                 Pane pane = (Pane) temp.getChildren().getLast();
                 pane.getChildren().add(quitBtn);
 
-                gamePane.getChildren().getFirst().setTranslateX(0);
-                gamePane.getChildren().getFirst().setTranslateY(0);
+                gamePane.getChildren().getFirst().setTranslateX(-70);
+                gamePane.getChildren().getFirst().setTranslateY(-13);
             }
         });
 
