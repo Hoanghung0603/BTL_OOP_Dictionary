@@ -70,7 +70,6 @@ public class ScoreWindow {
         scene.getStylesheets()
                 .add(Objects.requireNonNull(ScoreWindow.class.getResource("/game.javafxwordle/wordle.css"))
                         .toExternalForm());
-        //stage.getIcons().add(new Image(Objects.requireNonNull(ScoreWindow.class.getResourceAsStream("images/icon.png"))));
         stage.setScene(scene);
         stage.showAndWait();
     }

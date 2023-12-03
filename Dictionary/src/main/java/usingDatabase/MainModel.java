@@ -20,26 +20,9 @@ public class MainModel {
     }
 
 
-
-    public static boolean findWord(String matchWord) throws SQLException {
-        String sql = "SELECT * FROM words WHERE Word LIKE '" + matchWord + "'";
-        ResultSet result = statement.executeQuery(sql);
-        return result.getString("Word") == null;
-    }
-
-
-
     public static String getWordleWord() throws SQLException {
         String sql = "SELECT * FROM wordle_wordList ORDER BY RANDOM() LIMIT 1;";
         return statement.executeQuery(sql).getString("Word");
-    }
-
-    public static String verifyWordleWord(String word) throws SQLException {
-        String currWord = statement.executeQuery("SELECT * FROM wordle_wordList WHERE Word LIKE '" + word + "'").getString("Word");
-        if (currWord == null) {
-            currWord = statement.executeQuery("SELECT * FROM wordle_wildcard WHERE Word LIKE '" + word + "'").getString("Word");
-        }
-        return currWord;
     }
 
     public static void closeConnection() throws SQLException {
