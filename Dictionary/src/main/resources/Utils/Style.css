@@ -213,3 +213,16 @@
 .translateBtn: pressed, focused {
     -fx-effect: dropshadow(gaussian, #00000010, 5, 5, 0, 0);
 }
+
+.game-container {
+    -fx-background-radius: 20;
+    -fx-background-color: #00e0c798;
+    -fx-effect: dropshadow(gaussian, #00000020, 3, 5, 7, 7);
+}
+
+.chooseGameBtn {
+    -fx-background-color: TRANSPARENT;
+    -fx-font-weight: bold;
+    -fx-font-color: #ffffff;
+    -fx-font-size: 24px;
+}
