@@ -2,6 +2,7 @@
     -fx-background-color: #e4e4e7;
     -fx-padding: 10px;
     -fx-shape: "M 0 0 L 10 -20 L 30 -20 L 40 0 L 30 20 L 10 20 Z";
+    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3)
 }
 
 .hex-button:armed {

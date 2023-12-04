@@ -50,7 +50,7 @@ public class GameTracNghiemController implements Initializable {
     private boolean isRunning;
 
 
-    protected final int timeForAGame = 90;
+    protected final int timeForAGame = 75;
 
     @FXML
     private Button button1, button2, button3, button4, button5;
@@ -138,9 +138,9 @@ public class GameTracNghiemController implements Initializable {
         HashSet<Integer> usedNumber = new HashSet<>();
         Random generateNumber = new Random();
         for (int i = 0; i < 10; i++) {
-            counter[i] = generateNumber.nextInt(0, 49);
+            counter[i] = generateNumber.nextInt(0, 59);
             while (usedNumber.contains(counter[i])) {
-                counter[i] = generateNumber.nextInt(0, 49);
+                counter[i] = generateNumber.nextInt(0, 59);
             }
             usedNumber.add(counter[i]);
         }
@@ -450,7 +450,7 @@ public class GameTracNghiemController implements Initializable {
     }
 
     public void setUpOpening() {
-        timeLeft.setText("Time left : 90 seconds");
+        timeLeft.setText("Time left : 75 seconds");
         question.setText("Click on any question to start");
         answerA.setText("A");
         answerB.setText("B");

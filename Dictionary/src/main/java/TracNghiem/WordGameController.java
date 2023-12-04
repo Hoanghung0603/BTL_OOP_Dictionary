@@ -2,6 +2,7 @@ package TracNghiem;
 
 import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,12 +21,13 @@ import models.Word;
 import java.net.URL;
 import java.util.*;
 
+
 public class WordGameController extends GameTracNghiemController {
     @FXML
     private TextField input;
 
     @FXML
-    private Button enter, delete;
+    private Button enter, delete, shuffle;
 
     private int point;
 
@@ -74,7 +76,6 @@ public class WordGameController extends GameTracNghiemController {
         result.setText(results);
         result.setStyle("-fx-background-color: black; -fx-text-fill: white; -fx-padding: 10px;");
 
-        // Create fade animation
         FadeTransition fade = new FadeTransition(Duration.seconds(3), result);
         fade.setFromValue(1.0);
         fade.setToValue(0.0);
@@ -86,6 +87,85 @@ public class WordGameController extends GameTracNghiemController {
 
         fade.setNode(result);
         fade.play();
+    }
+
+    public void loadSetCharacter() {
+        char c1,c2,c3,c4,c5,c6;
+
+        Random generates = new Random();
+
+        HashSet<Character> usedChar = new HashSet<>();
+        // Set nút 1
+        c1 = (char)(generates.nextInt(26) + 'A');
+        while (containAEIOU(c1)) {
+            c1 = (char)(generates.nextInt(26) + 'A');
+        }
+        usedChar.add(c1);
+
+        //Set nút 2
+        c2 = (char)(generates.nextInt(26) + 'A');
+        while (usedChar.contains(c2) || containAEIOU(c2)) {
+            c2 = (char)(generates.nextInt(26) + 'A');
+        }
+        usedChar.add(c2);
+
+
+        //Set nút 3
+        int num = generates.nextInt(4);
+        while (usedChar.contains(vowels[num])) {
+            num = generates.nextInt(4);
+        }
+        c3 = vowels[num];
+        usedChar.add(c3);
+
+        //Set nút 4
+        num = generates.nextInt(4);
+        while (usedChar.contains(vowels[num])) {
+            num = generates.nextInt(4);
+        }
+        c4 = vowels[num];
+
+        usedChar.add(c4);
+
+        //Set nút 5
+        c5 = (char)('A' + generates.nextInt(26));
+        while (usedChar.contains(c5) || containAEIOU(c5)) {
+            c5 = (char)('A' + generates.nextInt(26));
+        }
+        usedChar.add(c5);
+
+
+        //Set nút 6
+        c6 = (char)('A' + generates.nextInt(26));
+        while (usedChar.contains(c6) || containAEIOU(c6)) {
+            c6 = (char)('A' + generates.nextInt(26));
+        }
+        usedChar.add(c6);
+        /*
+        FadeTransition task = new FadeTransition(Duration.millis(5000));
+        task.setNode(firstChar);
+        task.setNode(secondChar);
+        task.setNode(thirdChar);
+        task.setNode(fourthChar);
+        task.setNode(fifthChar);
+        task.setNode(sixChar);
+
+        task.setCycleCount(Timeline.INDEFINITE);
+        task.setFromValue(1.0);
+        task.setToValue(0.1);
+
+
+
+        task.setAutoReverse(true);
+
+        task.play();
+         */
+        firstChar.setText(String.valueOf(c1));
+        secondChar.setText(String.valueOf(c2));
+        thirdChar.setText(String.valueOf(c3));
+        fourthChar.setText(String.valueOf(c4));
+        fifthChar.setText(String.valueOf(c5));
+        sixChar.setText(String.valueOf(c6));
     }
 
 
@@ -237,6 +317,10 @@ public class WordGameController extends GameTracNghiemController {
                 }
 
             }
+        });
+
+        shuffle.setOnAction(event -> {
+            loadSetCharacter();
         });
     }
 }
