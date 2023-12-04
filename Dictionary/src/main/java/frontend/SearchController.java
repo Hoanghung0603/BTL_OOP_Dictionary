@@ -31,6 +31,7 @@ import java.util.ArrayList;
 
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
@@ -186,6 +187,8 @@ public class SearchController implements Initializable {
     @FXML
     private void handleMouseClickResetBtn() throws IOException {
         //reset
+        Alert confirmation = new AlertManager().alertConfirmation("Reset data to default settings", "This action will undo all changes made. Press "+"OK"+" to continue.");
+        Optional<ButtonType> option = confirmation.showAndWait();
         DictionaryManagement.returnToDefault();
         System.exit(0);
     }

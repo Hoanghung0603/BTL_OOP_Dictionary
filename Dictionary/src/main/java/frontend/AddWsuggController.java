@@ -37,11 +37,12 @@ public class AddWsuggController implements Initializable, Listener {
             editBtn.setVisible(true);
         }
         else {
-            //nếu newWord không có trong từ điển
-            defTextArea.setText("Từ này chưa có trong từ điển");
+            defTextArea.setEditable(false);
+            defTextArea.setText("");
+            confEditBtn.setVisible(false);
+            resetBtn.setVisible(false);
             editBtn.setVisible(true);
         }
-        //thêm điều kiện nếu newword rỗng
     }
 
     private void setDefaultGUI(Boolean bool) {
@@ -58,7 +59,6 @@ public class AddWsuggController implements Initializable, Listener {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(confEditBtn.isVisible()) return;
-                defTextArea.setText("");
                 setDefaultGUI(true);
                 prevDef = defTextArea.getText();
             }

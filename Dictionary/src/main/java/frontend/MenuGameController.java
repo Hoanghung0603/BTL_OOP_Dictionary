@@ -58,6 +58,7 @@ public class MenuGameController implements Initializable {
                     @Override
                     public void handle(ActionEvent actionEvent) {
                         gamePane.getChildren().clear();
+                        wordleOption.requestFocus();
                     }
                 });
                 Image image = new Image(getClass().getResource("/Utils/icons/home.png").toExternalForm());
@@ -93,6 +94,7 @@ public class MenuGameController implements Initializable {
                     @Override
                     public void handle(ActionEvent actionEvent) {
                         gamePane.getChildren().clear();
+                        mulChoiceOption.requestFocus();
                     }
                 });
 
@@ -124,6 +126,7 @@ public class MenuGameController implements Initializable {
                     @Override
                     public void handle(ActionEvent actionEvent) {
                         gamePane.getChildren().clear();
+                        gameWordOption.requestFocus();
                     }
                 });
                 AnchorPane temp = (AnchorPane) gamePane.getChildren().getFirst();
