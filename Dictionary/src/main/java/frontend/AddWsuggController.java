@@ -38,7 +38,7 @@ public class AddWsuggController implements Initializable, Listener {
         }
         else {
             //nếu newWord không có trong từ điển
-            defTextArea.setText("Từ này chưa có trong từ điển. Nếu bạn muốn thêm vào từ điển, click Edit, sau đó nhập nghĩa của từ mới, cuối cùng click confirm");
+            defTextArea.setText("Từ này chưa có trong từ điển");
             editBtn.setVisible(true);
         }
         //thêm điều kiện nếu newword rỗng
@@ -58,6 +58,7 @@ public class AddWsuggController implements Initializable, Listener {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(confEditBtn.isVisible()) return;
+                defTextArea.setText("");
                 setDefaultGUI(true);
                 prevDef = defTextArea.getText();
             }
@@ -81,12 +82,13 @@ public class AddWsuggController implements Initializable, Listener {
                 //nếu không -> thêm vào từ điển FORMAT LẠI CÁI NÀY -> WORD VÀ ADD VÀO LISTWORD
                 //lấy định nghĩa vừa sửa:     defTextArea.getText() FORMAT LẠI CÁI NÀY -> WORD VÀ REPLACE VÀO LISTWORD
                 System.out.print("ADD");
-                Word word = DictionaryManagement.formatStringtoWord(ShareInfoAddWord.getNewWord() + "\t" + defTextArea.getText());
+                Word word = DictionaryManagement.formatStringtoWord(DictionaryManagement.formatWord(ShareInfoAddWord.getNewWord()) + "\t" + defTextArea.getText());
                 System.out.print(DictionaryManagement.formatStringtoWord(ShareInfoAddWord.getNewWord() + "\t" + defTextArea.getText()).toString());
                 if(DictionaryManagement.isInDictionary(ShareInfoAddWord.getNewWord())) {
                     Word oldWord = DictionaryManagement.dictionaryLookup(ShareInfoAddWord.getNewWord());
                     Dictionary.listWord.remove(oldWord);
                 }
+                System.out.print("NGU NGỐC");
                 Dictionary.listWord.add(word);
 
                 //sửa lại nghĩa của từ

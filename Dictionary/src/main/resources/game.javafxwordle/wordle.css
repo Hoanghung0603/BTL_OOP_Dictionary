@@ -25,6 +25,9 @@
     -fx-pref-height: 65px;
     -fx-text-alignment: center;
     -fx-alignment: center;
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
 }
 
 .tile-with-letter {
@@ -44,6 +47,9 @@
     -fx-pref-height: 65px;
     -fx-text-alignment: center;
     -fx-alignment: center;
+
+    -fx-background-radius: 10;
+        -fx-border-radius: 10;
 }
 
 .wrong-letter {
@@ -59,6 +65,9 @@
     -fx-pref-height: 65px;
     -fx-text-alignment: center;
     -fx-alignment: center;
+
+    -fx-background-radius: 10;
+        -fx-border-radius: 10;
 }
 
 .correct-letter {
@@ -74,6 +83,9 @@
     -fx-pref-height: 65px;
     -fx-text-alignment: center;
     -fx-alignment: center;
+
+    -fx-background-radius: 10;
+        -fx-border-radius: 10;
 }
 
 .main-screen {
@@ -163,6 +175,9 @@
     -fx-pref-height: 45px;
     -fx-text-alignment: center;
     -fx-alignment: center;
+
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
 }
 
 .default-letter-example {
@@ -178,6 +193,9 @@
     -fx-pref-height: 45px;
     -fx-text-alignment: center;
     -fx-alignment: center;
+
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
 }
 
 .present-letter-example {
@@ -193,6 +211,9 @@
     -fx-pref-height: 45px;
     -fx-text-alignment: center;
     -fx-alignment: center;
+
+    -fx-background-radius: 7;
+        -fx-border-radius: 7;
 }
 
 .wrong-letter-example {
@@ -208,11 +229,9 @@
     -fx-pref-height: 45px;
     -fx-text-alignment: center;
     -fx-alignment: center;
-}
 
-#lead-label {
-    -fx-text-weight: bold;
-    -fx-text-size: 15px;
+    -fx-background-radius: 7;
+        -fx-border-radius: 7;
 }
 
 .gamePane {

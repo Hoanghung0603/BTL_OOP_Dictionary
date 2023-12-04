@@ -4,40 +4,39 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Line;
 import javafx.scene.text.TextAlignment;
 
-import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.stream.Stream;
 
 public class MainController implements Initializable {
     @FXML
     VBox guideVbox;
 
+    private String defaultGuidtext = "-fx-text-fill: #ffffff;\n" +
+            "    -fx-font-weight: bold;\n" +
+            "    -fx-font-size: 15.1px;";
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         guideVbox.setPadding(new Insets(20, 20, 20, 20));
-        Label helpParagraph = new Label("Guess the WORDLE in six tries. \n Each guess must be a valid five-letter word.\n Hit the enter button to submit.\n\n After each guess, the color of the tiles will change to \n show how close your guess was to the word.");
+        Label helpParagraph = new Label("Guess the WORDLE in six tries");
         helpParagraph.setTextAlignment(TextAlignment.CENTER);
-        helpParagraph.getStyleClass().setAll("lead");
+        helpParagraph.setStyle(defaultGuidtext +
+                "    -fx-font-size: 18px;");
 
-        Label labelExample = new Label("Examples");
-        labelExample.getStyleClass().setAll("h3");
-        labelExample.setTextAlignment(TextAlignment.LEFT);
+//        Label labelExample = new Label("Examples");
+//        labelExample.setStyle(defaultGuidtext);
+//        labelExample.setTextAlignment(TextAlignment.LEFT);
 
         /* FIRST WORD */
 
@@ -53,8 +52,9 @@ public class MainController implements Initializable {
         HBox firstWordVBox = new HBox(3);
         for (Label label : firstWord)
             firstWordVBox.getChildren().add(label);
-        Label firstWordLabel = new Label("The letter W is in the word and in the correct spot.");
-        firstWordLabel.getStyleClass().setAll("lead");
+        Label firstWordLabel = new Label("The letter W is the letter in the correct spot");
+        firstWordLabel.setMinWidth(Label.USE_PREF_SIZE);
+        firstWordLabel.setStyle(defaultGuidtext);
 
         /* SECOND WORD */
 
@@ -73,8 +73,8 @@ public class MainController implements Initializable {
         HBox secondWordVBox = new HBox(3);
         for (Label label : secondWord)
             secondWordVBox.getChildren().add(label);
-        Label secondWordLabel = new Label("The letter I is in the word but in the wrong spot.");
-        secondWordLabel.getStyleClass().setAll("lead");
+        Label secondWordLabel = new Label("The letter I is the letter in the wrong spot");
+        secondWordLabel.setStyle(defaultGuidtext);
 
         /* THIRD WORD */
 
@@ -93,11 +93,11 @@ public class MainController implements Initializable {
         HBox thirdWordVBox = new HBox(3);
         for (Label label : thirdWord)
             thirdWordVBox.getChildren().add(label);
-        Label thirdWordLabel = new Label("The letter U is not in the word in any spot.");
-        thirdWordLabel.getStyleClass().setAll("lead");
+        Label thirdWordLabel = new Label("The letter U is not in the word in any spot");
+        thirdWordLabel.setStyle(defaultGuidtext);
 
         //guideVbox.setAlignment(Pos.TOP_CENTER);
-        guideVbox.getChildren().addAll(helpParagraph, labelExample, firstWordVBox,
+        guideVbox.getChildren().addAll(helpParagraph, /*labelExample,*/ firstWordVBox,
                 firstWordLabel, secondWordVBox, secondWordLabel, thirdWordVBox, thirdWordLabel);
 
 
@@ -111,11 +111,6 @@ public class MainController implements Initializable {
 
         Platform.runLater(() -> {
             gridPane.requestFocus();
-            if (gridPane.isFocused()) {
-                System.out.println("focusing grid");
-            } else {
-                System.out.println("focus fail");
-            }
         });
     }
 

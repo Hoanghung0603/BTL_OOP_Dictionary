@@ -186,13 +186,7 @@ public class MenuController implements Initializable{
         QuitBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                //Tạo một cái là muốn lưu lại hay không
-                // Có thì export ra file
-                /*try {
-                    DictionaryManagement.export();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }*/
+                DictionaryManagement.exportDataToFile();
                 System.exit(0);
             }
         });

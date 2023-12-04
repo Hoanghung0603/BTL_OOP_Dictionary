@@ -2,6 +2,7 @@ package models;
 
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 import java.io.*;
@@ -66,14 +67,13 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public static Word formatStringtoWord(String content) {
-        String[] result = content.split("\r?\n", 2);
-        System.out.println(result[0]);
+        String[] result = content.split("\t?\n", 2);
+
         String wordExplain;
         String wordTarget = "";
         String wordSpelling = "";
         if (result.length > 1) {
             wordExplain = result[1];
-            System.out.println(wordExplain);
 
             if (result[0].contains("/")) {
                 wordTarget = result[0].substring(0, result[0].indexOf("/"));
@@ -85,7 +85,32 @@ public class DictionaryManagement extends Dictionary {
                 wordSpelling = "";
             }
         }  else {
-            String[] split = result[0].split("\t", 2);
+            String[] split = result[0].split("\t? ", 2);
+            wordTarget = split[0];
+            wordExplain = split[1];
+        }
+        return new Word(wordTarget.trim(), wordSpelling.trim(), wordExplain.trim());
+    }
+    public static Word formatStringtoWordinAdd(String content) {
+        String[] result = content.split("\t", 2);
+
+        String wordExplain = result[1];
+        String wordTarget = result[0];
+        String wordSpelling = "";
+        if (result.length > 1) {
+            wordExplain = result[1];
+
+            if (result[0].contains("/")) {
+                wordTarget = result[0].substring(0, result[0].indexOf("/"));
+                //Cắt từ đầu đến kí tự /
+                wordSpelling = result[0].substring(result[0].indexOf("/"));
+                //Từ kí tự / đến cuối
+            } else {
+                wordTarget = result[0];
+                wordSpelling = "";
+            }
+        }  else {
+            String[] split = result[0].split("\t? ", 2);
             wordTarget = split[0];
             wordExplain = split[1];
         }
@@ -94,12 +119,17 @@ public class DictionaryManagement extends Dictionary {
 
     public static void exportToFile() {
         try {
-            String content = "";
+            // clear("dictionary");
+            StringBuilder content = new StringBuilder();
             for (Word word : listWord) {
-                content += formatWordinDic(word);
+                content.append(formatWordinDic(word));
             }
-            Files.write(Paths.get("src\\main\\resources\\data\\dictionary.txt"), content.getBytes());
-        } catch (Exception e) {
+            Path filePath = Paths.get("src", "main", "resources", "data", "dictionary.txt");
+            FileWriter fileWriter = new FileWriter(filePath.toFile());
+            BufferedWriter writer = new BufferedWriter(fileWriter);
+            writer.write(content.toString());
+            writer.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -231,14 +261,13 @@ public class DictionaryManagement extends Dictionary {
         return content.toString();
     }
 
-
     public static String formatWordinDic(Word word) {
         String wordEntry = "@" + word.getWordTarget() + "\t" + word.getWordSpelling() + "\n" + word.getWordExplain() + "\n";
         return wordEntry;
     }
 
-    public static void returnToDefault() {
-
+    public static void returnToDefault() throws IOException {
+        reset();
         try {
             // Đọc nội dung từ file nguồn
             FileInputStream fis = new FileInputStream("src\\main\\resources\\data\\dictionaryDefault.txt");
@@ -301,7 +330,7 @@ public class DictionaryManagement extends Dictionary {
         return "Not found";
     }
 
-    /* public static void clear(String file) {
+     public static void clear(String file) {
          String filePath = "src/main/resources/data/" + file + ".txt";
          try {
              FileWriter writer = new FileWriter(filePath);
@@ -313,15 +342,9 @@ public class DictionaryManagement extends Dictionary {
          }
      }
      public static void reset() throws IOException {
-         clear("data");
          clear("recentword");
+         clear("favourite");
      }
-     public static void exportToFile() throws IOException {
-         clear("data");
-         clear("recentword");
-         dictionaryExportToFileRecentWord();
-         dictionaryExportToFile();
-     }*/
     public static void insertData() {
         insertFromFile();
         RecentWord recent = new RecentWord();

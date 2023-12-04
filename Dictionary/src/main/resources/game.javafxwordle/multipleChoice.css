@@ -11,7 +11,7 @@
 }
 
 .choice-box {
-    -fx-border: 1px solid black;
+    -fx-border: 1px;
     -fx-border-radius: 30;
     -fx-padding: 10px 0 10px 10px;
     -fx-background-color: #B9BABB;
@@ -33,7 +33,7 @@
 }
 
 .choice-box-selected {
-    -fx-border: 1px solid black;
+    -fx-border: 1px;
     -fx-border-radius: 30;
     -fx-padding: 10px 0 10px 10px;
     -fx-background-color: yellow;
@@ -47,7 +47,7 @@
 }
 
 .choice-box-right {
-    -fx-border: 1px solid black;
+    -fx-border: 1px ;
     -fx-border-radius: 30;
     -fx-padding: 10px 0 10px 10px;
     -fx-background-color: green;
@@ -57,7 +57,7 @@
 }
 
 .choice-box-wrong {
-    -fx-border: 1px solid black;
+    -fx-border: 1px;
     -fx-padding: 10px 0 10px 10px;
     -fx-background-color: red;
     -fx-border-radius: 30;
@@ -143,7 +143,6 @@
 .countdown {
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 2em;
-    -fx-font-weight: light;
     -fx-padding: 10px;
     -fx-border-color: #FFFFFF;
     -fx-border-width: 2px;

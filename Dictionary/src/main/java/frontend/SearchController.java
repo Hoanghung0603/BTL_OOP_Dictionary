@@ -25,6 +25,8 @@ import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 import service.API;
 import service.T2SThread;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -58,17 +60,23 @@ public class SearchController implements Initializable {
     String sourceWord = "";   //từ đang cần tra
     boolean isShowingFavWords = false;
 
-    // hàm này để dựa vào word, setText của correct word thành từ auto correct
-    private void setCorrectWord(String word) {
-        sugLabel.setVisible(true);
+    private void setCorrectWord() {
+        if(sourceWord.equals("")) return;
         String word_da_sua = DictionaryManagement.autoCorrect(sourceWord);
-        // đang mặc định từ auto correct là hello
-        if(!word_da_sua.equals("Not found")) {
+        if (!word_da_sua.equals("Not found")) {
+            sugLabel.setVisible(true);
+            System.out.println(word_da_sua + " " + DictionaryManagement.isInDictionary(word_da_sua));
             correctWord.setText(word_da_sua);
         }
-        else if(word_da_sua.equals("Not found") || DictionaryManagement.isInDictionary(word_da_sua))
-            sugLabel.setVisible(false);
-
+        //        if(!word_da_sua.equals("Not found")) {
+//            if (sourceWord != word_da_sua) {
+//                sugLabel.setVisible(false);
+//                return;
+//            }
+//            correctWord.setText(word_da_sua);
+//        }
+//        else if(word_da_sua.equals("Not found") || DictionaryManagement.isInDictionary(word_da_sua))
+//            sugLabel.setVisible(false);
     }
         @FXML
         private void suggInputWord() {
@@ -82,38 +90,39 @@ public class SearchController implements Initializable {
             }
             if (suggList.isEmpty()) {
                 suggList.add("");
-
                 sugLabel.setVisible(false);
                 correctWord.setText("");
 
                 AlertManager.showAlert(invalidWordAlert);
-            }
-            suggResults.setItems(suggList);
-
-            //setCorrectWord(sourceWord);
-
-
-            if (timeline != null && timeline.getStatus() == Timeline.Status.RUNNING) {
+                if (timeline != null && timeline.getStatus() == Timeline.Status.RUNNING) {
                 timeline.stop(); // Dừng Timeline nếu đang chạy
-            }
-
-            timeline = new Timeline(new KeyFrame(
-                    Duration.seconds(1),
-                    new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(ActionEvent event) {
-                            setCorrectWord(sourceWord);
-                        }
-                    })
+                }
+                timeline = new Timeline(new KeyFrame(
+                Duration.seconds(0.5),
+                new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        setCorrectWord();
+                    }
+                })
             );
             timeline.play();
+            }
+            else {
+                sugLabel.setVisible(false);
+                correctWord.setText("");
+            }
+            suggResults.setItems(suggList);
         }
 
     //khi click vao mot tu trong suggResults
     @FXML
     private void handleMouseClickSuggWord(MouseEvent event) {
         sourceWord = suggResults.getSelectionModel().getSelectedItem();
-        if (sourceWord != null) sourceWord.trim();
+        if (sourceWord != null){
+            if(sourceWord.equals("")) return;
+            sourceWord.trim();
+        }
         else return;
         if (Dictionary.favoriteWord.contains(sourceWord))  {
             yellowStar.setVisible(true);
@@ -125,19 +134,15 @@ public class SearchController implements Initializable {
             saveBtn.setDisable(false);
         }
 
-        String word = suggResults.getSelectionModel().getSelectedItem();
-        if (word == null) return;
-
-        sugLabel.setVisible(false);
-        correctWord.setText("");
-
-        wordTarget.setText(word);
-        Word tmp = DictionaryCommandline.dictionaryLookup(word);
+//        sugLabel.setVisible(false);
+//        correctWord.setText("");
+        wordTarget.setText(sourceWord);
+        Word tmp = DictionaryCommandline.dictionaryLookup(sourceWord);
         String text = tmp.getWordSpelling() + "\n" + tmp.getWordExplain();
         defTextArea.setText(text);
         if(Dictionary.recentWord.size() == 10) Dictionary.recentWord.remove(0);
-        if(Dictionary.recentWord.contains(word)) Dictionary.recentWord.remove(word);
-        Dictionary.recentWord.add(word);
+        if(Dictionary.recentWord.contains(sourceWord)) Dictionary.recentWord.remove(sourceWord);
+        Dictionary.recentWord.add(sourceWord);
         recentSearch.setAll(Dictionary.recentWord.reversed());
         if(suggList.getFirst().equals("")) suggResults.getSelectionModel().selectFirst();
 
@@ -179,8 +184,10 @@ public class SearchController implements Initializable {
     }
 
     @FXML
-    private void handleMouseClickResetBtn() {
+    private void handleMouseClickResetBtn() throws IOException {
         //reset
+        DictionaryManagement.returnToDefault();
+        System.exit(0);
     }
 
     @FXML
@@ -233,13 +240,13 @@ public class SearchController implements Initializable {
 
     @FXML
     private void handleMouseClickCorrectWordLabel() {
+        if(inputWord.getText().isEmpty()) return;
         sourceWord = correctWord.getText();
         inputWord.setText(sourceWord);
         suggInputWord();
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //  dictionaryManagement.insertFromFile();
         FadeTransition fadeTrans = new FadeTransition(Duration.seconds(1.0), searchPane);
         fadeTrans.setFromValue(0);
         fadeTrans.setToValue(1);
@@ -262,13 +269,9 @@ public class SearchController implements Initializable {
                     suggList.clear();
                     suggList.add("");
                     suggResults.setItems(recentSearch);
-
-                    if (sourceWord.equals("")) {
-                        deleteBtn.setVisible(false);
-
-                        sugLabel.setVisible(false);
-                        correctWord.setText("");
-                    }
+                    deleteBtn.setVisible(false);
+                    sugLabel.setVisible(false);
+                    correctWord.setText("");
                 }
             }
         });

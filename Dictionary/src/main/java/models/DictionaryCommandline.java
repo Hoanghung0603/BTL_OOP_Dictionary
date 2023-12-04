@@ -112,7 +112,7 @@ public class DictionaryCommandline extends DictionaryManagement {
                     insertFromFile();
                     break;
                 case 9 :
-                    exportToFile();
+                    exportDataToFile();
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + command);
