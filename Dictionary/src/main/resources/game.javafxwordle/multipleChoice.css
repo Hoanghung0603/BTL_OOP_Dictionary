@@ -145,7 +145,6 @@
 .countdown {
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 2em;
-    -fx-font-weight: light;
     -fx-padding: 10px;
     -fx-border-color: #FFFFFF;
     -fx-border-width: 2px;
