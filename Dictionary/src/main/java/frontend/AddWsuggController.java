@@ -81,14 +81,15 @@ public class AddWsuggController implements Initializable, Listener {
                 }
                 //nếu không -> thêm vào từ điển FORMAT LẠI CÁI NÀY -> WORD VÀ ADD VÀO LISTWORD
                 //lấy định nghĩa vừa sửa:     defTextArea.getText() FORMAT LẠI CÁI NÀY -> WORD VÀ REPLACE VÀO LISTWORD
-                System.out.print("ADD");
-                Word word = DictionaryManagement.formatStringtoWord(DictionaryManagement.formatWord(ShareInfoAddWord.getNewWord()) + "\t" + defTextArea.getText());
-                System.out.print(DictionaryManagement.formatStringtoWord(ShareInfoAddWord.getNewWord() + "\t" + defTextArea.getText()).toString());
+
+                Word word = DictionaryManagement.formatStringtoWord(ShareInfoAddWord.getNewWord() + "\t" + defTextArea.getText());
+                //System.out.println(ShareInfoAddWord.getNewWord() + "\t" + defTextArea.getText());
+                //System.out.print(DictionaryManagement.formatStringtoWord(ShareInfoAddWord.getNewWord() + "\t" + defTextArea.getText()).toString());
                 if(DictionaryManagement.isInDictionary(ShareInfoAddWord.getNewWord())) {
                     Word oldWord = DictionaryManagement.dictionaryLookup(ShareInfoAddWord.getNewWord());
                     Dictionary.listWord.remove(oldWord);
                 }
-                System.out.print("NGU NGỐC");
+                System.out.print("NGU NGỐC" + " " + word.toString());
                 Dictionary.listWord.add(word);
 
                 //sửa lại nghĩa của từ

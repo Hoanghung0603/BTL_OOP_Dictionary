@@ -251,6 +251,7 @@ public class SearchController implements Initializable {
         fadeTrans.setFromValue(0);
         fadeTrans.setToValue(1);
         fadeTrans.play();
+
         suggList.add("");
         recentSearch.setAll(Dictionary.recentWord);
         suggResults.setItems(recentSearch);

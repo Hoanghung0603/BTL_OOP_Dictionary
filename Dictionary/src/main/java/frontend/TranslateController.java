@@ -1,5 +1,6 @@
 package frontend;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,6 +11,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import service.APITranslate;
 
 import service.SpeechAPI;
@@ -28,7 +31,8 @@ public class TranslateController implements Initializable {
     Button soundTarget, soundSource, deleteText, copyTextBtn;
     @FXML
     Label labelTextIn, labelTranslate;
-
+    @FXML
+    AnchorPane translatePane;
     @FXML
     private void handleMouseClickSoundSource() throws Exception {
         // văn bản vào:    inputString
@@ -68,6 +72,10 @@ public class TranslateController implements Initializable {
     String in = "vi";
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        FadeTransition fadeTrans = new FadeTransition(Duration.seconds(1.0), translatePane);
+        fadeTrans.setFromValue(0);
+        fadeTrans.setToValue(1);
+        fadeTrans.play();
         change.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

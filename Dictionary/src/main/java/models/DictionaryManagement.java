@@ -67,13 +67,14 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public static Word formatStringtoWord(String content) {
-        String[] result = content.split("\t?\n", 2);
-
+        System.out.println(content);
+        String[] result = content.split("\r?\n", 2);
         String wordExplain;
         String wordTarget = "";
         String wordSpelling = "";
         if (result.length > 1) {
             wordExplain = result[1];
+            //System.out.println(wordExplain);
 
             if (result[0].contains("/")) {
                 wordTarget = result[0].substring(0, result[0].indexOf("/"));
@@ -85,34 +86,10 @@ public class DictionaryManagement extends Dictionary {
                 wordSpelling = "";
             }
         }  else {
-            String[] split = result[0].split("\t? ", 2);
+            String[] split = result[0].split("\t", 2);
             wordTarget = split[0];
             wordExplain = split[1];
-        }
-        return new Word(wordTarget.trim(), wordSpelling.trim(), wordExplain.trim());
-    }
-    public static Word formatStringtoWordinAdd(String content) {
-        String[] result = content.split("\t", 2);
-
-        String wordExplain = result[1];
-        String wordTarget = result[0];
-        String wordSpelling = "";
-        if (result.length > 1) {
-            wordExplain = result[1];
-
-            if (result[0].contains("/")) {
-                wordTarget = result[0].substring(0, result[0].indexOf("/"));
-                //Cắt từ đầu đến kí tự /
-                wordSpelling = result[0].substring(result[0].indexOf("/"));
-                //Từ kí tự / đến cuối
-            } else {
-                wordTarget = result[0];
-                wordSpelling = "";
-            }
-        }  else {
-            String[] split = result[0].split("\t? ", 2);
-            wordTarget = split[0];
-            wordExplain = split[1];
+            System.out.println( " KQ: " +wordTarget + " " + wordExplain);
         }
         return new Word(wordTarget.trim(), wordSpelling.trim(), wordExplain.trim());
     }

@@ -1,5 +1,6 @@
 package frontend;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +23,7 @@ public class MenuGameController implements Initializable {
     @FXML
     Button wordleOption, mulChoiceOption, gameWordOption;
     @FXML
-    AnchorPane gamePane;
+    AnchorPane gamePane, menuGamePane;
 
     @FXML
     private void setNode(Node node) {
@@ -43,6 +45,10 @@ public class MenuGameController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        FadeTransition fadeTrans = new FadeTransition(Duration.seconds(1.0), menuGamePane);
+        fadeTrans.setFromValue(0);
+        fadeTrans.setToValue(1);
+        fadeTrans.play();
         wordleOption.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

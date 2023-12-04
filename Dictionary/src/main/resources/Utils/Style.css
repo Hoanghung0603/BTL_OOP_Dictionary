@@ -222,11 +222,15 @@
 
 .chooseGameBtn {
     -fx-font-weight: bold;
-    -fx-font-color: #ffffff;
-    -fx-font-size: 24px;
+    -fx-text-color: #ffffff;
+    -fx-font-size: 20px;
 }
 
 .gameDes {
-    -fx-control-inner-background: #00e0c7;
-    -fx-background-color: #00e0c7;
+    -fx-background-color: #00e0c790;
+    -fx-background-radius: 20;
+    -fx-border-width: 2px;
+    -fx-border-radius: 19;
+    -fx-border-color: #666666;
 }
+
