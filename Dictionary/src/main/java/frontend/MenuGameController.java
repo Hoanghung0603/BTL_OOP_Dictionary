@@ -74,7 +74,7 @@ public class MenuGameController implements Initializable {
                 showView("trac-nghiem.fxml");
                 Button quitBtn = new Button();
                 quitBtn.setTranslateX(620);
-                quitBtn.setTranslateY(118);
+                quitBtn.setTranslateY(120);
                 quitBtn.setPrefSize(45,45);
                 quitBtn.getStyleClass().add("icon");
                 Image image = new Image(getClass().getResource("/Utils/icons/home.png").toExternalForm());
@@ -105,7 +105,7 @@ public class MenuGameController implements Initializable {
             public void handle(ActionEvent event) {
                 showView("word-game.fxml");
                 Button quitBtn = new Button();
-                quitBtn.setTranslateX(180);
+                quitBtn.setTranslateX(284);
                 quitBtn.setTranslateY(467);
                 quitBtn.getStyleClass().add("icon");
                 Image image = new Image(getClass().getResource("/Utils/icons/home.png").toExternalForm());

@@ -69,22 +69,17 @@
                <tooltip>
                   <Tooltip text="Nộp bài sớm" />
                </tooltip></Button>
-            <Button layoutX="557.0" layoutY="120.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="29.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
+            <Button layoutX="557.0" layoutY="116.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="61.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
                <tooltip>
-                  <Tooltip text="BẤM VÀO NÚT CÂU HỎI HAI LẦN ĐỂ XEM KẾT QUẢ" />
+                  <Tooltip text="CÓ 10 CÂU HỎI TRẮC NGHIỆM HÃY TRẢ LỜI 10 CÂU HỎI TRƯỚC 75 GIÂY. BẠN CÓ THỂ NỘP BÀI SỚM BẰNG NÚT NỘP BÀI HÌNH PLAY HOẶC BẤM NÚT RETRY HÌNH XOAY." wrapText="true" />
                </tooltip>
                <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="52.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Utils/icons/help.png" />
                      </image>
                   </ImageView>
                </graphic>
-            </Button>
-            <Button layoutX="618.0" layoutY="119.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="29.0" style="-fx-background-color: TRANSPARENT;" styleClass="icon" stylesheets="@../game.javafxwordle/multipleChoice.css">
-               <tooltip>
-                  <Tooltip text="BẤM VÀO NÚT CÂU HỎI HAI LẦN ĐỂ XEM KẾT QUẢ" />
-               </tooltip>
             </Button>
             </children>
         </Pane>

@@ -175,6 +175,8 @@ public class WordGameController extends GameTracNghiemController {
 
         HashSet<Character> usedChar = new HashSet<>();
 
+        usedChar.add(c);
+
         // Set nút 1
         c = (char)(generates.nextInt(26) + 'A');
         while (containAEIOU(c)) {
@@ -303,7 +305,7 @@ public class WordGameController extends GameTracNghiemController {
                 else {
                     point += answer.length();
                     Label word = new Label(answer);
-                    word.setFont(new Font( 19));
+                    word.setStyle("-fx-font-weight: bold; -fx-padding: 10px; -fx-font-size: 18");
                     wordAdded.getChildren().add(word);
                     announceResult("Good job");
                     Point.setText("Point = " + point);
@@ -321,6 +323,7 @@ public class WordGameController extends GameTracNghiemController {
 
         shuffle.setOnAction(event -> {
             loadSetCharacter();
+            input.clear();
         });
     }
 }
