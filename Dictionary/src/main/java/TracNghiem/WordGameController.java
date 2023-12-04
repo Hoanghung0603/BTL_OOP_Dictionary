@@ -238,6 +238,5 @@ public class WordGameController extends GameTracNghiemController {
 
             }
         });
-        super.countdown.stop();
     }
 }
