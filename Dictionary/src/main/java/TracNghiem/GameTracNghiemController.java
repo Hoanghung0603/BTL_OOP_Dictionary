@@ -50,7 +50,7 @@ public class GameTracNghiemController implements Initializable {
     private boolean isRunning;
 
 
-    protected final int timeForAGame = 90;
+    protected final int timeForAGame = 75;
 
     @FXML
     private Button button1, button2, button3, button4, button5;
@@ -138,9 +138,9 @@ public class GameTracNghiemController implements Initializable {
         HashSet<Integer> usedNumber = new HashSet<>();
         Random generateNumber = new Random();
         for (int i = 0; i < 10; i++) {
-            counter[i] = generateNumber.nextInt(0, 49);
+            counter[i] = generateNumber.nextInt(0, 59);
             while (usedNumber.contains(counter[i])) {
-                counter[i] = generateNumber.nextInt(0, 49);
+                counter[i] = generateNumber.nextInt(0, 59);
             }
             usedNumber.add(counter[i]);
         }
@@ -183,6 +183,7 @@ public class GameTracNghiemController implements Initializable {
             clearSelection();
             if (!isRunning) {
                 showRightAndWrong(i);
+                return;
             }
             question.getStyleClass().add("question-text");
             question.setText(questionArray.get(counter[i]));
@@ -283,6 +284,11 @@ public class GameTracNghiemController implements Initializable {
     }
 
     public void showRightAndWrong(int i) {
+        question.setText(questionArray.get(counter[i]));
+        answerA.setText(multipleChoiceArray.get(4 * counter[i]));
+        answerB.setText(multipleChoiceArray.get(4 * counter[i] + 1));
+        answerC.setText(multipleChoiceArray.get(4 * counter[i] + 2));
+        answerD.setText(multipleChoiceArray.get(4 * counter[i] + 3));
         if (answerArray.get(counter[i]).equals(answerA.getText())) {
             answerA.getStyleClass().add("choice-box-right");
         }
@@ -318,7 +324,6 @@ public class GameTracNghiemController implements Initializable {
      * tính điểm
      */
     public void setMark() {
-        lockAnswer();
         setCertainMark(button1, 0);
         setCertainMark(button2, 1);
         setCertainMark(button3, 2);
@@ -450,7 +455,7 @@ public class GameTracNghiemController implements Initializable {
     }
 
     public void setUpOpening() {
-        timeLeft.setText("Time left : 90 seconds");
+        timeLeft.setText("Time left : 75 seconds");
         question.setText("Click on any question to start");
         answerA.setText("A");
         answerB.setText("B");

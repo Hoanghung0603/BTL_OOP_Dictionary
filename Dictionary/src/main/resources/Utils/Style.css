@@ -234,3 +234,15 @@
     -fx-border-color: #666666;
 }
 
+
+.icon {
+    -fx-background-color: TRANSPARENT;
+}
+
+.icon:hover {
+    -fx-opacity: 0.7;
+}
+
+.icon:pressed {
+    -fx-opacity: 0.5;
+}

@@ -5,37 +5,56 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="553.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TracNghiem.WordGameController">
+<AnchorPane prefHeight="587.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TracNghiem.WordGameController">
     <children>
-        <Pane layoutX="3.0" layoutY="4.0" prefHeight="585.0" prefWidth="807.0" styleClass="searchW-pane" stylesheets="@../Utils/Style.css">
+        <Pane layoutX="1.0" layoutY="1.0" prefHeight="585.0" prefWidth="798.0" styleClass="searchW-pane" stylesheets="@../Utils/Style.css">
             <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="325.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.8;">
+               <image>
+                  <Image url="@../Utils/icons/coral.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="111.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/icons/schoolOffish.png" />
+               </image>
+            </ImageView>
                 <Button fx:id="firstChar" layoutX="111.0" layoutY="224.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="73.0" styleClass="hex-button" stylesheets="@../game.javafxwordle/wordGame.css" text="A" />
                 <TextField fx:id="input" layoutX="64.0" layoutY="74.0" prefHeight="74.0" prefWidth="280.0" promptText="Input here" style="-fx-background-color: #FFFFFF;">
                     <font>
                         <Font size="32.0" />
                     </font>
                 </TextField>
-                <VBox fx:id="wordAdded" layoutX="421.0" layoutY="84.0" prefHeight="455.0" prefWidth="266.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
+                <VBox fx:id="wordAdded" layoutX="437.0" layoutY="93.0" prefHeight="455.0" prefWidth="266.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
                     <children>
-                        <Label fx:id="howManyWordAdded" prefHeight="35.0" prefWidth="284.0" text="You have found 0 word">
+                        <Label fx:id="howManyWordAdded" prefHeight="35.0" prefWidth="217.0" style="-fx-font-weight: BOLD;" text="You have found 0 word">
                             <font>
                                 <Font size="19.0" />
                             </font>
                      <VBox.margin>
-                        <Insets left="10.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                         </Label>
                     </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
                 </VBox>
-                <Label fx:id="Point" layoutX="421.0" layoutY="39.0" prefHeight="35.0" prefWidth="266.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;" text=" Point: 0 ">
+                <Label fx:id="Point" layoutX="437.0" layoutY="49.0" prefHeight="35.0" prefWidth="266.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30; -fx-font-weight: BOLD;" text=" Point: 0 ">
                     <font>
                         <Font size="19.0" />
                     </font>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
                 </Label>
                 <Button fx:id="secondChar" layoutX="167.0" layoutY="192.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="73.0" styleClass="hex-button" stylesheets="@../game.javafxwordle/wordGame.css" text="A" />
                 <Button fx:id="thirdChar" layoutX="111.0" layoutY="288.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="73.0" styleClass="hex-button" stylesheets="@../game.javafxwordle/wordGame.css" text="A" />
@@ -47,9 +66,30 @@
                   <String fx:value="hex-button" />
                   <String fx:value="hex-complusoryButton" />
                </styleClass></Button>
-                <Button fx:id="delete" layoutX="58.0" layoutY="413.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="146.0" styleClass="enter" stylesheets="@../game.javafxwordle/wordGame.css" text="Delete" />
-                <Button fx:id="enter" layoutX="205.0" layoutY="413.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="146.0" styleClass="delete" stylesheets="@../game.javafxwordle/wordGame.css" text="Enter" />
+                <Button fx:id="delete" layoutX="22.0" layoutY="414.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="146.0" styleClass="enter" stylesheets="@../game.javafxwordle/wordGame.css" text="Delete" />
+                <Button fx:id="enter" layoutX="236.0" layoutY="414.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="146.0" styleClass="delete" stylesheets="@../game.javafxwordle/wordGame.css" text="Enter" />
             <Label fx:id="result" layoutX="95.0" layoutY="39.0" prefHeight="35.0" prefWidth="219.0" style="-fx-background-color: #111111; -fx-background-radius: 10; -fx-alignment: CENTER;" text="Label" textFill="WHITE" />
+            <Button fx:id="shuffle" layoutX="179.0" layoutY="415.0" mnemonicParsing="false" styleClass="icon" stylesheets="@../Utils/Style.css">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Utils/icons/icons8-restart-40.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="shuffle1" layoutX="70.0" layoutY="470.0" mnemonicParsing="false" styleClass="icon" stylesheets="@../Utils/Style.css">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Utils/icons/help.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="HÃY GHÉP THÀNH CÁC TỪ TIẾNG ANH TỪ 7 CHỮ CÁI TRÊN. TRONG ĐÓ CHỮ CÁI TRONG NÚT MÀU VÀNG LÀ CHỮ BẮT BUỘC PHẢI CÓ" wrapText="true" />
+               </tooltip>
+            </Button>
             </children></Pane>
     </children>
 </AnchorPane>
