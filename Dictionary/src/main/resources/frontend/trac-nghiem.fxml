@@ -14,14 +14,9 @@
     <children>
         <Pane prefHeight="585.0" prefWidth="798.0" styleClass="searchW-pane" stylesheets="@../Utils/Style.css">
             <children>
-            <ImageView fitHeight="336.0" fitWidth="575.0" layoutX="66.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="387.0" fitWidth="575.0" layoutX="79.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Utils/icons/fishpath.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="246.0" fitWidth="247.0" layoutX="25.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Utils/icons/coral.png" />
                </image>
             </ImageView>
                 <HBox layoutX="175.0" layoutY="30.0" prefHeight="42.0" prefWidth="428.0">

@@ -1,8 +1,10 @@
 .hex-button {
     -fx-background-color: #e4e4e7;
-    -fx-padding: 10px;
+    -fx-padding: 15px;
     -fx-shape: "M 0 0 L 10 -20 L 30 -20 L 40 0 L 30 20 L 10 20 Z";
-    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3)
+    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
 }
 
 .hex-button:armed {
@@ -17,11 +19,18 @@
     -fx-opacity: 1.2;
 }
 
+.hex-button:hover {
+    -fx-opacity: 0.7;
+}
+
 
 .hex-complusoryButton {
     -fx-background-color: yellow;
-    -fx-padding: 10px;
+    -fx-padding: 15px;
     -fx-shape: "M 0 0 L 10 -20 L 30 -20 L 40 0 L 30 20 L 10 20 Z";
+    -fx-effect: dropshadow(gaussian, yellow, 10, 0, 0, 3);
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
 }
 
 .hex-complusorybutton:armed {
@@ -36,12 +45,18 @@
     -fx-opacity: 1.2;
 }
 
+.hex-complusoryButton:hover {
+    -fx-opacity: 0.7;
+}
+
 .enter{
     -fx-padding: 10px 0 10px 10px;
     -fx-background-color: #39FF14;
     -fx-border-color: black;
     -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
     -fx-alignment: center;
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
 }
 
 .enter:hover{
@@ -58,6 +73,8 @@
     -fx-border-color: black;
     -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
     -fx-alignment: center;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
 }
 
 .delete:hover{
@@ -68,4 +85,14 @@
     -fx-opacity: 0.5;
 }
 
+.icon {
+    -fx-background-color: transparent;
+}
 
+.icon:hover {
+    -fx-opacity: 0.7;
+}
+
+.icon:pressed {
+    -fx-opacity: 0.5;
+}

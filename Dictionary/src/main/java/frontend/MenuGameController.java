@@ -76,7 +76,7 @@ public class MenuGameController implements Initializable {
                 quitBtn.setTranslateX(620);
                 quitBtn.setTranslateY(118);
                 quitBtn.setPrefSize(45,45);
-                quitBtn.setStyle("-fx-background-color: TRANSPARENT;");
+                quitBtn.getStyleClass().add("icon");
                 Image image = new Image(getClass().getResource("/Utils/icons/home.png").toExternalForm());
                 ImageView homes = new ImageView(image);
                 homes.setFitHeight(45);
@@ -105,9 +105,9 @@ public class MenuGameController implements Initializable {
             public void handle(ActionEvent event) {
                 showView("word-game.fxml");
                 Button quitBtn = new Button();
-                quitBtn.setTranslateX(173);
+                quitBtn.setTranslateX(180);
                 quitBtn.setTranslateY(467);
-                quitBtn.setStyle("-fx-background-color: TRANSPARENT;");
+                quitBtn.getStyleClass().add("icon");
                 Image image = new Image(getClass().getResource("/Utils/icons/home.png").toExternalForm());
                 ImageView homes = new ImageView(image);
                 homes.setFitHeight(39);

@@ -183,6 +183,7 @@ public class GameTracNghiemController implements Initializable {
             clearSelection();
             if (!isRunning) {
                 showRightAndWrong(i);
+                return;
             }
             question.getStyleClass().add("question-text");
             question.setText(questionArray.get(counter[i]));
@@ -283,6 +284,11 @@ public class GameTracNghiemController implements Initializable {
     }
 
     public void showRightAndWrong(int i) {
+        question.setText(questionArray.get(counter[i]));
+        answerA.setText(multipleChoiceArray.get(4 * counter[i]));
+        answerB.setText(multipleChoiceArray.get(4 * counter[i] + 1));
+        answerC.setText(multipleChoiceArray.get(4 * counter[i] + 2));
+        answerD.setText(multipleChoiceArray.get(4 * counter[i] + 3));
         if (answerArray.get(counter[i]).equals(answerA.getText())) {
             answerA.getStyleClass().add("choice-box-right");
         }
@@ -318,7 +324,6 @@ public class GameTracNghiemController implements Initializable {
      * tính điểm
      */
     public void setMark() {
-        lockAnswer();
         setCertainMark(button1, 0);
         setCertainMark(button2, 1);
         setCertainMark(button3, 2);
