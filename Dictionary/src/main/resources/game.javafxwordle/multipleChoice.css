@@ -43,7 +43,7 @@
 
 .choice-box-right {
     -fx-padding: 10px 0 10px 10px;
-    -fx-background-color: green;
+    -fx-background-color: #50C878;
     -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
     -fx-alignment: center;
     -fx-background-radius: 30;
@@ -54,8 +54,8 @@
 
 .choice-box-wrong {
     -fx-padding: 10px 0 10px 10px;
-    -fx-background-color: red;
-    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-background-color: #EE4B2B;
+    -fx-effect: dropshadow(gaussian, rgb(238, 75, 43), 10, 0, 0, 3);
     -fx-alignment: center;
     -fx-background-radius: 30;
     -fx-font-size: 18px;
@@ -103,7 +103,7 @@
     -fx-fill: black;
 }
 .right {
-    -fx-background-color : green;
+    -fx-background-color : #50C878;
     -fx-text-fill: black;
     -fx-padding: 10px;
     -fx-border-radius: 5px;
