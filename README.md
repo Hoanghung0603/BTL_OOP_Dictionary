@@ -24,6 +24,7 @@ Dictionary (UET OASIS)
 - ...
 
 ## Preview 
+![Preview](https://github.com/Hoanghung0603/BTL_OOP_Dictionary/assets/65595576/f12b5929-04fa-41ff-b801-fc217b5b59f0)
 
 
 ##Inheritance tree
