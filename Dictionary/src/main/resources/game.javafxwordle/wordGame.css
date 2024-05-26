@@ -51,9 +51,9 @@
 
 .enter{
     -fx-padding: 10px 0 10px 10px;
-    -fx-background-color: #39FF14;
+    -fx-background-color: #AAFF00;
     -fx-border-color: black;
-    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-effect: dropshadow(gaussian, rgb(170, 255, 0), 10, 0, 0, 3);
     -fx-alignment: center;
     -fx-font-weight: bold;
     -fx-font-size: 15;
@@ -69,9 +69,9 @@
 
 .delete{
     -fx-padding: 10px 0 10px 10px;
-    -fx-background-color: Orange;
+    -fx-background-color: #FF7F50;
     -fx-border-color: black;
-    -fx-effect: dropshadow(gaussian, #aaa, 10, 0, 0, 3);
+    -fx-effect: dropshadow(gaussian, rgb(255, 127, 80), 10, 0, 0, 3);
     -fx-alignment: center;
     -fx-font-size: 15;
     -fx-font-weight: bold;

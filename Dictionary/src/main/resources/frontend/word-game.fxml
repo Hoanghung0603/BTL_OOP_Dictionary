@@ -66,8 +66,8 @@
                   <String fx:value="hex-button" />
                   <String fx:value="hex-complusoryButton" />
                </styleClass></Button>
-                <Button fx:id="delete" layoutX="22.0" layoutY="414.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="146.0" styleClass="enter" stylesheets="@../game.javafxwordle/wordGame.css" text="Delete" />
-                <Button fx:id="enter" layoutX="236.0" layoutY="414.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="146.0" styleClass="delete" stylesheets="@../game.javafxwordle/wordGame.css" text="Enter" />
+                <Button fx:id="delete" layoutX="236.0" layoutY="412.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="146.0" styleClass="delete" stylesheets="@../game.javafxwordle/wordGame.css" text="Delete" />
+                <Button fx:id="enter" layoutX="22.0" layoutY="412.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="146.0" styleClass="enter" stylesheets="@../game.javafxwordle/wordGame.css" text="Enter" />
             <Label fx:id="result" layoutX="95.0" layoutY="39.0" prefHeight="35.0" prefWidth="219.0" style="-fx-background-color: #111111; -fx-background-radius: 10; -fx-alignment: CENTER;" text="Label" textFill="WHITE" />
             <Button fx:id="shuffle" layoutX="179.0" layoutY="415.0" mnemonicParsing="false" styleClass="icon" stylesheets="@../Utils/Style.css">
                <graphic>
